@@ -14,71 +14,71 @@ using namespace CocosDenshion;
 
 CCScene* Jugar::scene()
 {
-    // 'scene' is an autorelease object
-    CCScene *scene = CCScene::create();
-    
-    // 'layer' is an autorelease object
-    Jugar *layer = Jugar::create();
-    
-    // add layer as a child to scene
-    scene->addChild(layer);
-    
-    // return the scene
-    return scene;
+	// 'scene' is an autorelease object
+	CCScene *scene = CCScene::create();
+	
+	// 'layer' is an autorelease object
+	Jugar *layer = Jugar::create();
+	
+	// add layer as a child to scene
+	scene->addChild(layer);
+	
+	// return the scene
+	return scene;
 }
 
 // on "init" you need to initialize your instance
 bool Jugar::init()
 {
-    bool bRet = false;
-    do
-    {
-        //////////////////////////////////////////////////////////////////////////
-        // super init first
-        //////////////////////////////////////////////////////////////////////////
-        
-        CC_BREAK_IF(! CCLayer::init());
-        
-        //////////////////////////////////////////////////////////////////////////
-        // add your codes below...
-        //////////////////////////////////////////////////////////////////////////
-        
-        // 1. Add a menu item with "X" image, which is clicked to quit the program.
-        
-        // Create a "close" menu item with close icon, it's an auto release object.
-        CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-                                                              "CloseNormal.png",
-                                                              "CloseSelected.png",
-                                                              this,
-                                                              menu_selector(Jugar::back));
-        CC_BREAK_IF(! pCloseItem);
-        
-        // Place the menu item bottom-right conner.
-        pCloseItem->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20));
-        
-        // Create a menu with the "close" menu item, it's an auto release object.
-        CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
-        pMenu->setPosition(CCPointZero);
-        CC_BREAK_IF(! pMenu);
-        
-        this->addChild(pMenu, 1);
-        
-        // 2. Add a label shows "Hello World".
-        
-        // Create a label and initialize with string "Hello World".
-        CCLabelTTF* pLabel = CCLabelTTF::create("Tennis", "Arial", 24);
-        CC_BREAK_IF(! pLabel);
-        
-        // Get window size and place the label upper.
-        CCSize size = CCDirector::sharedDirector()->getWinSize();
-        pLabel->setPosition(ccp(size.width / 2, size.height - 50));
-        
-        // Add the label to HelloWorld layer as a child layer.
-        this->addChild(pLabel, 1);
-        
-        
+	bool bRet = false;
+	do
+	{
+		//////////////////////////////////////////////////////////////////////////
+		// super init first
+		//////////////////////////////////////////////////////////////////////////
+		
+		CC_BREAK_IF(! CCLayer::init());
+		
+		//////////////////////////////////////////////////////////////////////////
+		// add your codes below...
+		//////////////////////////////////////////////////////////////////////////
+		
+		// 1. Add a menu item with "X" image, which is clicked to quit the program.
+		
+		// Create a "close" menu item with close icon, it's an auto release object.
+		CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
+								      "CloseNormal.png",
+								      "CloseSelected.png",
+								      this,
+								      menu_selector(Jugar::back));
+		CC_BREAK_IF(! pCloseItem);
+		
+		// Place the menu item bottom-right conner.
+		pCloseItem->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20));
+		
+		// Create a menu with the "close" menu item, it's an auto release object.
+		CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
+		pMenu->setPosition(CCPointZero);
+		CC_BREAK_IF(! pMenu);
+		
+		this->addChild(pMenu, 1);
+		
+		// 2. Add a label shows "Hello World".
+		
+		// Create a label and initialize with string "Hello World".
+		CCLabelTTF* pLabel = CCLabelTTF::create("Tennis", "Arial", 24);
+		CC_BREAK_IF(! pLabel);
+		
+		// Get window size and place the label upper.
+		CCSize size = CCDirector::sharedDirector()->getWinSize();
+		pLabel->setPosition(ccp(size.width / 2, size.height - 50));
+		
+		// Add the label to HelloWorld layer as a child layer.
+		this->addChild(pLabel, 1);
+		
+		
 		//-----------------INIT VAR--------------
-        
+		
 		posBallx=50;
 		posBally=size.height/2;
 		
@@ -87,97 +87,96 @@ bool Jugar::init()
 		
 		accBallX=0;
 		accBallY=0;
-        
+		
 		g=-200;
 		R=0.9f;
-        
+		
 		isChargingPLayer1=false;
 		isChargingPLayer2=false;
-        
+		
 		charge1=0;
 		charge2=0;
-        
+		
 		floor=60;
-        
+		
 		x=0;
 		y=0;
-        
+		
 		xEnd=0;
 		yEnd=0;
-        
+		
 		planeHit1=false;
 		planeHit2=false;
-        //-----------INIT SPRITES
-        
+		//-----------INIT SPRITES
+		
 		background = CCSprite::create("maqueta2.png");
-        CC_BREAK_IF(!  background);
-        
-        background->setPosition(ccp(size.width/2, size.height/2));
-        
+		CC_BREAK_IF(!  background);
+		
+		background->setPosition(ccp(size.width/2, size.height/2));
+		
 		this->addChild(background, 0);
-        
-        
-        player1 = CCSprite::create("stay.png");
-        CC_BREAK_IF(!  player1);
-        
-        player1->setPosition(ccp(player1->getContentSize().width/2, player1->getContentSize().height/2+floor));
-        
+		
+		
+		player1 = CCSprite::create("stay.png");
+		CC_BREAK_IF(!  player1);
+		
+		player1->setPosition(ccp(player1->getContentSize().width/2, player1->getContentSize().height/2+floor));
+		
 		this->addChild(player1, 0);
-        
 		
-        player2 = CCSprite::create("stay.png");
-        CC_BREAK_IF(!  player2);
-        
-        player2->setPosition(ccp(size.width-player2->getContentSize().width/2, player2->getContentSize().height/2+floor));
-        this->addChild(player2, 0);
-        
+		
+		player2 = CCSprite::create("stay.png");
+		CC_BREAK_IF(!  player2);
+		
+		player2->setPosition(ccp(size.width-player2->getContentSize().width/2, player2->getContentSize().height/2+floor));
+		this->addChild(player2, 0);
+		
 		ball = CCSprite::create("Projectile.png");
-        CC_BREAK_IF(!  ball);
-        
-        ball->setPosition(ccp(200, size.height*3/4));
-        this->addChild(ball, 0);
-        
+		CC_BREAK_IF(!  ball);
 		
-		this->j1 = new MultitouchJugador(1, 10.0, 0.003,   0, 0, 100, 480);
-		this->j2 = new MultitouchJugador(2,  5.0, 0.003, 220, 0, 100, 480);
-        
-        
+		ball->setPosition(ccp(200, size.height*3/4));
+		this->addChild(ball, 0);
+		
+		CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+		int ancho = winSize.width/5; // 20% del ancho
+		int alto  = winSize.height;  // Alto completo de la pantalla
+		this->j1 = new MultitouchJugador(1, 10.0, 0.001,   0, 0, ancho, alto);
+		this->j2 = new MultitouchJugador(2, 10.0, 0.001, winSize.width-ancho, 0, ancho, alto);
+		
+		
 		this->setTouchEnabled(true);
 		this->schedule( schedule_selector(Jugar::update));
-        
-        
-        
-        
-        bRet = true;
-    } while (0);
-    
-    
-    return bRet;
+		
+		bRet = true;
+	} while (0);
+	
+	
+	return bRet;
 }
 
 void Jugar::back(CCObject* pSender)
 {
-    CCDirector::sharedDirector()->popScene();
+	CCDirector::sharedDirector()->popScene();
 }
 
 void Jugar::update(float dt){
-    
+	
 	if(isChargingPLayer1==true){
 		charge1+=10;
 	}
-    
+	
 	if(isChargingPLayer2==true){
 		charge2+=10;
 	}
-    
+	
 	//accBallY=accBallY+dt*g;
 	speedBallY=speedBallY+g*dt;
-    
+	
 	if(posBally+speedBallY*dt<floor) {
 		posBally=floor;
 		
 		speedBallY=speedBallY*(-1)*R;
-        
+		
 		if (posBallx<getContentSize().width/2){
 			if(planeHit1==true){
 				resetGame();
@@ -197,30 +196,30 @@ void Jugar::update(float dt){
 	} else{
 		posBally=posBally+speedBallY*dt;
 	}
-    
+	
 	//ccColor4F c4f = ccc4f(255,0,0,255);
-    
+	
 	//ccDrawSolidRect(CCPoint::CCPoint(50,50), CCPoint::CCPoint(100,100), c4f  );
 	
 	posBallx=posBallx+speedBallX*dt;
-    
+	
 	ball->setPosition(ccp(posBallx, posBally));
-    
+	
 	if (ball->getPositionX()<0){
 		resetGame();
 	}
-    
-    
+	
+	
 	if (ball->getPositionX()>getContentSize().width){
 		resetGame();
 	}
-    
-    
+	
+	
 	if ((ball->getPositionX()>getContentSize().width/2-5)&&(ball->getPositionX()<getContentSize().width/2+5)){
 		if (ball->getPositionY()<160){
 			if(ball->getPositionY()<140){
 				resetGame();
-                
+				
 			}else{
 				speedBallX=speedBallX/2;
 				speedBallY=100;
@@ -243,75 +242,75 @@ void Jugar::beganCharge(CCPoint p, int id) {
 	
 	float fX=p.x;
 	float fY=p.y;
-    
-    if(id==1){
-        if(isChargingPLayer1==false){
+	
+	if(id==1){
+		if(isChargingPLayer1==false){
 			//player1->setPosition(ccp(player1->getContentSize().width/2, location.y));
 			initX1=fX;
 			initY1=fY;
-            
-            isChargingPLayer1=true;
-            
+			
+			isChargingPLayer1=true;
+			
 			
 			CCFiniteTimeAction* actionMove =
 			CCMoveTo::actionWithDuration( (float)0.3f,
-                                         ccp(player1->getContentSize().width/2, p.y) );
+						     ccp(player1->getContentSize().width/2, p.y) );
 			
 			player1->runAction( CCSequence::actions(actionMove,
-                                                    NULL, NULL) );
-        }
+								NULL, NULL) );
+		}
 		
-    }
-    
-    
-    if (id == 2) {
-        if(isChargingPLayer2==false){
+	}
+	
+	
+	if (id == 2) {
+		if(isChargingPLayer2==false){
 			//player2->setPosition(ccp(getContentSize().width-player1->getContentSize().width/2, location.y));
 			isChargingPLayer2=true;
-            
+			
 			initX2 = fX;
 			initY2 = fY;
-            
-            
-            
+			
+			
+			
 			CCFiniteTimeAction* actionMove =
 			CCMoveTo::actionWithDuration( (float)0.3f,
-                                         ccp(getContentSize().width-player2->getContentSize().width/2, p.y) );
+						     ccp(getContentSize().width-player2->getContentSize().width/2, p.y) );
 			
 			player2->runAction( CCSequence::actions(actionMove,
-                                                    NULL, NULL) );
-        }
-        
+								NULL, NULL) );
+		}
 		
-    }
-    
-    
+		
+	}
+	
+	
 }
 
 void Jugar::endedCharge(CCPoint p, int id) {
-    xEnd=p.x;
-    yEnd=p.y;
-    
-    if(id==1){
-        if(isChargingPLayer1==true){
+	xEnd=p.x;
+	yEnd=p.y;
+	
+	if(id==1){
+		if(isChargingPLayer1==true){
 			//player1->setPosition(ccp(player1->getContentSize().width/2, getContentSize().height/4));
 			isChargingPLayer1=false;
-            
+			
 			endX1=xEnd;
 			endY1=yEnd;
-            
-            
+			
+			
 			CCFiniteTimeAction* actionMove =
 			CCMoveTo::actionWithDuration( (float)0.3f,
-                                         ccp(player1->getContentSize().width/2, floor+player1->getContentSize().height/2) );
+						     ccp(player1->getContentSize().width/2, floor+player1->getContentSize().height/2) );
 			
 			player1->runAction( CCSequence::actions(actionMove,
-                                                    NULL, NULL) );
-            
-            
+								NULL, NULL) );
+			
+			
 			if((posBallx<player1->getContentSize().width)&&(posBallx>0)){
 				if((posBally<(player1->getContentSize().height/2+player1->getPositionY()))&&(posBally>(-player1->getContentSize().height/2+player1->getPositionY()))){
-                    //if (speedBallX==0){
+					//if (speedBallX==0){
 					if((initX1-endX1)*(initX1-endX1)+(initY1-endY1)*(initY1-endY1)>1000){
 						float hipo =sqrt((initX1-endX1)*(initX1-endX1)+(initY1-endY1)*(initY1-endY1));
 						
@@ -322,37 +321,37 @@ void Jugar::endedCharge(CCPoint p, int id) {
 						speedBallX=charge1;
 						speedBallY=speedBallY+100;
 					}
-                    
-                    
+					
+					
 					//speedBallX=charge1;
 					//speedBallY=speedBallY+100;
-                    //}
-                }
-                
-                charge1=0;
-                
-            }
-            
-        }
+					//}
+				}
+				
+				charge1=0;
+				
+			}
+			
+		}
 		
-    }
-    if (id==2){
-        if(isChargingPLayer2==true){
+	}
+	if (id==2){
+		if(isChargingPLayer2==true){
 			//player2->setPosition(ccp(getContentSize().width-player1->getContentSize().width/2, getContentSize().height/4));
 			isChargingPLayer2=false;
-            
+			
 			endX2=xEnd;
 			endY2=yEnd;
-            
-            
+			
+			
 			CCFiniteTimeAction* actionMove =
 			CCMoveTo::actionWithDuration( (float)0.3f,
-                                         ccp(getContentSize().width-player2->getContentSize().width/2, floor+player2->getContentSize().height/2) );
+						     ccp(getContentSize().width-player2->getContentSize().width/2, floor+player2->getContentSize().height/2) );
 			
 			player2->runAction( CCSequence::actions(actionMove,
-                                                    NULL, NULL) );
-            
-            
+								NULL, NULL) );
+			
+			
 			if((posBallx>getContentSize().width-player2->getContentSize().width)&&(posBallx<getContentSize().width)){
 				if((posBally<(player2->getContentSize().height/2+player2->getPositionY()))&&(posBally>(-player2->getContentSize().height/2+player2->getPositionY()))){
 					//if (speedBallX==0){
@@ -366,29 +365,29 @@ void Jugar::endedCharge(CCPoint p, int id) {
 						speedBallX=-charge2;
 						speedBallY=speedBallY+100;
 					}
-                    //}
+					//}
 				}
 			}
-            
+			
 			charge2=0;
-        }
-        
+		}
 		
-    }
-    
+		
+	}
+	
 }
 
 void Jugar::resetGame(){
-    
+	
 	posBallx=50;
 	posBally=getContentSize().height/2;
 	
 	speedBallX=0;
 	speedBallY=0;
-    
+	
 	accBallX=0;
 	accBallY=0;
-    
+	
 	planeHit1=false;
 	planeHit2=false;
 }

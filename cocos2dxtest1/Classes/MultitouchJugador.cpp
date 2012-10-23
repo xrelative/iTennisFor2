@@ -16,7 +16,7 @@ USING_NS_CC;
 
 MultitouchJugador::MultitouchJugador(int id, float kcarga, float kdescarga, float x, float y, float width, float height)
 {
-	ID = id;
+	ID = id; // Solo para debugging.
 	area = CCRectMake(x, y, width, height);
 	
 	/* ¿ Por qué kdescarga * kcarga ?
@@ -28,11 +28,19 @@ MultitouchJugador::MultitouchJugador(int id, float kcarga, float kdescarga, floa
 	sensibilidadCarga    = kcarga;
 	sensibilidadDescarga = kdescarga * kcarga;
 	
+	isTouching = 0;
+	
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 }
 
 bool MultitouchJugador::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
+	if (isTouching) {
+		/* Si ya está tocando,
+		 * no hay nada más que hacer acá
+		 */
+		return false;
+	}
 	CCPoint posicion = pTouch->getLocation();
 	if (area.containsPoint(posicion)) {
 		printf("ccTouchBegan %i\t(%4f, %4f)\n", ID, posicion.x, posicion.y);
@@ -42,7 +50,8 @@ bool MultitouchJugador::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 		lastTime  = getTimeTick();
 		yPosition = posicion.y;
 		yVelocity = 0;
-		return true;
+		
+		return (isTouching = true);
 	}
 	return false;
 }
@@ -83,13 +92,16 @@ void MultitouchJugador::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 
 void MultitouchJugador::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
+	isTouching = false;
 	CCPoint posicion = pTouch->getLocation();
 	calcularVelocidad(posicion.y);
+	
 	printf("ccTouchEnded %i\t con velocidad: %f\n", ID, yVelocity);
 }
 
 void MultitouchJugador::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
 {
+	isTouching = false;
 	printf("ccTouchCancelled %i\n", ID);
 }
 

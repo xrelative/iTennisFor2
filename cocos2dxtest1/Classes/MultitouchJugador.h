@@ -26,6 +26,9 @@ class MultitouchJugador : public CCObject, public CCTouchDelegate
 	float sensibilidadCarga;
 	float sensibilidadDescarga;
 	
+	// Para evitar más de un toque en la misma area
+	bool isTouching;
+	
 public:
 	MultitouchJugador(int id, float kcarga, float kdescarga, float x, float y, float width, float height);
 private:
