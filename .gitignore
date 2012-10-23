@@ -8,3 +8,5 @@
 *.plist
 
 cocos2dxtest1/.DS_Store
+
+*.xcbkptlist
