@@ -140,8 +140,12 @@ bool Jugar::init()
 		CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 		int ancho = winSize.width/5; // 20% del ancho
 		int alto  = winSize.height;  // Alto completo de la pantalla
-		this->j1 = new MultitouchJugador(1, 10.0, 0.001,   0, 0, ancho, alto);
-		this->j2 = new MultitouchJugador(2, 10.0, 0.001, winSize.width-ancho, 0, ancho, alto);
+		this->j1 = new MultitouchJugador(1, 10.0, 0.001,
+						 0, 0,
+						 ancho, alto);
+		this->j2 = new MultitouchJugador(2, 10.0, 0.001,
+						 winSize.width-ancho, 0,
+						 ancho, alto);
 		
 		
 		this->setTouchEnabled(true);
