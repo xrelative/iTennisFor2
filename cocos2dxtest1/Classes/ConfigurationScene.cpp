@@ -58,24 +58,24 @@ bool Configuration::init()
     titulo->setPosition(ccp(size.width/2, size.height/2 + 60.0));
     
     CCLabelTTF *efectos = CCLabelTTF::create("Efectos", "YELLOW.TTF", 24.0);
-    efectos->setPosition(ccp(size.width/3, size.height/2));
+    efectos->setPosition(ccp(size.width/2, size.height/2));
     
     CCLabelTTF *backgroundMusic = CCLabelTTF::create("Música de fondo", "YELLOW.TTF", 24.0);
-    backgroundMusic->setPosition(ccp(size.width/3, size.height/2 - 40.0));
+    backgroundMusic->setPosition(ccp(size.width/2, size.height/2 - 60.0));
     
     CCControlSlider *sliderEffects = CCControlSlider::create("sliderTrack.png", "sliderProgress.png", "sliderThumb.png");
     sliderEffects->setMinimumValue(0.0);
     sliderEffects->setMaximumValue(1.0);
     sliderEffects->setValue(SimpleAudioEngine::sharedEngine()->getEffectsVolume());
     sliderEffects->addTargetWithActionForControlEvents(this, cccontrol_selector(Configuration::valueChangedEffects), CCControlEventValueChanged);
-    sliderEffects->setPosition(ccp(3*size.width/4, size.height/2));
+    sliderEffects->setPosition(ccp(size.width/2, size.height/2 - 20.0));
     
     CCControlSlider *sliderBackgroundMusic = CCControlSlider::create("sliderTrack.png", "sliderProgress.png", "sliderThumb.png");
     sliderBackgroundMusic->setMinimumValue(0.0);
     sliderBackgroundMusic->setMaximumValue(1.0);
     sliderBackgroundMusic->setValue(SimpleAudioEngine::sharedEngine()->getBackgroundMusicVolume());
     sliderBackgroundMusic->addTargetWithActionForControlEvents(this, cccontrol_selector(Configuration::valueChangedBackgroundMusic), CCControlEventValueChanged);
-    sliderBackgroundMusic->setPosition(ccp(3*size.width/4, size.height/2 - 40.0));
+    sliderBackgroundMusic->setPosition(ccp(size.width/2, size.height/2 - 80.0));
     
     this->addChild(titulo, 2);
     this->addChild(efectos, 2);
