@@ -21,7 +21,7 @@ class Bola : public CCNode {
 	
 public:
 	CCSprite* sprite;
-	Bola ();
+	Bola (float piso);
 private:
 	void update (float dt);
 	void checkStatus ();

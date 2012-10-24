@@ -27,51 +27,13 @@ public:
 	Jugador *j2;
 //	MultitouchJugador *j1;
 //	MultitouchJugador *j2;
-	
-	
-	
-	void update(float dt);
-	void beganCharge(CCPoint p, int id);
-	void endedCharge(CCPoint p, int id);
+
 	void resetGame();
 	
-	float initX1;
-	float initX2;
-	
-	float initY1;
-	float initY2;
-	
-	float endX1;
-	float endX2;
-	
-	float endY1;
-	float endY2;
-	
-	GLboolean isChargingPLayer1;
-	GLboolean isChargingPLayer2;
-	
-	float charge1;
-	float charge2;
-	
-	float floor;
-	
-	float pos1;
-	float pos2;
-	
-	float x;
-	float y;
-	
-	float xEnd;
-	float yEnd;
-	
-//	cocos2d::CCSprite* player1;
-//	cocos2d::CCSprite* player2;
 	cocos2d::CCSprite* background;
 	
 	Bola* bola;
-	
-	bool planeHit1;
-	bool planeHit2;
+	float piso;
 	
 	// preprocessor macro for "static create()" constructor ( node() deprecated )
 	CREATE_FUNC(Jugar);

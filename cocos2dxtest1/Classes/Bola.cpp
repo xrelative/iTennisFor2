@@ -8,7 +8,10 @@
 
 #include "Bola.h"
 
-Bola::Bola ()
+Bola::Bola (float piso)
+: piso(piso),
+  gravedad(-1000.0f),
+  coeficienteRestitucion(0.70f) // Sacado de canchas de verdad
 {
 	schedule(schedule_selector(Bola::update));
 
@@ -18,10 +21,6 @@ Bola::Bola ()
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
 	sprite->setPosition(ccp(200, size.height*3/4));
 	addChild(sprite, 0);
-	
-	coeficienteRestitucion = 0.70f; // Sacado de canchas de verdad
-	gravedad = -1000.0f;
-	piso = 60.0f;
 }
 
 void Bola::update (float dt)
