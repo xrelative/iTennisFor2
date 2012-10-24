@@ -27,18 +27,52 @@ bool AppDelegate::applicationDidFinishLaunching()
     // initialize director
     CCDirector *pDirector = CCDirector::sharedDirector();
     pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
-
-    // enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.
-    pDirector->enableRetinaDisplay(true);
+    
+    TargetPlatform target = getTargetPlatform();
+    
+    if (target == kTargetIpad)
+    {
+        // ipad
+        
+        // try to enable retina on device
+        if (true == pDirector->enableRetinaDisplay(true))
+        {
+            // iphone hd
+            CCFileUtils::sharedFileUtils()->setResourceDirectory("ipadhd");
+        }
+        else
+        {
+            CCFileUtils::sharedFileUtils()->setResourceDirectory("ipad");
+        }
+    }
+    else if (target == kTargetIphone)
+    {
+        // iphone
+        
+        // try to enable retina on device
+        if (true == pDirector->enableRetinaDisplay(true))
+        {
+            // iphone hd
+            CCFileUtils::sharedFileUtils()->setResourceDirectory("iphonehd");
+        }
+        else
+        {
+            CCFileUtils::sharedFileUtils()->setResourceDirectory("iphone");
+        }
+    }
+    else
+    {
+        // android, windows, blackberry, linux or mac
+        // use 960*640 resources as design resolution size
+        CCFileUtils::sharedFileUtils()->setResourceDirectory("iphonehd");
+        CCEGLView::sharedOpenGLView()->setDesignResolutionSize(960, 640, kResolutionNoBorder);
+    }
 
     // turn on display FPS
     pDirector->setDisplayStats(false);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
-    
-    // add resources retina display
-    CCFileUtils::sharedFileUtils()->setResourceDirectory("hd");
 
     // create a scene. it's an autorelease object
     CCScene *pScene = Menu::scene();
