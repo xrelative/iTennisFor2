@@ -89,9 +89,9 @@ bool Jugar::init()
 		/* Creación y ubicación de jugadores */
 		int ancho     = size.width/5; // 20% del ancho
 		CCRect area   = CCRectMake(0, 0, ancho, size.height);
-		j1            = new Jugador(false, area);
+		j1            = new Jugador(false, area, this, callfuncO_selector(Jugar::golpearJ1));
 		area.origin.x = size.width - ancho;
-		j2            = new Jugador(true , area);
+		j2            = new Jugador(true , area, this, callfuncO_selector(Jugar::golpearJ2));
 		
 		addChild(j1);
 		addChild(j2);
@@ -122,4 +122,20 @@ void Jugar::back(CCObject* pSender)
 
 void Jugar::resetGame(){
 //	bola.reset(pos, vel);
+}
+
+#include <stdio.h>
+void Jugar::golpearJ1 (GolpeEvent* golpe)
+{
+	golpear(1, golpe);
+}
+
+void Jugar::golpearJ2 (GolpeEvent* golpe)
+{
+	golpear(2, golpe);
+}
+
+void Jugar::golpear (int id, GolpeEvent* golpe)
+{
+	printf("Jugador #%i golpea con Spin: %f y Power: %f\n", id, golpe->spin, golpe->power);
 }

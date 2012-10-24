@@ -18,7 +18,7 @@ class Jugador : public CCNode {
 	bool isSecondPlayer;
 public:
 	CCSprite* sprite;
-	Jugador (bool isSecondPlayer, CCRect area);
+	Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector);
 private:
 //	void update (float dt);
 };

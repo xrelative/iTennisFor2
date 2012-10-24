@@ -9,16 +9,25 @@
 #ifndef __Test_Multitouch__MultitouchJugador__
 #define __Test_Multitouch__MultitouchJugador__
 
-#include "touch_dispatcher/CCTouchDelegateProtocol.h"
-#include "CCTouch.h"
+#include "cocos2d.h"
+//#include "touch_dispatcher/CCTouchDelegateProtocol.h"
+//#include "CCTouch.h"
 USING_NS_CC;
 
-class MultitouchJugador : public CCObject, public CCTouchDelegate
+class GolpeEvent : public CCObject {
+public:
+	float spin;
+	float power;
+};
+
+class MultitouchJugador : public CCNode/*CCObject*/, public CCTouchDelegate
 {
-	int ID;
+//	int ID;
 	CCRect area;
 	
 	// Para el cálculo del efecto
+	float dt;
+	float totaldt;
 	float tapTime;
 	float lastTime;
 	int   yPosition;
@@ -34,14 +43,20 @@ class MultitouchJugador : public CCObject, public CCTouchDelegate
 	// Para evitar más de un toque en la misma area
 	bool isTouching;
 	
+	// Para el sistema de eventos
+	CCCallFuncO *caller;
+	GolpeEvent resultado;
+	
 public:
-	MultitouchJugador(int id, float kcarga, float kdescarga, float fuerza, float potenciaMinima, float potenciaMaxima, CCRect area);
+	MultitouchJugador(/*int id, */float kcarga, float kdescarga, float fuerza, float potenciaMinima, float potenciaMaxima, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector);
 private:
 	virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
 	void calcularVelocidad(float newPos);
+	void timing (float dt);
+	float getDeltaT ();
 };
 
 float getTimeTick();

@@ -37,6 +37,10 @@ public:
 	
 	// preprocessor macro for "static create()" constructor ( node() deprecated )
 	CREATE_FUNC(Jugar);
+	
+	void golpearJ1 (GolpeEvent* golpe);
+	void golpearJ2 (GolpeEvent* golpe);
+	void golpear (int id, GolpeEvent* golpe);
 };
 
 #endif /* defined(__cocos2dxtest1__JugarScene__) */
