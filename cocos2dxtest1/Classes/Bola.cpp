@@ -19,30 +19,28 @@ Bola::Bola ()
 	sprite->setPosition(ccp(200, size.height*3/4));
 	this->addChild(sprite, 0);
 	
-	coeficienteRestitucion = 0.9f;
-	gravedad = -200.0f;
-	piso     =   60.0f;
+	coeficienteRestitucion = 0.70f; // Sacado de canchas de verdad
+	gravedad = -1000.0f;
+	piso = 60.0f;
 }
 
 void Bola::update (float dt)
 {
-	velocidad.y = velocidad.y + gravedad * dt;
+	velocidad.y += gravedad * dt;
 	CCPoint posicion = sprite->getPosition();
 	
 	CCPoint cambio = ccpMult(velocidad, dt);
 	posicion = ccpAdd(posicion, cambio);
 	
-
-	
-	checkStatus();
 	sprite->setPosition(posicion);
+	checkStatus();
 }
 
 void Bola::checkStatus()
 {
 	CCPoint posicion = sprite->getPosition();
 	
-	if(posicion.y > piso) {
+	if(posicion.y < piso) {
 		colisionPiso();
 	}
 	

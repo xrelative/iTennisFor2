@@ -62,15 +62,9 @@ public:
 	
 	cocos2d::CCSprite* player1;
 	cocos2d::CCSprite* player2;
-	cocos2d::CCSprite* ball;
 	cocos2d::CCSprite* background;
 	
 	Bola* bola;
-	float posBallx,posBally;
-	float speedBallX,speedBallY;
-	float accBallX,accBallY;
-	float g;
-	float R;
 	
 	bool planeHit1;
 	bool planeHit2;

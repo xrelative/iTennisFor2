@@ -12,8 +12,7 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
-class Bola : CCSprite {	
-	CCSprite* sprite;
+class Bola : public CCNode {
 	
 	CCPoint velocidad;
 	float gravedad;
@@ -21,6 +20,7 @@ class Bola : CCSprite {
 	float coeficienteRestitucion;
 	
 public:
+	CCSprite* sprite;
 	Bola ();
 private:
 	void update (float dt);
