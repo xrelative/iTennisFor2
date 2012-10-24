@@ -10,14 +10,14 @@
 
 Bola::Bola ()
 {
-	this->schedule(schedule_selector(Bola::update));
+	schedule(schedule_selector(Bola::update));
 
 	sprite = CCSprite::create("Projectile.png");
 	//	CC_BREAK_IF(!sprite); //Dejemos que se caiga si esto no funca
 	
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
 	sprite->setPosition(ccp(200, size.height*3/4));
-	this->addChild(sprite, 0);
+	addChild(sprite, 0);
 	
 	coeficienteRestitucion = 0.70f; // Sacado de canchas de verdad
 	gravedad = -1000.0f;

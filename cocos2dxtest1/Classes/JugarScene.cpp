@@ -61,7 +61,7 @@ bool Jugar::init()
 		pMenu->setPosition(CCPointZero);
 		CC_BREAK_IF(! pMenu);
 		
-		this->addChild(pMenu, 1);
+		addChild(pMenu, 1);
 		
 		// 2. Add a label shows "Hello World".
 		
@@ -74,7 +74,7 @@ bool Jugar::init()
 		pLabel->setPosition(ccp(size.width / 2, size.height - 50));
 		
 		// Add the label to HelloWorld layer as a child layer.
-		this->addChild(pLabel, 1);
+		addChild(pLabel, 1);
 		
 		
 		//-----------------INIT VAR--------------
@@ -93,42 +93,31 @@ bool Jugar::init()
 		
 		background->setPosition(ccp(size.width/2, size.height/2));
 		
-		this->addChild(background, 0);
+		addChild(background);
 		
+		/* Creación y ubicación de jugadores */
+		int ancho = size.width/5; // 20% del ancho
+		CCRect area = CCRectMake(0, 0, ancho, size.height);
+		j1 = new Jugador(false, area);
+		area.origin.x = size.width - ancho;
+		j2 = new Jugador(true , area);
 		
-		player1 = CCSprite::create("stay.png");
-		CC_BREAK_IF(!  player1);
+		addChild(j1);
+		addChild(j2);
 		
-		player1->setPosition(ccp(player1->getContentSize().width/2, player1->getContentSize().height/2+floor));
+		CCSize spriteJugador = j1->getContentSize();
+		CCPoint posicionJugador = ccp(spriteJugador.width/2, spriteJugador.height/2+floor);
+		j1->setPosition(posicionJugador);
+		posicionJugador.x = size.width - posicionJugador.x;
+		j2->setPosition(posicionJugador);
 		
-		this->addChild(player1, 0);
-		
-		
-		player2 = CCSprite::create("stay.png");
-		CC_BREAK_IF(!  player2);
-		
-		player2->setPosition(ccp(size.width-player2->getContentSize().width/2, player2->getContentSize().height/2+floor));
-		this->addChild(player2, 0);
-		
-		
-		CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-		int ancho = winSize.width/5; // 20% del ancho
-		int alto  = winSize.height;  // Alto completo de la pantalla
-		this->j1 = new MultitouchJugador(1, 10.0, 0.001,
-						 0, 0,
-						 ancho, alto);
-		this->j2 = new MultitouchJugador(2, 10.0, 0.001,
-						 winSize.width-ancho, 0,
-						 ancho, alto);
-		
-		
-		this->setTouchEnabled(true);
-		this->schedule( schedule_selector(Jugar::update));
+		setTouchEnabled(true);
+		schedule( schedule_selector(Jugar::update));
 		
 		bRet = true;
 		
-		this->bola = new Bola();
-		this->addChild(bola);
+		bola = new Bola();
+		addChild(bola);
 	} while (0);
 	
 	
@@ -284,15 +273,7 @@ void Jugar::endedCharge(CCPoint p, int id) {
 }
 
 void Jugar::resetGame(){
-//	
-//	posBallx=50;
-//	posBally=getContentSize().height/2;
-//	
-//	speedBallX=0;
-//	speedBallY=0;
-//	
-//	accBallX=0;
-//	accBallY=0;
+//	bola.reset(pos, vel);
 	
 	planeHit1=false;
 	planeHit2=false;

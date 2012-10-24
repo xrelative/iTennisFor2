@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
-#include "MultitouchJugador.h"
+#include "Jugador.h"
 #include "Bola.h"
 
 class Jugar : public cocos2d::CCLayer
@@ -23,8 +23,12 @@ public:
 	void back(CCObject* pSender);
 	
 	// variables de juego
-	MultitouchJugador *j1;
-	MultitouchJugador *j2;
+	Jugador *j1;
+	Jugador *j2;
+//	MultitouchJugador *j1;
+//	MultitouchJugador *j2;
+	
+	
 	
 	void update(float dt);
 	void beganCharge(CCPoint p, int id);
@@ -60,8 +64,8 @@ public:
 	float xEnd;
 	float yEnd;
 	
-	cocos2d::CCSprite* player1;
-	cocos2d::CCSprite* player2;
+//	cocos2d::CCSprite* player1;
+//	cocos2d::CCSprite* player2;
 	cocos2d::CCSprite* background;
 	
 	Bola* bola;

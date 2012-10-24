@@ -26,11 +26,16 @@ class MultitouchJugador : public CCObject, public CCTouchDelegate
 	float sensibilidadCarga;
 	float sensibilidadDescarga;
 	
+	// Para el cálculo de la fuerza
+	float fuerza;
+	float potenciaMinima;
+	float potenciaMaxima;
+	
 	// Para evitar más de un toque en la misma area
 	bool isTouching;
 	
 public:
-	MultitouchJugador(int id, float kcarga, float kdescarga, float x, float y, float width, float height);
+	MultitouchJugador(int id, float kcarga, float kdescarga, float fuerza, float potenciaMinima, float potenciaMaxima, CCRect area);
 private:
 	virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);

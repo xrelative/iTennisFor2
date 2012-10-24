@@ -14,11 +14,13 @@ USING_NS_CC;
 
 #include <stdio.h> //Debuggeando con printf, no se formatear con <<, yet
 
-MultitouchJugador::MultitouchJugador(int id, float kcarga, float kdescarga, float x, float y, float width, float height)
-{
-	ID = id; // Solo para debugging.
-	area = CCRectMake(x, y, width, height);
-	
+MultitouchJugador::MultitouchJugador(int id, float kcarga, float kdescarga, float fuerza, float potenciaMinima, float potenciaMaxima, CCRect area)
+: ID(id), // Solo para debugging.
+  fuerza(fuerza),
+  potenciaMinima(potenciaMinima),
+  potenciaMaxima(potenciaMaxima),
+  area(area)
+{	
 	/* ¿ Por qué kdescarga * kcarga ?
 	 *  La constante de descarga está multiplicada por la
 	 * de carga, para desacoplar el valor de esta constante.
@@ -43,11 +45,11 @@ bool MultitouchJugador::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 	}
 	CCPoint posicion = pTouch->getLocation();
 	if (area.containsPoint(posicion)) {
-		printf("ccTouchBegan %i\t(%4f, %4f)\n", ID, posicion.x, posicion.y);
+//		printf("ccTouchBegan %i\t(%4f, %4f)\n", ID, posicion.x, posicion.y);
 		
 		// Preparar cálculo del efecto
-//		tapTime   = getTimeTick();
-		lastTime  = getTimeTick();
+		tapTime   = getTimeTick();
+		lastTime  = tapTime;
 		yPosition = posicion.y;
 		yVelocity = 0;
 		
@@ -87,7 +89,7 @@ void MultitouchJugador::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 {
 	CCPoint posicion = pTouch->getLocation();
 	calcularVelocidad(posicion.y);
-	printf("ccTouchMoved %i\t con velocidad: %f\n", ID, yVelocity);
+//	printf("ccTouchMoved %i\t con velocidad: %f\n", ID, yVelocity);
 }
 
 void MultitouchJugador::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
@@ -96,7 +98,12 @@ void MultitouchJugador::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 	CCPoint posicion = pTouch->getLocation();
 	calcularVelocidad(posicion.y);
 	
-	printf("ccTouchEnded %i\t con velocidad: %f\n", ID, yVelocity);
+	float ahora, power;
+	ahora = getTimeTick();
+	power = potenciaMinima + (ahora - tapTime) * fuerza;
+	power = MIN(power, potenciaMaxima);
+	
+	printf("ccTouchEnded %i\t con velocidad: %f; y potencia: %f:\n", ID, yVelocity, power);
 }
 
 void MultitouchJugador::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		731E0CCB163783B700BBB759 /* Jugador.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 731E0CC9163783B700BBB759 /* Jugador.cpp */; };
 		739E221316374F6600CC886B /* Bola.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 739E221116374F6600CC886B /* Bola.cpp */; };
 		F94FB1191629EE3000A05986 /* AboutUsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F94FB1171629EE3000A05986 /* AboutUsScene.cpp */; };
 		F94FB11D1629EEBF00A05986 /* ConfigurationScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F94FB11B1629EEBF00A05986 /* ConfigurationScene.cpp */; };
@@ -256,6 +257,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		731E0CC9163783B700BBB759 /* Jugador.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Jugador.cpp; path = Classes/Jugador.cpp; sourceTree = "<group>"; };
+		731E0CCA163783B700BBB759 /* Jugador.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Jugador.h; path = Classes/Jugador.h; sourceTree = "<group>"; };
 		739E221116374F6600CC886B /* Bola.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bola.cpp; path = Classes/Bola.cpp; sourceTree = "<group>"; };
 		739E221216374F6600CC886B /* Bola.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bola.h; path = Classes/Bola.h; sourceTree = "<group>"; };
 		F94FB1171629EE3000A05986 /* AboutUsScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AboutUsScene.cpp; path = Classes/AboutUsScene.cpp; sourceTree = "<group>"; };
@@ -1668,6 +1671,8 @@
 				F9642B6C16292DD1000D220C /* HelloWorldScene.cpp */,
 				F985C3711635D8D300EF83B6 /* MultitouchJugador.cpp */,
 				F985C3721635D8D300EF83B6 /* MultitouchJugador.h */,
+				731E0CC9163783B700BBB759 /* Jugador.cpp */,
+				731E0CCA163783B700BBB759 /* Jugador.h */,
 				F993796716294B1400FC924A /* MenuScene.h */,
 				F993796616294B1400FC924A /* MenuScene.cpp */,
 				F993796A16294F9700FC924A /* JugarScene.h */,
@@ -2077,6 +2082,7 @@
 				F94FB11D1629EEBF00A05986 /* ConfigurationScene.cpp in Sources */,
 				F985C3731635D8D300EF83B6 /* MultitouchJugador.cpp in Sources */,
 				739E221316374F6600CC886B /* Bola.cpp in Sources */,
+				731E0CCB163783B700BBB759 /* Jugador.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
