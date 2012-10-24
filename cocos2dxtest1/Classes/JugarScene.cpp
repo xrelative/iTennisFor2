@@ -96,16 +96,16 @@ bool Jugar::init()
 		addChild(background);
 		
 		/* Creación y ubicación de jugadores */
-		int ancho = size.width/5; // 20% del ancho
-		CCRect area = CCRectMake(0, 0, ancho, size.height);
-		j1 = new Jugador(false, area);
+		int ancho     = size.width/5; // 20% del ancho
+		CCRect area   = CCRectMake(0, 0, ancho, size.height);
+		j1            = new Jugador(false, area);
 		area.origin.x = size.width - ancho;
-		j2 = new Jugador(true , area);
+		j2            = new Jugador(true , area);
 		
 		addChild(j1);
 		addChild(j2);
 		
-		CCSize spriteJugador = j1->getContentSize();
+		CCSize  spriteJugador   = j1->getContentSize();
 		CCPoint posicionJugador = ccp(spriteJugador.width/2, spriteJugador.height/2+floor);
 		j1->setPosition(posicionJugador);
 		posicionJugador.x = size.width - posicionJugador.x;
