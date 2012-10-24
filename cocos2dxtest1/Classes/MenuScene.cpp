@@ -22,7 +22,7 @@ CCScene* Menu::scene()
     
     // 'layer' is an autorelease object
     Menu *layer = Menu::create();
-    CCSprite *backgroud = CCSprite::create("fondo.png");
+    CCSprite *backgroud = CCSprite::create("fondo.jpg");
     CCDirector *dir = CCDirector::sharedDirector();
     backgroud->setScaleX(dir->getWinSize().width/backgroud->getContentSize().width);
     backgroud->setScaleY(dir->getWinSize().height/backgroud->getContentSize().height);

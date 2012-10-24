@@ -37,7 +37,7 @@ bool AboutUs::init()
         return false;
     }
     
-    CCSprite *backgroud = CCSprite::create("fondoAboutUs.png");
+    CCSprite *backgroud = CCSprite::create("fondoAboutUs.jpg");
     CCDirector *dir = CCDirector::sharedDirector();
     backgroud->setScaleX(dir->getWinSize().width/backgroud->getContentSize().width);
     backgroud->setScaleY(dir->getWinSize().height/backgroud->getContentSize().height);
