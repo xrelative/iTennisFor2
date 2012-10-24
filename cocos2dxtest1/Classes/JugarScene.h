@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
 #include "MultitouchJugador.h"
+#include "Bola.h"
 
 class Jugar : public cocos2d::CCLayer
 {
@@ -64,7 +65,7 @@ public:
 	cocos2d::CCSprite* ball;
 	cocos2d::CCSprite* background;
 	
-	
+	Bola* bola;
 	float posBallx,posBally;
 	float speedBallX,speedBallY;
 	float accBallX,accBallY;
