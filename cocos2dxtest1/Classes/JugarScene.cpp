@@ -137,5 +137,19 @@ void Jugar::golpearJ2 (GolpeEvent* golpe)
 
 void Jugar::golpear (int id, GolpeEvent* golpe)
 {
+	Bola    &b    = *bola;
+	Jugador &j    = id == 1 ? *j1 : *j2;
+	int direccion = id == 1 ?   1 :  -1;
+	
+	CCRect area = j.getHitArea();
+	if (area.containsPoint(b.getPosicion())) {
+		float velx = golpe->power * 60; // = la fuerza de este jugador
+		b.velocidad.x = velx * direccion;
+		
+		float vely = 500; //algun valor para que caiga dentro de la cancha
+		b.velocidad.y = vely;
+		
+		b.spin = golpe->spin * direccion; // El spin depende de donde se le pega
+	}
 	printf("Jugador #%i golpea con Spin: %f y Power: %f\n", id, golpe->spin, golpe->power);
 }

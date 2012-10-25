@@ -19,6 +19,7 @@ class Jugador : public CCNode {
 public:
 	CCSprite* sprite;
 	Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector);
+	const CCRect getHitArea ();
 private:
 //	void update (float dt);
 };

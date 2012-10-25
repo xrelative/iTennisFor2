@@ -23,7 +23,6 @@ public:
 class MultitouchJugador : public CCNode/*CCObject*/, public CCTouchDelegate
 {
 //	int ID;
-	CCRect area;
 	
 	// Para el cálculo del efecto
 	float dt;
@@ -49,6 +48,7 @@ class MultitouchJugador : public CCNode/*CCObject*/, public CCTouchDelegate
 	
 public:
 	MultitouchJugador(/*int id, */float kcarga, float kdescarga, float fuerza, float potenciaMinima, float potenciaMaxima, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector);
+	CCRect area;
 private:
 	virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);

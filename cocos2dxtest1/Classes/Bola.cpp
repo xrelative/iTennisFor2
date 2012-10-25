@@ -11,6 +11,7 @@
 Bola::Bola (float piso)
 : piso(piso),
   gravedad(-1000.0f),
+  spin(0),
   coeficienteRestitucion(0.70f) // Sacado de canchas de verdad
 {
 	schedule(schedule_selector(Bola::update));
@@ -19,14 +20,14 @@ Bola::Bola (float piso)
 	//	CC_BREAK_IF(!sprite); //Dejemos que se caiga si esto no funca
 	
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
-	sprite->setPosition(ccp(200, size.height*3/4));
+	sprite->setPosition(ccp(size.width*0.1, size.height*3/4));
 	addChild(sprite, 0);
 }
 
 void Bola::update (float dt)
 {
 	velocidad.y += gravedad * dt;
-	CCPoint posicion = sprite->getPosition();
+	CCPoint posicion = getPosicion();
 	
 	CCPoint cambio = ccpMult(velocidad, dt);
 	posicion = ccpAdd(posicion, cambio);
@@ -37,7 +38,7 @@ void Bola::update (float dt)
 
 void Bola::checkStatus()
 {
-	CCPoint posicion = sprite->getPosition();
+	CCPoint posicion = getPosicion();
 	
 	if(posicion.y < piso) {
 		colisionPiso();
@@ -77,10 +78,18 @@ void Bola::checkStatus()
 
 void Bola::colisionPiso()
 {
-	CCPoint posicion = sprite->getPosition();
+	CCPoint posicion = getPosicion();
 
 	posicion.y = piso;
 	velocidad.y *= -coeficienteRestitucion;
 	
+//	velocidad = ccpRotateByAngle(velocidad, CCPointZero, spin);
+	velocidad.x += spin*200; // momento rotacional -> lineal
+	spin *= 0.1; // perdida de energia por roce
+	
 	sprite->setPosition(posicion);
+}
+
+CCPoint Bola::getPosicion () {
+	return sprite->getPosition();
 }

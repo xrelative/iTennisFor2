@@ -14,14 +14,16 @@ USING_NS_CC;
 
 class Bola : public CCNode {
 	
-	CCPoint velocidad;
 	float gravedad;
 	float piso;
 	float coeficienteRestitucion;
+	CCSprite* sprite;
 	
 public:
-	CCSprite* sprite;
+	float spin;
+	CCPoint velocidad;
 	Bola (float piso);
+	CCPoint getPosicion ();
 private:
 	void update (float dt);
 	void checkStatus ();

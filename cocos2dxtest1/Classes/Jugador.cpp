@@ -9,7 +9,7 @@
 #include "Jugador.h"
 
 Jugador::Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector)
-: multitouch(100.0, 0.01, 0.001, 1, 5, area, pSelectorTarget, selector),
+: multitouch(100.0, 0.01, 0.001, 3.5, 5.0, area, pSelectorTarget, selector),
   isSecondPlayer(isSecondPlayer)
 {
 //	this->schedule(schedule_selector(Jugador::update));
@@ -26,6 +26,12 @@ Jugador::Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, S
 	if (isSecondPlayer) {
 		setScaleX(-1);
 	}
+}
+
+
+CCRect const Jugador::getHitArea ()
+{
+	return multitouch.area;
 }
 
 /* iniciando golpe */
