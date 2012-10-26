@@ -220,6 +220,7 @@
 		F9937963162947D600FC924A /* stay.png in Resources */ = {isa = PBXBuildFile; fileRef = F993795B162947D600FC924A /* stay.png */; };
 		F993796816294B1400FC924A /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F993796616294B1400FC924A /* MenuScene.cpp */; };
 		F993796B16294F9700FC924A /* JugarScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F993796916294F9700FC924A /* JugarScene.cpp */; };
+		F9989463163A203B00BC2093 /* maqueta3.png in Resources */ = {isa = PBXBuildFile; fileRef = F9989462163A203B00BC2093 /* maqueta3.png */; };
 		F99FE2C61637A0AF008395C9 /* sliderProgress.png in Resources */ = {isa = PBXBuildFile; fileRef = F99FE2C11637A0AF008395C9 /* sliderProgress.png */; };
 		F99FE2C71637A0AF008395C9 /* sliderThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = F99FE2C21637A0AF008395C9 /* sliderThumb.png */; };
 		F99FE2C81637A0AF008395C9 /* sliderTrack.png in Resources */ = {isa = PBXBuildFile; fileRef = F99FE2C31637A0AF008395C9 /* sliderTrack.png */; };
@@ -730,6 +731,7 @@
 		F993796716294B1400FC924A /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuScene.h; path = Classes/MenuScene.h; sourceTree = "<group>"; };
 		F993796916294F9700FC924A /* JugarScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JugarScene.cpp; path = Classes/JugarScene.cpp; sourceTree = "<group>"; };
 		F993796A16294F9700FC924A /* JugarScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JugarScene.h; path = Classes/JugarScene.h; sourceTree = "<group>"; };
+		F9989462163A203B00BC2093 /* maqueta3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maqueta3.png; path = Resources/maqueta3.png; sourceTree = "<group>"; };
 		F99FE2C11637A0AF008395C9 /* sliderProgress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderProgress.png; sourceTree = "<group>"; };
 		F99FE2C21637A0AF008395C9 /* sliderThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderThumb.png; sourceTree = "<group>"; };
 		F99FE2C31637A0AF008395C9 /* sliderTrack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderTrack.png; sourceTree = "<group>"; };
@@ -862,6 +864,7 @@
 				F9937955162947D600FC924A /* hit.png */,
 				F9937956162947D600FC924A /* maqueta.png */,
 				F9937957162947D600FC924A /* maqueta2.png */,
+				F9989462163A203B00BC2093 /* maqueta3.png */,
 				F9937959162947D600FC924A /* Projectile.png */,
 				F993795A162947D600FC924A /* salto.png */,
 				F993795B162947D600FC924A /* stay.png */,
@@ -1951,6 +1954,7 @@
 				F90A2209163882C4003B45E8 /* fondoAboutUs.jpg in Resources */,
 				F90A220C163882CC003B45E8 /* fondo.jpg in Resources */,
 				F90A220D163882CC003B45E8 /* fondoAboutUs.jpg in Resources */,
+				F9989463163A203B00BC2093 /* maqueta3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -63,29 +63,22 @@ bool Jugar::init()
 		
 		addChild(pMenu, 1);
 		
-		// 2. Add a label shows "Hello World".
-		
-		// Create a label and initialize with string "Hello World".
-		CCLabelTTF* pLabel = CCLabelTTF::create("Tennis", "Arial", 24);
-		CC_BREAK_IF(! pLabel);
-		
-		// Get window size and place the label upper.
-		CCSize size = CCDirector::sharedDirector()->getWinSize();
-		pLabel->setPosition(ccp(size.width / 2, size.height - 50));
-		
-		// Add the label to HelloWorld layer as a child layer.
-		addChild(pLabel, 1);
+        CCSize size = CCDirector::sharedDirector()->getWinSize();
+//      CCLabelTTF* pLabel = CCLabelTTF::create("Tennis", "Arial", 24);
+//		CC_BREAK_IF(! pLabel);
+//		pLabel->setPosition(ccp(size.width / 2, size.height - 50));
+//		addChild(pLabel, 1);
 		
 //-----------INIT SPRITES
 		
-		background = CCSprite::create("maqueta2.png");
+		background = CCSprite::create("maqueta3.png");
 		CC_BREAK_IF(!  background);
 		
 		background->setPosition(ccp(size.width/2, size.height/2));
 		
 		addChild(background);
 		
-		piso = 60;
+		piso = 40;
 		/* Creación y ubicación de jugadores */
 		int ancho     = size.width/5; // 20% del ancho
 		CCRect area   = CCRectMake(0, 0, ancho, size.height);
