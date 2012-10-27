@@ -41,6 +41,11 @@ CCRect const Jugador::getHitArea ()
 	return multitouch.area;
 }
 
+void MultitouchJugador::Jugar(){
+    
+    
+    
+}
 /* iniciando golpe */
 
 //
