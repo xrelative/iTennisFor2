@@ -9,7 +9,7 @@
 #include "Jugador.h"
 
 Jugador::Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector)
-: multitouch(100.0, 0.01, 0.001, 3.5, 5.0, area, pSelectorTarget, selector),
+: multitouch(100.0, 0.01, 0.001, 3.5, 5.0, area, pSelectorTarget, selector,this,callfuncO_selector(Jugador::Jump)),
   isSecondPlayer(isSecondPlayer)
 {
 //	this->schedule(schedule_selector(Jugador::update));
@@ -41,8 +41,15 @@ CCRect const Jugador::getHitArea ()
 	return multitouch.area;
 }
 
-void MultitouchJugador::Jugar(){
+void Jugador::Jump(CargaEvent *event){
     
+    printf("1\n");
+    CCFiniteTimeAction* actionMove =
+    			CCMoveTo::actionWithDuration( (float)0.3f,
+    						     ccp(sprite->getContentSize().width/2, 100) );
+    
+    		sprite->runAction( CCSequence::actions(actionMove,
+    							NULL, NULL) );
     
     
 }

@@ -20,6 +20,7 @@ public:
 	CCSprite* sprite;
 	Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector);
 	const CCRect getHitArea ();
+    void Jump(CargaEvent *event);
 private:
 //	void update (float dt);
 };
