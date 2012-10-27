@@ -20,6 +20,11 @@ public:
 	float power;
 };
 
+class CargaEvent : public CCObject {
+public:
+	float y;
+};
+
 class MultitouchJugador : public CCNode/*CCObject*/, public CCTouchDelegate
 {
 //	int ID;
@@ -43,11 +48,13 @@ class MultitouchJugador : public CCNode/*CCObject*/, public CCTouchDelegate
 	bool isTouching;
 	
 	// Para el sistema de eventos
-	CCCallFuncO *caller;
-	GolpeEvent resultado;
+	GolpeEvent resultadoGolpe;
+	CCCallFuncO *callbackGolpe;
+	CargaEvent resultadoCarga;
+	CCCallFuncO *callbackCarga;
 	
 public:
-	MultitouchJugador(/*int id, */float kcarga, float kdescarga, float fuerza, float potenciaMinima, float potenciaMaxima, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector);
+	MultitouchJugador(/*int id, */float kcarga, float kdescarga, float fuerza, float potenciaMinima, float potenciaMaxima, CCRect area, SEL_CallFuncO selectorGolpe, CCObject* pselectorCargaTarget, SEL_CallFuncO selectorCarga);
 	CCRect area;
 private:
 	virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);

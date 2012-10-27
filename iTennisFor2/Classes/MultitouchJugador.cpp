@@ -14,7 +14,7 @@ USING_NS_CC;
 
 #include <stdio.h> //Debuggeando con printf, no se formatear con <<, yet
 
-MultitouchJugador::MultitouchJugador(/*int id, */float kcarga, float kdescarga, float fuerza, float potenciaMinima, float potenciaMaxima, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector)
+MultitouchJugador::MultitouchJugador(/*int id, */float kcarga, float kdescarga, float fuerza, float potenciaMinima, float potenciaMaxima, CCRect area, CCObject* pselectorGolpeTarget, SEL_CallFuncO selectorGolpe, CCObject* pselectorCargaTarget, SEL_CallFuncO selectorCarga)
 : fuerza(fuerza),
 //  ID(id), // Solo para debugging.
   potenciaMinima(potenciaMinima),
@@ -28,16 +28,20 @@ MultitouchJugador::MultitouchJugador(/*int id, */float kcarga, float kdescarga, 
 	 * cambiaría también el tiempo de descarga!
 	 */
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
-	sensibilidadCarga    = kcarga / size.height;;
+	sensibilidadCarga    = kcarga / size.height;
 	sensibilidadDescarga = kdescarga * sensibilidadCarga;
 	
 	isTouching = 0;
 	
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-	caller = CCCallFuncO::create(pSelectorTarget, selector, &resultado);
-	caller->retain(); // No estoy totalmente seguro por qué
+	callbackGolpe = CCCallFuncO::create(pselectorGolpeTarget, selectorGolpe, &resultadoGolpe);
+	callbackGolpe->retain(); // No estoy totalmente seguro por qué
 	
-	((CCNode*)pSelectorTarget)->addChild(this); // Esto es excesivamente chanta, pero sirve por mientras para probar la nueva función de timing
+	callbackCarga = CCCallFuncO::create(pselectorGolpeTarget, selectorGolpe, &resultadoCarga);
+	callbackCarga->retain(); // No estoy totalmente seguro por qué
+
+	
+	((CCNode*)pselectorGolpeTarget)->addChild(this); // Esto es excesivamente chanta, pero sirve por mientras para probar la nueva función de timing
 	schedule(schedule_selector(MultitouchJugador::timing));
 }
 
@@ -61,6 +65,8 @@ bool MultitouchJugador::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 		yPosition = posicion.y;
 		yVelocity = 0;
 		
+		resultadoCarga.y = yPosition;
+		callbackGolpe->execute();
 		return (isTouching = true);
 	}
 	return false;
@@ -115,9 +121,9 @@ void MultitouchJugador::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 	power  = MIN(power, potenciaMaxima);
 	
 //	printf("ccTouchEnded %i\t con velocidad: %f; y potencia: %f:\n", ID, yVelocity, power);
-	resultado.spin  = yVelocity;
-	resultado.power = power;
-	caller->execute();
+	resultadoGolpe.spin  = yVelocity;
+	resultadoGolpe.power = power;
+	callbackGolpe->execute();
 }
 
 void MultitouchJugador::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
