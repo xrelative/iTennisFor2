@@ -38,20 +38,33 @@ Jugador::Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, S
 
 CCRect const Jugador::getHitArea ()
 {
+    
 	return multitouch.area;
 }
 
 void Jugador::Jump(CargaEvent *event){
     
     printf("1\n");
+    
+    
     CCFiniteTimeAction* actionMove =
     			CCMoveTo::actionWithDuration( (float)0.3f,
-    						     ccp(sprite->getContentSize().width/2, 100) );
+    						     ccp(0, event->y) );
     
     		sprite->runAction( CCSequence::actions(actionMove,
     							NULL, NULL) );
     
     
+}
+
+void Jugador::Fall(){
+    
+    CCFiniteTimeAction* actionMove =
+    CCMoveTo::actionWithDuration( (float)0.3f,
+    						     ccp(0, 0) );
+    
+    sprite->runAction( CCSequence::actions(actionMove,
+                                           NULL, NULL) );
 }
 /* iniciando golpe */
 

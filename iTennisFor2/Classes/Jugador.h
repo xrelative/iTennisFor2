@@ -21,6 +21,7 @@ public:
 	Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector);
 	const CCRect getHitArea ();
     void Jump(CargaEvent *event);
+    void Fall();
 private:
 //	void update (float dt);
 };

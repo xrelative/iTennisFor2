@@ -103,11 +103,13 @@ void Jugar::resetGame(){
 void Jugar::golpearJ1 (GolpeEvent* golpe)
 {
 	golpear(1, golpe);
+    j1->Fall();
 }
 
 void Jugar::golpearJ2 (GolpeEvent* golpe)
 {
 	golpear(2, golpe);
+    j2->Fall();
 }
 
 void Jugar::golpear (int id, GolpeEvent* golpe)
