@@ -27,46 +27,55 @@ bool AppDelegate::applicationDidFinishLaunching()
     // initialize director
     CCDirector *pDirector = CCDirector::sharedDirector();
     pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
+    pDirector->enableRetinaDisplay(true);
     
-    TargetPlatform target = getTargetPlatform();
+    //TargetPlatform target = getTargetPlatform();
     
-    if (target == kTargetIpad)
-    {
-        // ipad
-        
-        // try to enable retina on device
-        if (true == pDirector->enableRetinaDisplay(true))
-        {
-            // iphone hd
-            CCFileUtils::sharedFileUtils()->setResourceDirectory("spriteshd");
-        }
-        else
-        {
-            CCFileUtils::sharedFileUtils()->setResourceDirectory("sprites");
-        }
-    }
-    else if (target == kTargetIphone)
-    {
-        // iphone
-        
-        // try to enable retina on device
-        if (true == pDirector->enableRetinaDisplay(true))
-        {
-            // iphone hd
-            CCFileUtils::sharedFileUtils()->setResourceDirectory("spriteshd");
-        }
-        else
-        {
-            CCFileUtils::sharedFileUtils()->setResourceDirectory("sprites");
-        }
-    }
-    else
-    {
-        // android, windows, blackberry, linux or mac
-        // use 960*640 resources as design resolution size
-        CCFileUtils::sharedFileUtils()->setResourceDirectory("spriteshd");
-        CCEGLView::sharedOpenGLView()->setDesignResolutionSize(800, 480, kResolutionNoBorder);
-    }
+//    if (target == kTargetIpad)
+//    {
+//        // ipad
+//        
+//        // try to enable retina on device
+//        if (true == pDirector->enableRetinaDisplay(true))
+//        {
+//            // iphone hd
+//            CCFileUtils::sharedFileUtils()->setResourceDirectory("spriteshd");
+//            CCFileUtils::sharedFileUtils()->setResourceDirectory("backgroundhd");
+//        }
+//        else
+//        {
+//            CCFileUtils::sharedFileUtils()->setResourceDirectory("sprites");
+//            CCFileUtils::sharedFileUtils()->setResourceDirectory("background");
+//        }
+//    }
+//    else if (target == kTargetIphone)
+//    {
+//        // iphone
+//        
+//        // try to enable retina on device
+//        if (true == pDirector->enableRetinaDisplay(true))
+//        {
+//            // iphone hd
+//            CCFileUtils::sharedFileUtils()->setResourceDirectory("spriteshd");
+//            CCFileUtils::sharedFileUtils()->setResourceDirectory("backgroundhd");
+//        }
+//        else
+//        {
+//            CCFileUtils::sharedFileUtils()->setResourceDirectory("sprites");
+//            CCFileUtils::sharedFileUtils()->setResourceDirectory("background");
+//            
+//        }
+//    }
+//    else
+//    {
+//        // android, windows, blackberry, linux or mac
+//        // use 960*640 resources as design resolution size
+//        CCFileUtils::sharedFileUtils()->setResourceDirectory("spriteshd");
+//        CCFileUtils::sharedFileUtils()->setResourceDirectory("backgroundhd");
+//        //CCEGLView::sharedOpenGLView()->setDesignResolutionSize(800, 480, kResolutionNoBorder);
+//    }
+    //CCFileUtils::sharedFileUtils()->setResourceDirectory("spriteshd");
+    //CCFileUtils::sharedFileUtils()->setResourceDirectory("backgroundhd");
 
     // turn on display FPS
     pDirector->setDisplayStats(false);

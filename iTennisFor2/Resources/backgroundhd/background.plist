@@ -51,9 +51,9 @@
             <key>realTextureFileName</key>
             <string>background.pvr.ccz</string>
             <key>size</key>
-            <string>{964,1928}</string>
+            <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ba9bd81bcc83d92f3ad3014e5b8d4b3a$</string>
+            <string>$TexturePacker:SmartUpdate:4bb8ef7c6c5a20a63e3ea6d05382f20a$</string>
             <key>textureFileName</key>
             <string>background.pvr.ccz</string>
         </dict>

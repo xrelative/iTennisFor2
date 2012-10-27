@@ -7,12 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F94FF4B2163B57F20020B8FB /* background.plist in Resources */ = {isa = PBXBuildFile; fileRef = F94FF4AA163B57F20020B8FB /* background.plist */; };
-		F94FF4B3163B57F20020B8FB /* background.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = F94FF4AB163B57F20020B8FB /* background.pvr.ccz */; };
 		F94FF4B4163B57F20020B8FB /* background.plist in Resources */ = {isa = PBXBuildFile; fileRef = F94FF4AD163B57F20020B8FB /* background.plist */; };
 		F94FF4B5163B57F20020B8FB /* background.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = F94FF4AE163B57F20020B8FB /* background.pvr.ccz */; };
-		F94FF4B6163B57F20020B8FB /* sprites.plist in Resources */ = {isa = PBXBuildFile; fileRef = F94FF4B0163B57F20020B8FB /* sprites.plist */; };
-		F94FF4B7163B57F20020B8FB /* sprites.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = F94FF4B1163B57F20020B8FB /* sprites.pvr.ccz */; };
 		F94FF4BB163B58010020B8FB /* sprites.plist in Resources */ = {isa = PBXBuildFile; fileRef = F94FF4B9163B58010020B8FB /* sprites.plist */; };
 		F94FF4BC163B58010020B8FB /* sprites.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = F94FF4BA163B58010020B8FB /* sprites.pvr.ccz */; };
 		F9F08FC0163B0C3C00F7E818 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F08FBF163B0C3C00F7E818 /* QuartzCore.framework */; };
@@ -240,12 +236,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F94FF4AA163B57F20020B8FB /* background.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = background.plist; sourceTree = "<group>"; };
-		F94FF4AB163B57F20020B8FB /* background.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = background.pvr.ccz; sourceTree = "<group>"; };
 		F94FF4AD163B57F20020B8FB /* background.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = background.plist; sourceTree = "<group>"; };
 		F94FF4AE163B57F20020B8FB /* background.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = background.pvr.ccz; sourceTree = "<group>"; };
-		F94FF4B0163B57F20020B8FB /* sprites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sprites.plist; sourceTree = "<group>"; };
-		F94FF4B1163B57F20020B8FB /* sprites.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = sprites.pvr.ccz; sourceTree = "<group>"; };
 		F94FF4B9163B58010020B8FB /* sprites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sprites.plist; sourceTree = "<group>"; };
 		F94FF4BA163B58010020B8FB /* sprites.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = sprites.pvr.ccz; sourceTree = "<group>"; };
 		F9F08FBB163B0C3C00F7E818 /* iTennisFor2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTennisFor2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -738,16 +730,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F94FF4A9163B57F20020B8FB /* background */ = {
-			isa = PBXGroup;
-			children = (
-				F94FF4AA163B57F20020B8FB /* background.plist */,
-				F94FF4AB163B57F20020B8FB /* background.pvr.ccz */,
-			);
-			name = background;
-			path = Resources/background;
-			sourceTree = "<group>";
-		};
 		F94FF4AC163B57F20020B8FB /* backgroundhd */ = {
 			isa = PBXGroup;
 			children = (
@@ -756,16 +738,6 @@
 			);
 			name = backgroundhd;
 			path = Resources/backgroundhd;
-			sourceTree = "<group>";
-		};
-		F94FF4AF163B57F20020B8FB /* sprites */ = {
-			isa = PBXGroup;
-			children = (
-				F94FF4B0163B57F20020B8FB /* sprites.plist */,
-				F94FF4B1163B57F20020B8FB /* sprites.pvr.ccz */,
-			);
-			name = sprites;
-			path = Resources/sprites;
 			sourceTree = "<group>";
 		};
 		F94FF4B8163B58010020B8FB /* spriteshd */ = {
@@ -825,9 +797,7 @@
 		F9F08FD0163B0C3C00F7E818 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F94FF4A9163B57F20020B8FB /* background */,
 				F94FF4AC163B57F20020B8FB /* backgroundhd */,
-				F94FF4AF163B57F20020B8FB /* sprites */,
 				F94FF4B8163B58010020B8FB /* spriteshd */,
 				F9F0927C163B0DF100F7E818 /* fonts */,
 				F9F0927F163B0DF100F7E818 /* icons */,
@@ -1810,12 +1780,8 @@
 				F9F092B8163B0DF100F7E818 /* Default-Portrait~ipad.png in Resources */,
 				F9F092B9163B0DF100F7E818 /* Default.png in Resources */,
 				F9F092BA163B0DF100F7E818 /* Default@2x.png in Resources */,
-				F94FF4B2163B57F20020B8FB /* background.plist in Resources */,
-				F94FF4B3163B57F20020B8FB /* background.pvr.ccz in Resources */,
 				F94FF4B4163B57F20020B8FB /* background.plist in Resources */,
 				F94FF4B5163B57F20020B8FB /* background.pvr.ccz in Resources */,
-				F94FF4B6163B57F20020B8FB /* sprites.plist in Resources */,
-				F94FF4B7163B57F20020B8FB /* sprites.pvr.ccz in Resources */,
 				F94FF4BB163B58010020B8FB /* sprites.plist in Resources */,
 				F94FF4BC163B58010020B8FB /* sprites.pvr.ccz in Resources */,
 			);
