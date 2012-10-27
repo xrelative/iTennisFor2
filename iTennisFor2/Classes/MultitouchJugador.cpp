@@ -37,7 +37,7 @@ MultitouchJugador::MultitouchJugador(float kcarga, float kdescarga, float fuerza
 	callbackGolpe = CCCallFuncO::create(pselectorGolpeTarget, selectorGolpe, &resultadoGolpe);
 	callbackGolpe->retain(); // No estoy totalmente seguro por qué
 	
-	callbackCarga = CCCallFuncO::create(pselectorGolpeTarget, selectorGolpe, &resultadoCarga);
+	callbackCarga = CCCallFuncO::create(pselectorCargaTarget, selectorCarga, &resultadoCarga);
 	callbackCarga->retain(); // No estoy totalmente seguro por qué
 
 	
@@ -66,7 +66,7 @@ bool MultitouchJugador::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 		yVelocity = 0;
 		
 		resultadoCarga.y = yPosition;
-		callbackGolpe->execute();
+		callbackCarga->execute();
 		return (isTouching = true);
 	}
 	return false;
