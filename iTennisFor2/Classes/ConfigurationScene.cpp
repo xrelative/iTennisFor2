@@ -40,15 +40,16 @@ bool Configuration::init()
     }
     
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("background.plist");
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("sprites.plist");
-    CCSpriteBatchNode *batchNode = CCSpriteBatchNode::create("sprites.png");
-    this->addChild(batchNode, 0);
+    CCSpriteBatchNode *batchNodeBackground = CCSpriteBatchNode::create("background.pvr.ccz");
+    CCSpriteBatchNode *batchNodeSprites = CCSpriteBatchNode::create("sprites.pvr.ccz");
+    this->addChild(batchNodeBackground, 0);
+    this->addChild(batchNodeSprites, 1);
     
-    CCSprite *backgroud = CCSprite::create("backgroundSubmenu.png");
-    backgroud->setScaleX(winSize.width/backgroud->getContentSize().width);
-    backgroud->setScaleY(winSize.height/backgroud->getContentSize().height);
+    CCSprite *backgroud = CCSprite::createWithSpriteFrameName("backgroundSubmenu.png");
     backgroud->cocos2d::CCNode::setPosition(winSize.width/2, winSize.height/2);
-    this->addChild(backgroud, 0);
+    batchNodeBackground->addChild(backgroud, 0);
     
     CCSprite *backSprite = CCSprite::createWithSpriteFrameName("raqueta.png");
     CCMenuItemSprite *pBackItem = CCMenuItemSprite::create(backSprite, backSprite, this, menu_selector(Configuration::back));
@@ -56,7 +57,7 @@ bool Configuration::init()
     
     CCMenu* pMenu = CCMenu::create(pBackItem, NULL);
     pMenu->setPosition(CCPointZero);
-    this->addChild(pMenu, 1);
+    this->addChild(pMenu, 2);
     
     CCLabelTTF *titulo = CCLabelTTF::create("Propiedades de audio", "aftershockdebris.ttf", 30.0);
     titulo->setPosition(ccp(winSize.width/2, winSize.height/2 + 60.0));
@@ -87,11 +88,11 @@ bool Configuration::init()
     sliderBackgroundMusic->addTargetWithActionForControlEvents(this, cccontrol_selector(Configuration::valueChangedBackgroundMusic), CCControlEventValueChanged);
     sliderBackgroundMusic->setPosition(ccp(winSize.width/2, winSize.height/2 - 80.0));
     
-    this->addChild(titulo, 2);
-    this->addChild(efectos, 2);
-    this->addChild(backgroundMusic, 2);
-    this->addChild(sliderEffects, 2);
-    this->addChild(sliderBackgroundMusic, 2);
+    this->addChild(titulo, 3);
+    this->addChild(efectos, 3);
+    this->addChild(backgroundMusic, 3);
+    this->addChild(sliderEffects, 3);
+    this->addChild(sliderBackgroundMusic, 3);
     
     return true;
 }

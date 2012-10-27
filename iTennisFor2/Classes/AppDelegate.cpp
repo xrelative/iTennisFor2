@@ -65,7 +65,7 @@ bool AppDelegate::applicationDidFinishLaunching()
         // android, windows, blackberry, linux or mac
         // use 960*640 resources as design resolution size
         CCFileUtils::sharedFileUtils()->setResourceDirectory("spriteshd");
-        CCEGLView::sharedOpenGLView()->setDesignResolutionSize(960, 640, kResolutionNoBorder);
+        CCEGLView::sharedOpenGLView()->setDesignResolutionSize(800, 480, kResolutionNoBorder);
     }
 
     // turn on display FPS

@@ -22,12 +22,6 @@ CCScene* Menu::scene()
     
     // 'layer' is an autorelease object
     Menu *layer = Menu::create();
-    CCSprite *backgroud = CCSprite::create("backgroundMenu.png");
-    CCSize size = CCDirector::sharedDirector()->getWinSize();
-    backgroud->setScaleX(size.width/backgroud->getContentSize().width);
-    backgroud->setScaleY(size.height/backgroud->getContentSize().height);
-    backgroud->cocos2d::CCNode::setPosition(size.width/2, size.height/2);
-    layer->addChild(backgroud, 0);
     
     // add layer as a child to scene
     scene->addChild(layer);
@@ -39,12 +33,19 @@ CCScene* Menu::scene()
 // on "init" you need to initialize your instance
 bool Menu::init()
 {
-    //////////////////////////////
-    // 1. super init first
     if ( !CCLayer::init() )
     {
         return false;
     }
+    
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("background.plist");
+    CCSpriteBatchNode *batchNodeBackground = CCSpriteBatchNode::create("background.pvr.ccz");
+    this->addChild(batchNodeBackground, 0);
+    
+    CCSprite *background = CCSprite::createWithSpriteFrameName("backgroundMenu.png");
+    background->setPosition(ccp(winSize.width/2, winSize.height/2));
+    batchNodeBackground->addChild(background, 0);
     
     CCLabelTTF *menu1 = CCLabelTTF::create("Jugar", "YELLOW.TTF", 30.0);
     CCLabelTTF *menu2 = CCLabelTTF::create("Audio", "YELLOW.TTF", 30.0);

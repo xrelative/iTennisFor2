@@ -17,12 +17,11 @@ Bola::Bola (float piso)
 	schedule(schedule_selector(Bola::update));
 
     CCSize size = CCDirector::sharedDirector()->getWinSize();
-    
-    CCSpriteBatchNode *batchNode = CCSpriteBatchNode::create("sprites.png");
-    this->addChild(batchNode);
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("sprites.plist");
+    CCSpriteBatchNode *batchNode = CCSpriteBatchNode::create("sprites.pvr.ccz");
+    this->addChild(batchNode);
     
-    sprite = CCSprite::createWithSpriteFrameName("ball3.png");
+    sprite = CCSprite::createWithSpriteFrameName("ball1.png");
     sprite->setPosition(ccp(size.width * 0.1, size.height * 0.75));
     batchNode->addChild(sprite, 0);
 	//	CC_BREAK_IF(!sprite); //Dejemos que se caiga si esto no funca

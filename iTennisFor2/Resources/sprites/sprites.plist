@@ -7,11 +7,11 @@
             <key>ball1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{30,241},{11,10}}</string>
+                <string>{{41,452},{11,10}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{11,10}}</string>
                 <key>sourceSize</key>
@@ -20,7 +20,7 @@
             <key>ball2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{30,229},{11,10}}</string>
+                <string>{{39,480},{11,10}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>ball3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{30,217},{11,10}}</string>
+                <string>{{26,480},{11,10}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>ball4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,85},{11,10}}</string>
+                <string>{{13,480},{11,10}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>charge1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{183,28},{59,64}}</string>
+                <string>{{2,690},{59,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>charge2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{122,28},{59,64}}</string>
+                <string>{{2,624},{59,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>hit1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{51,85},{47,64}}</string>
+                <string>{{13,320},{47,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>hit2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,85},{47,64}}</string>
+                <string>{{13,254},{47,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>jump1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{49,151},{45,64}}</string>
+                <string>{{17,2},{45,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>jump2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,151},{45,64}}</string>
+                <string>{{13,386},{45,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,11 +137,11 @@
             <key>raqueta.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,28},{118,55}}</string>
+                <string>{{2,504},{118,55}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{118,55}}</string>
                 <key>sourceSize</key>
@@ -150,11 +150,11 @@
             <key>sliderProgress.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,17},{248,9}}</string>
+                <string>{{2,254},{248,9}}</string>
                 <key>offset</key>
                 <string>{0,1}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{1,1},{248,9}}</string>
                 <key>sourceSize</key>
@@ -163,7 +163,7 @@
             <key>sliderThumb.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,217},{26,26}}</string>
+                <string>{{13,452},{26,26}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -180,7 +180,7 @@
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{250,13}}</string>
                 <key>sourceSize</key>
@@ -189,7 +189,7 @@
             <key>stay1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{137,94},{39,61}}</string>
+                <string>{{17,131},{39,61}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>stay2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{96,151},{39,61}}</string>
+                <string>{{17,68},{39,61}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -218,13 +218,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>sprites.png</string>
+            <string>sprites.pvr.ccz</string>
             <key>size</key>
-            <string>{256,256}</string>
+            <string>{64,756}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:eb1f3c4986ab196c95fcad57b6364a02$</string>
+            <string>$TexturePacker:SmartUpdate:47c58e4ede4c2086b0d51584dfc05f52$</string>
             <key>textureFileName</key>
-            <string>sprites.png</string>
+            <string>sprites.pvr.ccz</string>
         </dict>
     </dict>
 </plist>

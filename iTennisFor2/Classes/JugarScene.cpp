@@ -33,66 +33,48 @@ bool Jugar::init()
 	bool bRet = false;
 	do
 	{
-		//////////////////////////////////////////////////////////////////////////
-		// super init first
-		//////////////////////////////////////////////////////////////////////////
+		if ( !CCLayer::init() )
+        {
+            return false;
+        }
 		
-		CC_BREAK_IF(! CCLayer::init());
+		CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+        CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("background.plist");
+        CCSpriteBatchNode *batchNodeBackground = CCSpriteBatchNode::create("background.pvr.ccz");
+        this->addChild(batchNodeBackground, 0);
+        
+        CCSprite *background = CCSprite::createWithSpriteFrameName("backgroundPlay.png");
+		background->setPosition(ccp(winSize.width/2, winSize.height/2));
+		batchNodeBackground->addChild(background, 0);
 		
-		//////////////////////////////////////////////////////////////////////////
-		// add your codes below...
-		//////////////////////////////////////////////////////////////////////////
-		
-		// 1. Add a menu item with "X" image, which is clicked to quit the program.
-		
-		// Create a "close" menu item with close icon, it's an auto release object.
-		CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-								      "CloseNormal.png",
-								      "CloseSelected.png",
-								      this,
-								      menu_selector(Jugar::back));
-		CC_BREAK_IF(! pCloseItem);
-		
-		// Place the menu item bottom-right conner.
-		pCloseItem->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20));
-		
-		// Create a menu with the "close" menu item, it's an auto release object.
-		CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
+        CCMenuItemImage *pCloseItem = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this, menu_selector(Jugar::back));
+        pCloseItem->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20));
+        
+        CCMenu *pMenu = CCMenu::create(pCloseItem, NULL);
 		pMenu->setPosition(CCPointZero);
-		CC_BREAK_IF(! pMenu);
-		
-		addChild(pMenu, 1);
-		
-        CCSize size = CCDirector::sharedDirector()->getWinSize();
+        this->addChild(pMenu, 2);
+        
+//      SPRITE MARCADOR
 //      CCLabelTTF* pLabel = CCLabelTTF::create("Tennis", "Arial", 24);
 //		CC_BREAK_IF(! pLabel);
 //		pLabel->setPosition(ccp(size.width / 2, size.height - 50));
 //		addChild(pLabel, 1);
-		
-//-----------INIT SPRITES
-		
-		background = CCSprite::create("backgroundPlay.png");
-		CC_BREAK_IF(!  background);
-		
-		background->setPosition(ccp(size.width/2, size.height/2));
-		
-		addChild(background);
-		
+        
 		piso = 40;
 		/* Creación y ubicación de jugadores */
-		int ancho     = size.width/5; // 20% del ancho
-		CCRect area   = CCRectMake(0, 0, ancho, size.height);
+		int ancho     = winSize.width/5; // 20% del ancho
+		CCRect area   = CCRectMake(0, 0, ancho, winSize.height);
 		j1            = new Jugador(false, area, this, callfuncO_selector(Jugar::golpearJ1));
-		area.origin.x = size.width - ancho;
+		area.origin.x = winSize.width - ancho;
 		j2            = new Jugador(true , area, this, callfuncO_selector(Jugar::golpearJ2));
 		
-		addChild(j1);
-		addChild(j2);
+		this->addChild(j1, 1);
+		this->addChild(j2, 1);
 		
 		CCSize  spriteJugador   = j1->getContentSize();
 		CCPoint posicionJugador = ccp(spriteJugador.width/2.0, spriteJugador.height/2.0 + piso);
 		j1->setPosition(posicionJugador);
-		posicionJugador.x = size.width - posicionJugador.x;
+		posicionJugador.x = winSize.width - posicionJugador.x;
 		j2->setPosition(posicionJugador);
 		
 		setTouchEnabled(true);
@@ -101,7 +83,7 @@ bool Jugar::init()
 		bRet = true;
 		
 		bola = new Bola(piso);
-		addChild(bola);
+		this->addChild(bola, 1);
 	} while (0);
 	
 	

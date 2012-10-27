@@ -38,24 +38,24 @@ bool AboutUs::init()
     }
     
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("background.plist");
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("sprites.plist");
-    CCSpriteBatchNode *batchNode = CCSpriteBatchNode::create("sprites.png");
-    this->addChild(batchNode, 0);
+    CCSpriteBatchNode *batchNodeBackground = CCSpriteBatchNode::create("background.pvr.ccz");
+    CCSpriteBatchNode *batchNodeSprites = CCSpriteBatchNode::create("sprites.pvr.ccz");
+    this->addChild(batchNodeBackground, 0);
+    this->addChild(batchNodeSprites, 1);
     
-    CCSprite *backgroud = CCSprite::create("backgroundSubmenu.png");
-    backgroud->setScaleX(winSize.width/backgroud->getContentSize().width);
-    backgroud->setScaleY(winSize.height/backgroud->getContentSize().height);
+    CCSprite *backgroud = CCSprite::createWithSpriteFrameName("backgroundSubmenu.png");
     backgroud->cocos2d::CCNode::setPosition(winSize.width/2, winSize.height/2);
-    this->addChild(backgroud, 0);
+    batchNodeBackground->addChild(backgroud, 0);
     
     CCSprite *spriteBack = CCSprite::createWithSpriteFrameName("raqueta.png");
-    
     CCMenuItemSprite *pBackItem = CCMenuItemSprite::create(spriteBack, spriteBack, this, menu_selector(AboutUs::back));
     pBackItem->setPosition(ccp(60.0, winSize.height - 30.0));
     
     CCMenu* pMenu = CCMenu::create(pBackItem, NULL);
     pMenu->setPosition(CCPointZero);
-    this->addChild(pMenu, 1);
+    this->addChild(pMenu, 2);
     
     CCLabelTTF *titulo = CCLabelTTF::create("Desarrollado por", "aftershockdebris.ttf", 30.0);
     titulo->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2 + 30.0));
@@ -68,11 +68,11 @@ bool AboutUs::init()
     CCLabelTTF *integrante4 = CCLabelTTF::create("Diego Villouta F.", "YELLOW.TTF", 24.0);
     integrante4->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2 - 72.0));
     
-    this->addChild(titulo, 2);
-    this->addChild(integrante1, 2);
-    this->addChild(integrante2, 2);
-    this->addChild(integrante3, 2);
-    this->addChild(integrante4, 2);
+    this->addChild(titulo, 3);
+    this->addChild(integrante1, 3);
+    this->addChild(integrante2, 3);
+    this->addChild(integrante3, 3);
+    this->addChild(integrante4, 3);
     
     return true;
 }

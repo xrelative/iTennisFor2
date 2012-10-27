@@ -15,10 +15,9 @@ Jugador::Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, S
 //	this->schedule(schedule_selector(Jugador::update));
 	
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
-    
-    CCSpriteBatchNode *batchNode = CCSpriteBatchNode::create("sprites.png");
-    this->addChild(batchNode);
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("sprites.plist");
+    CCSpriteBatchNode *batchNode = CCSpriteBatchNode::create("sprites.pvr.ccz");
+    this->addChild(batchNode);
     
     if(isSecondPlayer) {
         sprite = CCSprite::createWithSpriteFrameName("stay2.png");

@@ -30,8 +30,6 @@ public:
 
 	void resetGame();
 	
-	cocos2d::CCSprite* background;
-	
 	Bola* bola;
 	float piso;
 	
