@@ -1676,10 +1676,10 @@
 		F9F0928A163B0DF100F7E818 /* sound */ = {
 			isa = PBXGroup;
 			children = (
-				F9F0928B163B0DF100F7E818 /* applause4.wav */,
 				F9F0928C163B0DF100F7E818 /* background-music-aac.wav */,
-				F9F0928D163B0DF100F7E818 /* bitelip_2.mp3 */,
 				F9F0928E163B0DF100F7E818 /* pew-pew-lei.wav */,
+				F9F0928B163B0DF100F7E818 /* applause4.wav */,
+				F9F0928D163B0DF100F7E818 /* bitelip_2.mp3 */,
 				F9F0928F163B0DF100F7E818 /* sfxboo.wav */,
 				F9F09290163B0DF100F7E818 /* tennisserve.wav */,
 			);

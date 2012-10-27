@@ -25,8 +25,6 @@ public:
 	// variables de juego
 	Jugador *j1;
 	Jugador *j2;
-//	MultitouchJugador *j1;
-//	MultitouchJugador *j2;
 
 	void resetGame();
 	
