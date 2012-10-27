@@ -44,6 +44,8 @@ CCRect const Jugador::getHitArea ()
 
 void Jugador::Jump(CargaEvent *event){
     
+    printf("Posicion y= %f", event->y);
+    
     if(event->y>30+sprite->getContentSize().height/2){
         CCFiniteTimeAction* actionMove =
         CCMoveTo::actionWithDuration( (float)0.3f,
