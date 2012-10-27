@@ -44,15 +44,24 @@ CCRect const Jugador::getHitArea ()
 
 void Jugador::Jump(CargaEvent *event){
     
-    printf("1\n");
+    if(event->y>30+sprite->getContentSize().height/2){
+        CCFiniteTimeAction* actionMove =
+        CCMoveTo::actionWithDuration( (float)0.3f,
+                                     ccp(0, event->y-30-sprite->getContentSize().height/2) );
+        
+        sprite->runAction( CCSequence::actions(actionMove,
+                                               NULL, NULL) );
+    }
+    else{
+        CCFiniteTimeAction* actionMove =
+        CCMoveTo::actionWithDuration( (float)0.3f,
+                                     ccp(0, 0) );
+        
+        sprite->runAction( CCSequence::actions(actionMove,
+                                               NULL, NULL) );
+    }
     
     
-    CCFiniteTimeAction* actionMove =
-    			CCMoveTo::actionWithDuration( (float)0.3f,
-    						     ccp(0, event->y) );
-    
-    		sprite->runAction( CCSequence::actions(actionMove,
-    							NULL, NULL) );
     
     
 }

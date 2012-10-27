@@ -72,7 +72,7 @@ bool Jugar::init()
 		this->addChild(j2, 1);
 		
 		CCSize  spriteJugador   = j1->getContentSize();
-		CCPoint posicionJugador = ccp(spriteJugador.width/2.0, spriteJugador.height/2.0 + piso);
+		CCPoint posicionJugador = ccp(spriteJugador.width/2.0, spriteJugador.height/2.0 + piso-10);
 		j1->setPosition(posicionJugador);
 		posicionJugador.x = winSize.width - posicionJugador.x;
 		j2->setPosition(posicionJugador);
