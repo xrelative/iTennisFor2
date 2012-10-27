@@ -14,7 +14,7 @@ USING_NS_CC;
 
 #include <stdio.h> //Debuggeando con printf, no se formatear con <<, yet
 
-MultitouchJugador::MultitouchJugador(/*int id, */float kcarga, float kdescarga, float fuerza, float potenciaMinima, float potenciaMaxima, CCRect area, CCObject* pselectorGolpeTarget, SEL_CallFuncO selectorGolpe, CCObject* pselectorCargaTarget, SEL_CallFuncO selectorCarga)
+MultitouchJugador::MultitouchJugador(float kcarga, float kdescarga, float fuerza, float potenciaMinima, float potenciaMaxima, CCRect area, CCObject* pselectorGolpeTarget, SEL_CallFuncO selectorGolpe, CCObject* pselectorCargaTarget, SEL_CallFuncO selectorCarga)
 : fuerza(fuerza),
 //  ID(id), // Solo para debugging.
   potenciaMinima(potenciaMinima),

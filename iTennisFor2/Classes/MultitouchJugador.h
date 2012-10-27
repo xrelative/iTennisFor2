@@ -54,7 +54,7 @@ class MultitouchJugador : public CCNode/*CCObject*/, public CCTouchDelegate
 	CCCallFuncO *callbackCarga;
 	
 public:
-	MultitouchJugador(/*int id, */float kcarga, float kdescarga, float fuerza, float potenciaMinima, float potenciaMaxima, CCRect area, SEL_CallFuncO selectorGolpe, CCObject* pselectorCargaTarget, SEL_CallFuncO selectorCarga);
+	MultitouchJugador(float kcarga, float kdescarga, float fuerza, float potenciaMinima, float potenciaMaxima, CCRect area, CCObject* pselectorGolpeTarget, SEL_CallFuncO selectorGolpe, CCObject* pselectorCargaTarget, SEL_CallFuncO selectorCarga);
 	CCRect area;
 private:
 	virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
