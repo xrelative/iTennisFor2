@@ -9,7 +9,7 @@
 #include "Jugador.h"
 
 Jugador::Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector)
-: multitouch(100.0, 0.01, 0.001, 3.5, 5.0, area, pSelectorTarget, selector,this,callfuncO_selector(Jugador::Jump)),
+: multitouch(100.0, 0.01, 0.005, 4.0, 8.0, area, pSelectorTarget, selector,this,callfuncO_selector(Jugador::Jump)),
   isSecondPlayer(isSecondPlayer)
 {
 //	this->schedule(schedule_selector(Jugador::update));

@@ -98,7 +98,8 @@ void Bola::colisionPiso()
 		velocidad.x = direccionX * max(velocidadMinima, min((fabs(velocidad.x)+fuerzaSpin), velocidadMaxima));
 		velocidad.y *= -coeficienteRestitucion;
 	} else {
-		velocidad.y *= -1.1;
+		CCSize size = CCDirector::sharedDirector()->getWinSize();
+		velocidad.y = size.height;
 	}
 	spin *= 0.1; // perdida de energia por roce
 	
