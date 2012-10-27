@@ -79,15 +79,27 @@ void Bola::checkStatus()
 //	}
 }
 
+#include <cmath>
+#include <algorithm>
+using namespace std;
 void Bola::colisionPiso()
 {
 	CCPoint posicion = getPosicion();
 
 	posicion.y = piso;
-	velocidad.y *= -coeficienteRestitucion;
 	
+	float direccionX = velocidad.x>=0 ? 1.0 : -1.0;
 //	velocidad = ccpRotateByAngle(velocidad, CCPointZero, spin);
-	velocidad.x += spin*200; // momento rotacional -> lineal
+	float fuerzaSpin = spin*200.0; // momento rotacional -> lineal
+	float velocidadMinima =  200.0;
+	float velocidadMaxima = 1000.0;
+	
+	if (velocidad.x != 0) { // Así se mantiene rebotando antes del primer golpe.
+		velocidad.x = direccionX * max(velocidadMinima, min((fabs(velocidad.x)+fuerzaSpin), velocidadMaxima));
+		velocidad.y *= -coeficienteRestitucion;
+	} else {
+		velocidad.y *= -1.1;
+	}
 	spin *= 0.1; // perdida de energia por roce
 	
 	sprite->setPosition(posicion);
