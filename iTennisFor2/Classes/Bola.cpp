@@ -21,11 +21,24 @@ Bola::Bola (float piso,CCObject* pselectorCargaTarget, SEL_CallFuncO selectorCar
     CCSpriteBatchNode *batchNode = CCSpriteBatchNode::create("sprites.pvr.ccz");
     this->addChild(batchNode);
     
+    CCSpriteFrame *bola1 = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("ball1.png");
+    CCSpriteFrame *bola2 = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("ball2.png");
+    CCSpriteFrame *bola3 = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("ball3.png");
+    CCSpriteFrame *bola4 = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("ball4.png");
+    //CCArray *arraySpriteFrames = CCArray::create(bola1, bola2, bola3, bola4);
+    //CCAnimation * anim = CCAnimation::create(arraySpriteFrames, 0.0, 1000000);
+    CCAnimation *anim = CCAnimation::create();
+    anim->setDelayPerUnit(0.0);
+    anim->setLoops(INFINITY);
+    anim->addSpriteFrame(bola1);
+    anim->addSpriteFrame(bola2);
+    anim->addSpriteFrame(bola3);
+    anim->addSpriteFrame(bola4);
+    CCAnimate *theAnim = CCAnimate::create(anim);
     sprite = CCSprite::createWithSpriteFrameName("ball1.png");
     sprite->setPosition(ccp(size.width * 0.1, size.height * 0.75));
+    sprite->runAction(CCRepeatForever::create(theAnim));
     batchNode->addChild(sprite, 0);
-	//	CC_BREAK_IF(!sprite); //Dejemos que se caiga si esto no funca
-    
     
     callbackMensaje = CCCallFuncO::create(pselectorCargaTarget, selectorCarga, &resultadoMensage);
 	callbackMensaje->retain(); // No estoy totalmente seguro por qué

@@ -57,8 +57,13 @@ void Jugador::Jump(CargaEvent *event)
 
 void Jugador::Fall()
 {
-    CCFiniteTimeAction* actionMove =
-    CCMoveTo::actionWithDuration((float)0.3f, ccp(0, 0));
+    CCSpriteFrame *spriteFrameJump;
+    if (isSecondPlayer)
+        spriteFrameJump = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("stay2.png");
+    else
+        spriteFrameJump = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("stay1.png");
+    sprite->setDisplayFrame(spriteFrameJump);
+    CCFiniteTimeAction* actionMove = CCMoveTo::actionWithDuration((float)0.3f, ccp(0, 0));
     sprite->runAction(CCSequence::actions(actionMove, NULL, NULL));
 }
 
