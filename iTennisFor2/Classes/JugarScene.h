@@ -30,7 +30,6 @@ public:
     CCLabelTTF *scoreLabelPlayer1;
     CCLabelTTF *scoreLabelPlayer2;
     
-	void back(CCObject* pSender);
     void golpearJ1(GolpeEvent* golpe);
 	void golpearJ2(GolpeEvent* golpe);
 	void golpear(int id, GolpeEvent* golpe);

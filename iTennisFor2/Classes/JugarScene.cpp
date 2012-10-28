@@ -46,20 +46,23 @@ bool Jugar::init()
         CCSprite *background = CCSprite::createWithSpriteFrameName("backgroundPlay.png");
 		background->setPosition(ccp(winSize.width/2, winSize.height/2));
 		batchNodeBackground->addChild(background, 0);
-		
-        CCMenuItemImage *pCloseItem = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this, menu_selector(Jugar::back));
-        pCloseItem->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20));
         
-        CCMenu *pMenu = CCMenu::create(pCloseItem, NULL);
-		pMenu->setPosition(CCPointZero);
-        this->addChild(pMenu, 2);
-        
+        CCLabelTTF *labelPlayer1 = CCLabelTTF::create("Jugador 1", "Arial", 24);
+        CCLabelTTF *labelPlayer2 = CCLabelTTF::create("Jugador 2", "Arial", 24);
         scoreLabelPlayer1 = CCLabelTTF::create("0", "Arial", 24);
         scoreLabelPlayer2 = CCLabelTTF::create("0", "Arial", 24);
-        scoreLabelPlayer1->setPosition(ccp(winSize.width/2, winSize.height*0.9));
-        scoreLabelPlayer2->setPosition(ccp(winSize.width/2, winSize.height*0.9));
-        this->addChild(scoreLabelPlayer1, 3);
-        this->addChild(scoreLabelPlayer2, 3);
+        labelPlayer1->setColor(ccc3(0, 0, 0));
+        labelPlayer2->setColor(ccc3(0, 0, 0));
+        scoreLabelPlayer1->setColor(ccc3(0, 0, 0));
+        scoreLabelPlayer2->setColor(ccc3(0, 0, 0));
+        labelPlayer1->setPosition(ccp(winSize.width*0.5, winSize.height*0.9));
+        labelPlayer2->setPosition(ccp(winSize.width*0.5, winSize.height*0.8));
+        scoreLabelPlayer1->setPosition(ccp(winSize.width*0.7, winSize.height*0.9));
+        scoreLabelPlayer2->setPosition(ccp(winSize.width*0.7, winSize.height*0.8));
+        this->addChild(labelPlayer1, 1);
+        this->addChild(labelPlayer2, 1);
+        this->addChild(scoreLabelPlayer1, 1);
+        this->addChild(scoreLabelPlayer2, 1);
         
 		piso = 40;
 		
@@ -80,7 +83,6 @@ bool Jugar::init()
 		j2->setPosition(posicionJugador);
 		
 		setTouchEnabled(true);
-//		schedule(schedule_selector(Jugar::update));
         
         set = 1;
         scorePlayer1 = 0;
@@ -94,11 +96,6 @@ bool Jugar::init()
 	
 	
 	return bRet;
-}
-
-void Jugar::back(CCObject* pSender)
-{
-	CCDirector::sharedDirector()->popScene();
 }
 
 void Jugar::resetGame() {
@@ -163,11 +160,13 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
 void Jugar::ResultadoJugada(ScoreMensage *mensage)
 {    
     printf("Punto para%d\n", mensage->ScoreResult);
+    SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
     if(mensage->ScoreResult == 1) {
         scorePlayer1++;
         scoreLabelPlayer1->setString("1");
         if (scorePlayer1 == 4) {
             // Jugador 1 Ganó
+            CCDirector::sharedDirector()->popScene();
         }
         else
             resetGame();
@@ -177,6 +176,7 @@ void Jugar::ResultadoJugada(ScoreMensage *mensage)
         scoreLabelPlayer2->setString("1");
         if (scorePlayer2 == 4) {
             // Jugador 2 Ganó
+            CCDirector::sharedDirector()->popScene();
         }
         else
             resetGame();

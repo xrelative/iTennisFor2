@@ -1625,10 +1625,10 @@
 		F9F0926C163B0C4000F7E818 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F9F092BF163B0E0600F7E818 /* AboutUsScene.cpp */,
-				F9F092C0163B0E0600F7E818 /* AboutUsScene.h */,
 				F9F0926E163B0C4000F7E818 /* AppDelegate.cpp */,
 				F9F0926D163B0C4000F7E818 /* AppDelegate.h */,
+				F9F092BF163B0E0600F7E818 /* AboutUsScene.cpp */,
+				F9F092C0163B0E0600F7E818 /* AboutUsScene.h */,
 				F9F092C1163B0E0600F7E818 /* Bola.cpp */,
 				F9F092C2163B0E0600F7E818 /* Bola.h */,
 				F9F092C3163B0E0600F7E818 /* ConfigurationScene.cpp */,
@@ -2063,7 +2063,7 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2087,7 +2087,7 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
