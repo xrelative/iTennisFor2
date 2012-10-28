@@ -107,5 +107,7 @@ void AppDelegate::applicationWillEnterForeground()
     CCDirector::sharedDirector()->resume();
     
     // if you use SimpleAudioEngine, it must resume here
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+    if (CocosDenshion::SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying()) {
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+    }
 }

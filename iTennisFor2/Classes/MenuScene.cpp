@@ -68,7 +68,8 @@ bool Menu::init()
 
 void Menu::menuJugar(CCObject *pSender)
 {
-    SimpleAudioEngine::sharedEngine()->playEffect("tennisserve.wav");
+    SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
+    SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
     CCDirector::sharedDirector()->pushScene(CCTransitionFadeBL::create(0.5, Jugar::scene()));
 }
 
