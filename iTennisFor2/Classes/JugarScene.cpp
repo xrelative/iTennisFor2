@@ -103,13 +103,13 @@ void Jugar::resetGame(){
 void Jugar::golpearJ1 (GolpeEvent* golpe)
 {
 	golpear(1, golpe);
-    j1->Fall();
+//    j1->Fall();
 }
 
 void Jugar::golpearJ2 (GolpeEvent* golpe)
 {
 	golpear(2, golpe);
-    j2->Fall();
+//    j2->Fall();
 }
 
 void Jugar::golpear (int id, GolpeEvent* golpe)
@@ -117,15 +117,34 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
 	Bola    &b    = *bola;
 	Jugador &j    = id == 1 ? *j1 : *j2;
 	int direccion = id == 1 ?   1 :  -1;
+	int dirbola = b.velocidad.x == 0 ? 0 : b.velocidad.x > 0 ? 1 :  -1;
+	bool pelotaEsGolpeable = (direccion == 0) || (direccion != dirbola);
 	
-	CCRect area = j.getHitArea();
-	if (area.containsPoint(b.getPosicion())) {
+	CCRect  area    = j.getHitArea();
+	CCPoint posBola = b.getPosicion();
+	
+	if (pelotaEsGolpeable && area.containsPoint(posBola)) {
 		float velx = golpe->power * 60; // = la fuerza de este jugador
 		b.velocidad.x = velx * direccion;
 		float vely = 500; //algun valor para que caiga dentro de la cancha
 		b.velocidad.y = vely;
 		b.spin = golpe->spin * direccion; // El spin depende de donde se le pega
+<<<<<<< HEAD
         SimpleAudioEngine::sharedEngine()->playEffect("tennisserve.wav");
+=======
+		
+		int piso = 70;
+		int alturaRaqueta = 30;
+		if (posBola.y > piso + alturaRaqueta + 5) { // piso + altura raqueta + margen salto minimo
+			CCPoint p = j.getPosition();
+			CCActionInterval* subir    =   CCMoveTo::create(0.200f, ccp(p.x, posBola.y + alturaRaqueta));
+			CCActionInterval* bajar    =   CCMoveTo::create(0.300f, ccp(p.x, p.y));
+			CCFiniteTimeAction* saltar =  CCEaseOut::create(subir, 2.0);
+			CCFiniteTimeAction* caer   =   CCEaseIn::create(bajar, 2.0);
+			CCFiniteTimeAction* actF   = CCSequence::create(saltar, caer, NULL);
+			j.runAction(actF);
+		}
+>>>>>>> Dejaré la cagá en la animación del salto
 	}
 	printf("Jugador #%i golpea con Spin: %f y Power: %f\n", id, golpe->spin, golpe->power);
 }

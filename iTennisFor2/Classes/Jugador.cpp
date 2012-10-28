@@ -8,7 +8,13 @@
 
 #include "Jugador.h"
 
+<<<<<<< HEAD
 Jugador::Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector) : multitouch(100.0, 0.01, 0.005, 4.0, 8.0, area, pSelectorTarget, selector,this,callfuncO_selector(Jugador::Jump)), isSecondPlayer(isSecondPlayer)
+=======
+Jugador::Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector)
+: multitouch(100.0, 0.01, 0.005, 4.5, 8.0, area, pSelectorTarget, selector,this,callfuncO_selector(Jugador::Jump)),
+  isSecondPlayer(isSecondPlayer)
+>>>>>>> Dejaré la cagá en la animación del salto
 {
 //	this->schedule(schedule_selector(Jugador::update));
 	
@@ -37,6 +43,7 @@ CCRect const Jugador::getHitArea ()
 	return multitouch.area;
 }
 
+<<<<<<< HEAD
 void Jugador::Jump(CargaEvent *event)
 {    
     CCSpriteFrame *spriteFrameJump;
@@ -53,6 +60,38 @@ void Jugador::Jump(CargaEvent *event)
         CCFiniteTimeAction *actionMove = CCMoveTo::actionWithDuration((float)0.3f, ccp(0, 0));
         sprite->runAction(CCSequence::actions(actionMove, NULL, NULL));
     }
+=======
+void Jugador::Jump(CargaEvent *event){
+	printf("Posicion y= %f", event->y);
+//	CCActionInterval *intervalo = CCActionInterval::create(1.000);
+//	CCEaseIn *ease = CCEaseIn::create(intervalo, 2.0);
+//	this->runAction(ease);
+	
+//	id action = [CCMoveTo actionWithDuration:2 position:ccp(100,100)];
+//	id ease = [CCEaseIn actionWithAction:action rate:2];
+//	[sprite runAction: ease];
+	
+//    if(event->y>30+sprite->getContentSize().height/2){
+//        CCFiniteTimeAction* actionMove =
+//        CCMoveTo::actionWithDuration( (float)0.3f,
+//                                     ccp(0, event->y-30-sprite->getContentSize().height/2) );
+//        
+//        sprite->runAction( CCSequence::actions(actionMove,
+//                                               NULL, NULL) );
+//    }
+//    else{
+//        CCFiniteTimeAction* actionMove =
+//        CCMoveTo::actionWithDuration( (float)0.3f,
+//                                     ccp(0, 0) );
+//        
+//        sprite->runAction( CCSequence::actions(actionMove,
+//                                               NULL, NULL) );
+//    }
+    
+    
+    
+    
+>>>>>>> Dejaré la cagá en la animación del salto
 }
 
 void Jugador::Fall()
