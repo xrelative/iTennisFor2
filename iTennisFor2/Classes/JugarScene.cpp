@@ -137,12 +137,14 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
 		int alturaRaqueta = 30;
 		if (posBola.y > piso + alturaRaqueta + 5) { // piso + altura raqueta + margen salto minimo
 			CCPoint p = j.getPosition();
+			CCCallFunc *animacionSalto = CCCallFunc::create(&j, callfunc_selector(Jugador::Jump));
 			CCActionInterval* subir    =   CCMoveTo::create(0.200f, ccp(p.x, posBola.y + alturaRaqueta));
 			CCActionInterval* bajar    =   CCMoveTo::create(0.300f, ccp(p.x, p.y));
 			CCFiniteTimeAction* saltar =  CCEaseOut::create(subir, 2.0);
 			CCFiniteTimeAction* caer   =   CCEaseIn::create(bajar, 2.0);
-			CCFiniteTimeAction* actF   = CCSequence::create(saltar, caer, NULL);
-			j.runAction(actF);
+			CCCallFunc *animacionPiso  = CCCallFunc::create(&j, callfunc_selector(Jugador::Fall));
+			CCFiniteTimeAction* accion = CCSequence::create(animacionSalto, saltar, caer, animacionPiso, NULL);
+			j.runAction(accion);
 		}
 	}
 	printf("Jugador #%i golpea con Spin: %f y Power: %f\n", id, golpe->spin, golpe->power);

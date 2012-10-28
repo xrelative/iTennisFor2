@@ -8,7 +8,7 @@
 
 #include "Jugador.h"
 Jugador::Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector, string staySpriteName, string jumpSpriteName)
-: multitouch(100.0, 0.01, 0.005, 4.5, 8.0, area, pSelectorTarget, selector,this,callfuncO_selector(Jugador::Jump)),
+: multitouch(100.0, 0.01, 0.005, 4.5, 8.0, area, pSelectorTarget, selector, this, NULL),
   isSecondPlayer(isSecondPlayer),
   staySpriteName(staySpriteName),
   jumpSpriteName(jumpSpriteName)
@@ -37,10 +37,10 @@ CCRect const Jugador::getHitArea ()
 
 void Jugador::Jump(CargaEvent *event)
 {    
-    CCSpriteFrame *spriteFrameJump = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(jumpSpriteName.c_str());
+	CCSpriteFrame *spriteFrameJump = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(jumpSpriteName.c_str());
+	sprite->setDisplayFrame(spriteFrameJump);
 //    else
 //        spriteFrameJump = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("jump1.png");
-    sprite->setDisplayFrame(spriteFrameJump);
 //    if(event->y > 30 + sprite->getContentSize().height/2) {
 //        CCFiniteTimeAction *actionMove = CCMoveTo::actionWithDuration((float)0.3f, ccp(0, event->y-30-sprite->getContentSize().height/2));
 //        sprite->runAction(CCSequence::actions(actionMove, NULL, NULL));
