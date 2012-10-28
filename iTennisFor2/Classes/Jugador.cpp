@@ -38,7 +38,6 @@ CCRect const Jugador::getHitArea ()
 	return multitouch.area;
 }
 
-<<<<<<< HEAD
 void Jugador::Jump(CargaEvent *event)
 {    
 //    CCSpriteFrame *spriteFrameJump;
