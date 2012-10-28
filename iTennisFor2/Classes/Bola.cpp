@@ -40,6 +40,8 @@ Bola::Bola (float piso,CCObject* pselectorCargaTarget, SEL_CallFuncO selectorCar
     sprite->runAction(CCRepeatForever::create(theAnim));
     batchNode->addChild(sprite, 0);
     
+    LastFloorColision=0;
+    
     callbackMensaje = CCCallFuncO::create(pselectorCargaTarget, selectorCarga, &resultadoMensage);
 	callbackMensaje->retain(); // No estoy totalmente seguro por qué
 }
@@ -63,12 +65,12 @@ void Bola::resetBall(int p){
         //posi
         velocidad.x=0;
         velocidad.y=0;
-        sprite->setPosition(ccp(64, CCDirector::sharedDirector()->getWinSize().height * 0.50));
+        sprite->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width*0.1, CCDirector::sharedDirector()->getWinSize().height * 0.50));
         
     }else{
         velocidad.x=0;
         velocidad.y=0;
-        sprite->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width-64, CCDirector::sharedDirector()->getWinSize().height * 0.50));
+        sprite->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width*0.9, CCDirector::sharedDirector()->getWinSize().height * 0.50));
     }
 }
 
@@ -83,16 +85,29 @@ void Bola::checkStatus()
 	
 	if (posicion.x<0){
 //		resetGame(); enviarEvento fuera de la pantalla por la izq
-        resultadoMensage.ScoreResult = 2;
-        callbackMensaje->execute();
+        if(LastFloorColision==1){
+            resultadoMensage.ScoreResult = 2;
+            callbackMensaje->execute();
+        }else{
+            resultadoMensage.ScoreResult = 1;
+            callbackMensaje->execute();
+        }
 	}
 	
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
 	if (posicion.x > size.width){
 //		resetGame(); enviarEvento fuera de la pantalla por la der
-        resultadoMensage.ScoreResult = 1;
-        callbackMensaje->execute();
 
+
+        if(LastFloorColision==2){
+            resultadoMensage.ScoreResult = 1;
+            callbackMensaje->execute();
+        }else{
+            resultadoMensage.ScoreResult = 2;
+            callbackMensaje->execute();
+        }
+        
+        
 	}
     
     
@@ -132,6 +147,13 @@ void Bola::colisionPiso()
 
 	posicion.y = piso;
 	
+    if(posicion.x>CCDirector::sharedDirector()->getWinSize().width/2){
+        LastFloorColision=2;
+    }else{
+        LastFloorColision=1;
+    }
+    
+    
 	float direccionX = velocidad.x>=0 ? 1.0 : -1.0;
 //	velocidad = ccpRotateByAngle(velocidad, CCPointZero, spin);
 	float fuerzaSpin = spin*200.0; // momento rotacional -> lineal
