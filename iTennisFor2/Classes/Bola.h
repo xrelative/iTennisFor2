@@ -12,6 +12,11 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
+class ScoreMensage : public CCObject {
+public:
+	int ScoreResult;
+};
+
 class Bola : public CCNode {
 	
 	float gravedad;
@@ -22,12 +27,17 @@ class Bola : public CCNode {
 public:
 	float spin;
 	CCPoint velocidad;
-	Bola (float piso);
+	Bola (float piso,CCObject* pselectorCargaTarget, SEL_CallFuncO selectorCarga);
 	CCPoint getPosicion ();
 private:
 	void update (float dt);
 	void checkStatus ();
 	void colisionPiso ();
+    
+    
+    
+    ScoreMensage resultadoMensage;
+	CCCallFuncO *callbackMensaje;
 };
 
 #endif /* defined(__cocos2dxtest1__Bola__) */

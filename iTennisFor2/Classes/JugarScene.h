@@ -37,6 +37,12 @@ public:
 	void golpearJ1 (GolpeEvent* golpe);
 	void golpearJ2 (GolpeEvent* golpe);
 	void golpear (int id, GolpeEvent* golpe);
+    
+    void ResultadoJugada(ScoreMensage *mensage);
+    
+    
+    int scorePlayer1;
+    int scorePlayer2;
 };
 
 #endif /* defined(__cocos2dxtest1__JugarScene__) */

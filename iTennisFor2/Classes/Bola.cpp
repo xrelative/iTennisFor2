@@ -8,7 +8,7 @@
 
 #include "Bola.h"
 
-Bola::Bola (float piso)
+Bola::Bola (float piso,CCObject* pselectorCargaTarget, SEL_CallFuncO selectorCarga)
 : piso(piso),
   gravedad(-1000.0f),
   spin(0),
@@ -25,6 +25,10 @@ Bola::Bola (float piso)
     sprite->setPosition(ccp(size.width * 0.1, size.height * 0.75));
     batchNode->addChild(sprite, 0);
 	//	CC_BREAK_IF(!sprite); //Dejemos que se caiga si esto no funca
+    
+    
+    callbackMensaje = CCCallFuncO::create(pselectorCargaTarget, selectorCarga, &resultadoMensage);
+	callbackMensaje->retain(); // No estoy totalmente seguro por qué
 }
 
 void Bola::update (float dt)
@@ -49,13 +53,23 @@ void Bola::checkStatus()
 	
 	if (posicion.x<0){
 //		resetGame(); enviarEvento fuera de la pantalla por la izq
+        resultadoMensage.ScoreResult = 2;
+        callbackMensaje->execute();
 	}
 	
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
 	if (posicion.x > size.width){
 //		resetGame(); enviarEvento fuera de la pantalla por la der
+        resultadoMensage.ScoreResult = 1;
+        callbackMensaje->execute();
 
 	}
+    
+    
+   
+    
+    
+    
 //	if (abs(posicion.x-getContentSize().width/2) < anchoRed){
 //		if (posicion.y<160){
 //			if(posicion.y<140){

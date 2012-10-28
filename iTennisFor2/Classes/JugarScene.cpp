@@ -82,7 +82,7 @@ bool Jugar::init()
 		
 		bRet = true;
 		
-		bola = new Bola(piso);
+		bola = new Bola(piso,this, callfuncO_selector(Jugar::ResultadoJugada));
 		this->addChild(bola, 1);
 	} while (0);
 	
@@ -128,4 +128,9 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
         SimpleAudioEngine::sharedEngine()->playEffect("tennisserve.wav");
 	}
 	printf("Jugador #%i golpea con Spin: %f y Power: %f\n", id, golpe->spin, golpe->power);
+}
+void Jugar::ResultadoJugada(ScoreMensage *mensage){
+    
+    printf("Punto para%d\n",mensage->ScoreResult);
+    
 }
