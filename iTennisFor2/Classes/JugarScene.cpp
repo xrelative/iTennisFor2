@@ -65,9 +65,9 @@ bool Jugar::init()
 		/* Creación y ubicación de jugadores */
 		int ancho     = winSize.width/5; // 20% del ancho
 		CCRect area   = CCRectMake(0, 0, ancho, winSize.height);
-		j1            = new Jugador(false, area, this, callfuncO_selector(Jugar::golpearJ1), "stay1.png", "jump1.png");
+		j1            = new Jugador(area, this, callfuncO_selector(Jugar::golpearJ1), "stay1.png", "jump1.png");
 		area.origin.x = winSize.width - ancho;
-		j2            = new Jugador(true , area, this, callfuncO_selector(Jugar::golpearJ2), "stay2.png", "jump2.png");
+		j2            = new Jugador(area, this, callfuncO_selector(Jugar::golpearJ2), "stay2.png", "jump2.png");
 		
 		this->addChild(j1, 1);
 		this->addChild(j2, 1);
@@ -114,13 +114,13 @@ void Jugar::resetGame(){
 void Jugar::golpearJ1 (GolpeEvent* golpe)
 {
 	golpear(1, golpe);
-//    j1->Fall();
+	//j1->Fall();
 }
 
 void Jugar::golpearJ2 (GolpeEvent* golpe)
 {
 	golpear(2, golpe);
-//    j2->Fall();
+	//j2->Fall();
 }
 
 void Jugar::golpear (int id, GolpeEvent* golpe)
