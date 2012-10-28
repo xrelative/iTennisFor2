@@ -129,10 +129,9 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
 		float vely = 500; //algun valor para que caiga dentro de la cancha
 		b.velocidad.y = vely;
 		b.spin = golpe->spin * direccion; // El spin depende de donde se le pega
-<<<<<<< HEAD
-        SimpleAudioEngine::sharedEngine()->playEffect("tennisserve.wav");
-=======
-		
+
+		SimpleAudioEngine::sharedEngine()->playEffect("tennisserve.wav");
+
 		int piso = 70;
 		int alturaRaqueta = 30;
 		if (posBola.y > piso + alturaRaqueta + 5) { // piso + altura raqueta + margen salto minimo
@@ -144,7 +143,6 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
 			CCFiniteTimeAction* actF   = CCSequence::create(saltar, caer, NULL);
 			j.runAction(actF);
 		}
->>>>>>> Dejaré la cagá en la animación del salto
 	}
 	printf("Jugador #%i golpea con Spin: %f y Power: %f\n", id, golpe->spin, golpe->power);
 }
