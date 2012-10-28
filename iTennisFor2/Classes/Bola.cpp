@@ -83,7 +83,7 @@ void Bola::checkStatus()
 		colisionPiso();
 	}
 	
-	if (posicion.x<0){
+	if (posicion.x < 0){
 //		resetGame(); enviarEvento fuera de la pantalla por la izq
         if(LastFloorColision==1){
             resultadoMensage.ScoreResult = 2;

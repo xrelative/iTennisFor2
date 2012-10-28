@@ -54,11 +54,12 @@ bool Jugar::init()
 		pMenu->setPosition(CCPointZero);
         this->addChild(pMenu, 2);
         
-//      SPRITE MARCADOR
-//      CCLabelTTF* pLabel = CCLabelTTF::create("Tennis", "Arial", 24);
-//		CC_BREAK_IF(! pLabel);
-//		pLabel->setPosition(ccp(size.width / 2, size.height - 50));
-//		addChild(pLabel, 1);
+        scoreLabelPlayer1 = CCLabelTTF::create("0", "Arial", 24);
+        scoreLabelPlayer2 = CCLabelTTF::create("0", "Arial", 24);
+        scoreLabelPlayer1->setPosition(ccp(winSize.width/2, winSize.height*0.9));
+        scoreLabelPlayer2->setPosition(ccp(winSize.width/2, winSize.height*0.9));
+        this->addChild(scoreLabelPlayer1, 3);
+        this->addChild(scoreLabelPlayer2, 3);
         
 		piso = 40;
 		
@@ -79,11 +80,11 @@ bool Jugar::init()
 		j2->setPosition(posicionJugador);
 		
 		setTouchEnabled(true);
-//		schedule( schedule_selector(Jugar::update));
+//		schedule(schedule_selector(Jugar::update));
         
-        
-        scorePlayer1=0;
-        scorePlayer2=0;
+        set = 1;
+        scorePlayer1 = 0;
+        scorePlayer2 = 0;
 		
 		bRet = true;
 		
@@ -100,13 +101,12 @@ void Jugar::back(CCObject* pSender)
 	CCDirector::sharedDirector()->popScene();
 }
 
-void Jugar::resetGame(){
-	//bola.reset(pos, vel);
-    if(scorePlayer1<scorePlayer2){
+void Jugar::resetGame() {
+	if(scorePlayer1 < scorePlayer2)
         bola->resetBall(1);
-    }else {
+    
+    else
         bola->resetBall(2);
-    }
     
 }
 
@@ -159,21 +159,28 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
 	}
 	printf("Jugador #%i golpea con Spin: %f y Power: %f\n", id, golpe->spin, golpe->power);
 }
-void Jugar::ResultadoJugada(ScoreMensage *mensage){
-    
-    printf("Punto para%d\n",mensage->ScoreResult);
-    
-    
-    if(mensage->ScoreResult==1){
+
+void Jugar::ResultadoJugada(ScoreMensage *mensage)
+{    
+    printf("Punto para%d\n", mensage->ScoreResult);
+    if(mensage->ScoreResult == 1) {
         scorePlayer1++;
-        
-        
-    }else{
+        scoreLabelPlayer1->setString("1");
+        if (scorePlayer1 == 4) {
+            // Jugador 1 Ganó
+        }
+        else
+            resetGame();
+    }
+    else if(mensage->ScoreResult == 2) {
         scorePlayer2++;
-        
+        scoreLabelPlayer2->setString("1");
+        if (scorePlayer2 == 4) {
+            // Jugador 2 Ganó
+        }
+        else
+            resetGame();
     }
     
-    resetGame();
-    
-    printf("Score Total Player 1 %d, Player 2 %d\n",scorePlayer1,scorePlayer2);
+    printf("Score Total Player 1 %d, Player 2 %d\n", scorePlayer1, scorePlayer2);
 }

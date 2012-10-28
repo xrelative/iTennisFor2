@@ -19,30 +19,25 @@ class Jugar : public cocos2d::CCLayer
 public:
 	virtual bool init();
 	static cocos2d::CCScene* scene();
-	
-	void back(CCObject* pSender);
-	
-	// variables de juego
+    
 	Jugador *j1;
 	Jugador *j2;
-
-	void resetGame();
-	
-	Bola* bola;
+	Bola *bola;
 	float piso;
-	
-	// preprocessor macro for "static create()" constructor ( node() deprecated )
-	CREATE_FUNC(Jugar);
-	
-	void golpearJ1 (GolpeEvent* golpe);
-	void golpearJ2 (GolpeEvent* golpe);
-	void golpear (int id, GolpeEvent* golpe);
-    
-    void ResultadoJugada(ScoreMensage *mensage);
-    
-    
     int scorePlayer1;
     int scorePlayer2;
+	int set;
+    CCLabelTTF *scoreLabelPlayer1;
+    CCLabelTTF *scoreLabelPlayer2;
+    
+	void back(CCObject* pSender);
+    void golpearJ1(GolpeEvent* golpe);
+	void golpearJ2(GolpeEvent* golpe);
+	void golpear(int id, GolpeEvent* golpe);
+    void ResultadoJugada(ScoreMensage* mensage);
+    void resetGame();
+    
+    CREATE_FUNC(Jugar);
 };
 
 #endif /* defined(__cocos2dxtest1__JugarScene__) */
