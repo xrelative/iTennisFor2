@@ -7,9 +7,11 @@
 //
 
 #include "Jugador.h"
-Jugador::Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector)
+Jugador::Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector, string staySpriteName, string jumpSpriteName)
 : multitouch(100.0, 0.01, 0.005, 4.5, 8.0, area, pSelectorTarget, selector,this,callfuncO_selector(Jugador::Jump)),
-  isSecondPlayer(isSecondPlayer)
+  isSecondPlayer(isSecondPlayer),
+  staySpriteName(staySpriteName),
+  jumpSpriteName(jumpSpriteName)
 {
 //	this->schedule(schedule_selector(Jugador::update));
 	
@@ -17,14 +19,9 @@ Jugador::Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, S
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("sprites.plist");
     CCSpriteBatchNode *batchNode = CCSpriteBatchNode::create("sprites.pvr.ccz");
     this->addChild(batchNode);
-    
-    if(isSecondPlayer) {
-        sprite = CCSprite::createWithSpriteFrameName("stay2.png");
-    }
-    else {
-        sprite = CCSprite::createWithSpriteFrameName("stay1.png");
-    }
-    
+
+	sprite = CCSprite::createWithSpriteFrameName(staySpriteName.c_str());
+
     sprite->setPosition(CCPointZero);
     batchNode->addChild(sprite, 0);
 	
@@ -40,12 +37,10 @@ CCRect const Jugador::getHitArea ()
 
 void Jugador::Jump(CargaEvent *event)
 {    
-//    CCSpriteFrame *spriteFrameJump;
-//    if (isSecondPlayer)
-//        spriteFrameJump = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("jump2.png");
+    CCSpriteFrame *spriteFrameJump = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(jumpSpriteName.c_str());
 //    else
 //        spriteFrameJump = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("jump1.png");
-//    sprite->setDisplayFrame(spriteFrameJump);
+    sprite->setDisplayFrame(spriteFrameJump);
 //    if(event->y > 30 + sprite->getContentSize().height/2) {
 //        CCFiniteTimeAction *actionMove = CCMoveTo::actionWithDuration((float)0.3f, ccp(0, event->y-30-sprite->getContentSize().height/2));
 //        sprite->runAction(CCSequence::actions(actionMove, NULL, NULL));
@@ -82,14 +77,10 @@ void Jugador::Jump(CargaEvent *event)
 
 void Jugador::Fall()
 {
-    CCSpriteFrame *spriteFrameJump;
-    if (isSecondPlayer)
-        spriteFrameJump = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("stay2.png");
-    else
-        spriteFrameJump = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("stay1.png");
+    CCSpriteFrame *spriteFrameJump = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(staySpriteName.c_str());
     sprite->setDisplayFrame(spriteFrameJump);
-    CCFiniteTimeAction* actionMove = CCMoveTo::actionWithDuration((float)0.3f, ccp(0, 0));
-    sprite->runAction(CCSequence::actions(actionMove, NULL, NULL));
+//    CCFiniteTimeAction* actionMove = CCMoveTo::actionWithDuration((float)0.3f, ccp(0, 0));
+//    sprite->runAction(CCSequence::actions(actionMove, NULL, NULL));
 }
 
 /* iniciando golpe */

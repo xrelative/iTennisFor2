@@ -61,12 +61,13 @@ bool Jugar::init()
 //		addChild(pLabel, 1);
         
 		piso = 40;
+		
 		/* Creación y ubicación de jugadores */
 		int ancho     = winSize.width/5; // 20% del ancho
 		CCRect area   = CCRectMake(0, 0, ancho, winSize.height);
-		j1            = new Jugador(false, area, this, callfuncO_selector(Jugar::golpearJ1));
+		j1            = new Jugador(false, area, this, callfuncO_selector(Jugar::golpearJ1), "stay1.png", "jump1.png");
 		area.origin.x = winSize.width - ancho;
-		j2            = new Jugador(true , area, this, callfuncO_selector(Jugar::golpearJ2));
+		j2            = new Jugador(true , area, this, callfuncO_selector(Jugar::golpearJ2), "stay2.png", "jump2.png");
 		
 		this->addChild(j1, 1);
 		this->addChild(j2, 1);

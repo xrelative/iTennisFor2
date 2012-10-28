@@ -13,12 +13,17 @@
 #include "MultitouchJugador.h"
 USING_NS_CC;
 
+#include <string>
+using namespace std;
+
 class Jugador : public CCNode {
 	MultitouchJugador multitouch;
 	bool isSecondPlayer;
 public:
+	string staySpriteName;
+	string jumpSpriteName;
 	CCSprite* sprite;
-	Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector);
+	Jugador (bool isSecondPlayer, CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector, string staySpriteName, string jumpSpriteName);
 	const CCRect getHitArea ();
     void Jump(CargaEvent *event);
     void Fall();
