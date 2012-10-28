@@ -80,6 +80,10 @@ bool Jugar::init()
 		
 		setTouchEnabled(true);
 //		schedule( schedule_selector(Jugar::update));
+        
+        
+        scorePlayer1=0;
+        scorePlayer2=0;
 		
 		bRet = true;
 		
@@ -97,7 +101,13 @@ void Jugar::back(CCObject* pSender)
 }
 
 void Jugar::resetGame(){
-//	bola.reset(pos, vel);
+	//bola.reset(pos, vel);
+    if(scorePlayer1<scorePlayer2){
+        bola->resetBall(1);
+    }else {
+        bola->resetBall(2);
+    }
+    
 }
 
 #include <stdio.h>
@@ -153,4 +163,17 @@ void Jugar::ResultadoJugada(ScoreMensage *mensage){
     
     printf("Punto para%d\n",mensage->ScoreResult);
     
+    
+    if(mensage->ScoreResult==1){
+        scorePlayer1++;
+        
+        
+    }else{
+        scorePlayer2++;
+        
+    }
+    
+    resetGame();
+    
+    printf("Score Total Player 1 %d, Player 2 %d\n",scorePlayer1,scorePlayer2);
 }

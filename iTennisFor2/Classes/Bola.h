@@ -29,13 +29,16 @@ public:
 	CCPoint velocidad;
 	Bola (float piso,CCObject* pselectorCargaTarget, SEL_CallFuncO selectorCarga);
 	CCPoint getPosicion ();
+    void resetBall(int p);
+
 private:
 	void update (float dt);
 	void checkStatus ();
 	void colisionPiso ();
     
+    int LastFloorColision;
     
-    
+        
     ScoreMensage resultadoMensage;
 	CCCallFuncO *callbackMensaje;
 };

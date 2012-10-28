@@ -56,6 +56,23 @@ void Bola::update (float dt)
 	checkStatus();
 }
 
+void Bola::resetBall(int p){
+    if(p==1){
+        CCPoint posicion = getPosicion();
+        //posicion.x=size.width * 0.1;
+        //posi
+        velocidad.x=0;
+        velocidad.y=0;
+        sprite->setPosition(ccp(64, CCDirector::sharedDirector()->getWinSize().height * 0.50));
+        
+    }else{
+        velocidad.x=0;
+        velocidad.y=0;
+        sprite->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width-64, CCDirector::sharedDirector()->getWinSize().height * 0.50));
+    }
+}
+
+
 void Bola::checkStatus()
 {
 	CCPoint posicion = getPosicion();
