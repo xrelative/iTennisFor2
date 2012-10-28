@@ -163,24 +163,48 @@ void Jugar::ResultadoJugada(ScoreMensage *mensage)
     SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
     if(mensage->ScoreResult == 1) {
         scorePlayer1++;
-        scoreLabelPlayer1->setString("1");
-        if (scorePlayer1 == 4) {
-            // Jugador 1 Ganó
-            CCDirector::sharedDirector()->popScene();
+        switch (scorePlayer1) {
+            case 1:
+                scoreLabelPlayer1->setString("15");
+                resetGame();
+                break;
+            case 2:
+                scoreLabelPlayer1->setString("30");
+                resetGame();
+                break;
+            case 3:
+                scoreLabelPlayer1->setString("40");
+                resetGame();
+                break;
+            case 4:
+                // Jugador 1 ganó
+                CCDirector::sharedDirector()->popScene();
+                break;
+            default:
+                break;
         }
-        else
-            resetGame();
     }
     else if(mensage->ScoreResult == 2) {
         scorePlayer2++;
-        scoreLabelPlayer2->setString("1");
-        if (scorePlayer2 == 4) {
-            // Jugador 2 Ganó
-            CCDirector::sharedDirector()->popScene();
+        switch (scorePlayer2) {
+            case 1:
+                scoreLabelPlayer2->setString("15");
+                resetGame();
+                break;
+            case 2:
+                scoreLabelPlayer2->setString("30");
+                resetGame();
+                break;
+            case 3:
+                scoreLabelPlayer2->setString("40");
+                resetGame();
+                break;
+            case 4:
+                // Jugador 2 ganó
+                CCDirector::sharedDirector()->popScene();
+                break;
+            default:
+                break;
         }
-        else
-            resetGame();
     }
-    
-    printf("Score Total Player 1 %d, Player 2 %d\n", scorePlayer1, scorePlayer2);
 }
