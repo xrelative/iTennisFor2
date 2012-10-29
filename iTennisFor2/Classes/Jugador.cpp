@@ -7,6 +7,7 @@
 //
 
 #include "Jugador.h"
+
 Jugador::Jugador (CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector, string staySpriteName, string jumpSpriteName)
 : multitouch(100.0, 0.01, 0.005, 4.5, 8.0, area, pSelectorTarget, selector, this, NULL),
 staySpriteName(staySpriteName),

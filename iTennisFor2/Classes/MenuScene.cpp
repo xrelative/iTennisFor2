@@ -70,7 +70,7 @@ void Menu::menuJugar(CCObject *pSender)
 {
     SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
     SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
-    CCDirector::sharedDirector()->pushScene(CCTransitionFadeBL::create(0.5, Jugar::scene()));
+    CCDirector::sharedDirector()->replaceScene(CCTransitionFadeBL::create(0.5, Jugar::scene()));
 }
 
 void Menu::menuConfig(CCObject *pSender)

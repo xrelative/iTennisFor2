@@ -22,7 +22,7 @@ CCScene* Jugar::scene()
 	
 	// add layer as a child to scene
 	scene->addChild(layer);
-	
+    
 	// return the scene
 	return scene;
 }
@@ -47,18 +47,18 @@ bool Jugar::init()
 		background->setPosition(ccp(winSize.width/2, winSize.height/2));
 		batchNodeBackground->addChild(background, 0);
         
-        CCLabelTTF *labelPlayer1 = CCLabelTTF::create("Jugador 1", "Arial", 24);
-        CCLabelTTF *labelPlayer2 = CCLabelTTF::create("Jugador 2", "Arial", 24);
-        scoreLabelPlayer1 = CCLabelTTF::create("0", "Arial", 24);
-        scoreLabelPlayer2 = CCLabelTTF::create("0", "Arial", 24);
+        CCLabelTTF *labelPlayer1 = CCLabelTTF::create("Jugador 1", "aftershockdebris.ttf", 20);
+        CCLabelTTF *labelPlayer2 = CCLabelTTF::create("Jugador 2", "aftershockdebris.ttf", 20);
+        scoreLabelPlayer1 = CCLabelTTF::create("0", "Arial", 20);
+        scoreLabelPlayer2 = CCLabelTTF::create("0", "Arial", 20);
         labelPlayer1->setColor(ccc3(0, 0, 0));
         labelPlayer2->setColor(ccc3(0, 0, 0));
         scoreLabelPlayer1->setColor(ccc3(0, 0, 0));
         scoreLabelPlayer2->setColor(ccc3(0, 0, 0));
-        labelPlayer1->setPosition(ccp(winSize.width*0.5, winSize.height*0.9));
-        labelPlayer2->setPosition(ccp(winSize.width*0.5, winSize.height*0.8));
-        scoreLabelPlayer1->setPosition(ccp(winSize.width*0.7, winSize.height*0.9));
-        scoreLabelPlayer2->setPosition(ccp(winSize.width*0.7, winSize.height*0.8));
+        labelPlayer1->setPosition(ccp(winSize.width*0.4, winSize.height*0.9));
+        labelPlayer2->setPosition(ccp(winSize.width*0.4, winSize.height*0.8));
+        scoreLabelPlayer1->setPosition(ccp(winSize.width*0.6, winSize.height*0.9));
+        scoreLabelPlayer2->setPosition(ccp(winSize.width*0.6, winSize.height*0.8));
         this->addChild(labelPlayer1, 1);
         this->addChild(labelPlayer2, 1);
         this->addChild(scoreLabelPlayer1, 1);
@@ -92,32 +92,36 @@ bool Jugar::init()
 		
 		bola = new Bola(piso,this, callfuncO_selector(Jugar::ResultadoJugada));
 		this->addChild(bola, 1);
+        
+        point = Point::create();
+        this->addChild(point, 2);
+        
+        win = Win::create();
+        this->addChild(win, 3);
 	} while (0);
-	
 	
 	return bRet;
 }
 
-void Jugar::resetGame() {
-	if(scorePlayer1 < scorePlayer2)
-        bola->resetBall(1);
-    
-    else
-        bola->resetBall(2);
-    
+void Jugar::resetGame()
+{
+    bola->resetBall(1);
+//	if(scorePlayer1 < scorePlayer2)
+//        bola->resetBall(1);
+//    
+//    else
+//        bola->resetBall(2);
 }
 
 #include <stdio.h>
 void Jugar::golpearJ1 (GolpeEvent* golpe)
 {
 	golpear(1, golpe);
-	//j1->Fall();
 }
 
 void Jugar::golpearJ2 (GolpeEvent* golpe)
 {
 	golpear(2, golpe);
-	//j2->Fall();
 }
 
 void Jugar::golpear (int id, GolpeEvent* golpe)
@@ -158,27 +162,31 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
 }
 
 void Jugar::ResultadoJugada(ScoreMensage *mensage)
-{    
-    printf("Punto para%d\n", mensage->ScoreResult);
-    SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
+{
     if(mensage->ScoreResult == 1) {
         scorePlayer1++;
         switch (scorePlayer1) {
             case 1:
+                SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
+                point->showPoint(1);
                 scoreLabelPlayer1->setString("15");
                 resetGame();
                 break;
             case 2:
+                SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
+                point->showPoint(1);
                 scoreLabelPlayer1->setString("30");
                 resetGame();
                 break;
             case 3:
+                SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
+                point->showPoint(1);
                 scoreLabelPlayer1->setString("40");
                 resetGame();
                 break;
             case 4:
-                // Jugador 1 ganó
-                CCDirector::sharedDirector()->popScene();
+                SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
+                win->showRestartMenu(1);
                 break;
             default:
                 break;
@@ -188,20 +196,26 @@ void Jugar::ResultadoJugada(ScoreMensage *mensage)
         scorePlayer2++;
         switch (scorePlayer2) {
             case 1:
+                SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
+                point->showPoint(2);
                 scoreLabelPlayer2->setString("15");
                 resetGame();
                 break;
             case 2:
+                SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
+                point->showPoint(2);
                 scoreLabelPlayer2->setString("30");
                 resetGame();
                 break;
             case 3:
+                SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
+                point->showPoint(2);
                 scoreLabelPlayer2->setString("40");
                 resetGame();
                 break;
             case 4:
-                // Jugador 2 ganó
-                CCDirector::sharedDirector()->popScene();
+                SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
+                win->showRestartMenu(2);
                 break;
             default:
                 break;

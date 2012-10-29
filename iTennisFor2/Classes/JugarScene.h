@@ -13,6 +13,8 @@
 #include "SimpleAudioEngine.h"
 #include "Jugador.h"
 #include "Bola.h"
+#include "WinScene.h"
+#include "PointScene.h"
 
 class Jugar : public cocos2d::CCLayer
 {
@@ -23,6 +25,8 @@ public:
 	Jugador *j1;
 	Jugador *j2;
 	Bola *bola;
+    Win *win;
+    Point *point;
 	float piso;
     int scorePlayer1;
     int scorePlayer2;

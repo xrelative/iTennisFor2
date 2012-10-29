@@ -11,6 +11,8 @@
 		F94FF4B5163B57F20020B8FB /* background.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = F94FF4AE163B57F20020B8FB /* background.pvr.ccz */; };
 		F94FF4BB163B58010020B8FB /* sprites.plist in Resources */ = {isa = PBXBuildFile; fileRef = F94FF4B9163B58010020B8FB /* sprites.plist */; };
 		F94FF4BC163B58010020B8FB /* sprites.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = F94FF4BA163B58010020B8FB /* sprites.pvr.ccz */; };
+		F9B0730A163DC8B2004CA671 /* WinScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9B07308163DC8B2004CA671 /* WinScene.cpp */; };
+		F9B0730E163E021C004CA671 /* PointScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9B0730C163E021C004CA671 /* PointScene.cpp */; };
 		F9F08FC0163B0C3C00F7E818 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F08FBF163B0C3C00F7E818 /* QuartzCore.framework */; };
 		F9F08FC2163B0C3C00F7E818 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F08FC1163B0C3C00F7E818 /* OpenGLES.framework */; };
 		F9F08FC4163B0C3C00F7E818 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F08FC3163B0C3C00F7E818 /* OpenAL.framework */; };
@@ -240,6 +242,10 @@
 		F94FF4AE163B57F20020B8FB /* background.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = background.pvr.ccz; sourceTree = "<group>"; };
 		F94FF4B9163B58010020B8FB /* sprites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sprites.plist; sourceTree = "<group>"; };
 		F94FF4BA163B58010020B8FB /* sprites.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = sprites.pvr.ccz; sourceTree = "<group>"; };
+		F9B07308163DC8B2004CA671 /* WinScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WinScene.cpp; path = Classes/WinScene.cpp; sourceTree = "<group>"; };
+		F9B07309163DC8B2004CA671 /* WinScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WinScene.h; path = Classes/WinScene.h; sourceTree = "<group>"; };
+		F9B0730C163E021C004CA671 /* PointScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointScene.cpp; path = Classes/PointScene.cpp; sourceTree = "<group>"; };
+		F9B0730D163E021C004CA671 /* PointScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointScene.h; path = Classes/PointScene.h; sourceTree = "<group>"; };
 		F9F08FBB163B0C3C00F7E818 /* iTennisFor2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTennisFor2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9F08FBF163B0C3C00F7E818 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F9F08FC1163B0C3C00F7E818 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1641,6 +1647,10 @@
 				F9F092CA163B0E0600F7E818 /* MenuScene.h */,
 				F9F092CB163B0E0600F7E818 /* MultitouchJugador.cpp */,
 				F9F092CC163B0E0600F7E818 /* MultitouchJugador.h */,
+				F9B07308163DC8B2004CA671 /* WinScene.cpp */,
+				F9B07309163DC8B2004CA671 /* WinScene.h */,
+				F9B0730C163E021C004CA671 /* PointScene.cpp */,
+				F9B0730D163E021C004CA671 /* PointScene.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1979,6 +1989,8 @@
 				F9F092D1163B0E0600F7E818 /* JugarScene.cpp in Sources */,
 				F9F092D2163B0E0600F7E818 /* MenuScene.cpp in Sources */,
 				F9F092D3163B0E0600F7E818 /* MultitouchJugador.cpp in Sources */,
+				F9B0730A163DC8B2004CA671 /* WinScene.cpp in Sources */,
+				F9B0730E163E021C004CA671 /* PointScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
