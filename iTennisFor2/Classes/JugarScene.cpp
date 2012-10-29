@@ -217,10 +217,9 @@ void Jugar::empujarPelota(JugadorGolpeaEvent* jg) {
 	}
 }
 
-void Jugar::ResultadoJugada(ScoreMensage *mensage){
-    
-    printf("Punto para%d\n",mensage->ScoreResult);
-    
+void Jugar::ResultadoJugada(ScoreMensage *mensage)
+{
+    //printf("Punto para%d\n",mensage->ScoreResult);
     
     if(mensage->ScoreResult==1){
         scorePlayer1++;
