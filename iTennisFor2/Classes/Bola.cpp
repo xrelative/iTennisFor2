@@ -141,7 +141,7 @@ void Bola::colisionPiso()
 	float velocidadMaxima = 1000.0;
 	
 	if (velocidad.x != 0) { // Así se mantiene rebotando antes del primer golpe.
-		velocidad.x = direccionX * max(velocidadMinima, min((fabs(velocidad.x)+fuerzaSpin), velocidadMaxima));
+		velocidad.x = direccionX * max(velocidadMinima, min((fabs(velocidad.x+fuerzaSpin)), velocidadMaxima));
 		velocidad.y *= -coeficienteRestitucion;
 	} else {
 		CCSize size = CCDirector::sharedDirector()->getWinSize();

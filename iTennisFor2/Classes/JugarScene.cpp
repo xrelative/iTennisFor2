@@ -136,7 +136,7 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
 	CCPoint posBola = b.getPosicion();
 	
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
-	float posicionBolaPorcentual = posBola.x/size.width;
+//	float posicionBolaPorcentual = posBola.x/size.width;
 //	float distanciaRestantePorcentual = direccion * (0.50f - posicionBolaPorcentual);
 //	pelotaEsGolpeable &= distanciaRestantePorcentual > 0.05;
 //	
