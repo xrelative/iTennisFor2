@@ -229,19 +229,19 @@ void Jugar::ResultadoJugada(ScoreMensage *mensage){
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
                 point->showPoint(1);
                 scoreLabelPlayer1->setString("15");
-                this->resetGame();
+                this->scheduleOnce(schedule_selector(Jugar::resetGame), 1.5);
                 break;
             case 2:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
                 point->showPoint(1);
                 scoreLabelPlayer1->setString("30");
-                this->resetGame();
+                this->scheduleOnce(schedule_selector(Jugar::resetGame), 1.5);
                 break;
             case 3:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
                 point->showPoint(1);
                 scoreLabelPlayer1->setString("40");
-                this->resetGame();
+                this->scheduleOnce(schedule_selector(Jugar::resetGame), 1.5);
                 break;
             case 4:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
@@ -258,19 +258,19 @@ void Jugar::ResultadoJugada(ScoreMensage *mensage){
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
                 point->showPoint(2);
                 scoreLabelPlayer2->setString("15");
-                this->resetGame();
+                this->scheduleOnce(schedule_selector(Jugar::resetGame), 1.5);
                 break;
             case 2:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
                 point->showPoint(2);
                 scoreLabelPlayer2->setString("30");
-                this->resetGame();
+                this->scheduleOnce(schedule_selector(Jugar::resetGame), 1.5);
                 break;
             case 3:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
                 point->showPoint(2);
                 scoreLabelPlayer2->setString("40");
-                this->resetGame();
+                this->scheduleOnce(schedule_selector(Jugar::resetGame), 1.5);
                 break;
             case 4:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");

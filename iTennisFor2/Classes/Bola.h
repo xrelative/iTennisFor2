@@ -25,6 +25,7 @@ public: //<- para hacer código más chanta no más ;)
 	CCSprite* sprite;
 	
 public:
+	bool funcionando;
 	float spin;
 	CCPoint velocidad;
 	Bola (float piso,CCObject* pselectorCargaTarget, SEL_CallFuncO selectorCarga);
