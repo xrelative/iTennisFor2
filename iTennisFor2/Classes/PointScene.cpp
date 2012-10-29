@@ -7,6 +7,7 @@
 //
 
 #include "PointScene.h"
+#include "JugarScene.h"
 
 USING_NS_CC;
 
@@ -31,6 +32,7 @@ void Point::showPoint(int player)
     CCDelayTime *delay = CCDelayTime::create(0.5);
     CCScaleTo *scaleIn = CCScaleTo::create(0.5, 1.0);
     CCScaleTo *scaleOut = CCScaleTo::create(0.5, 0.0);
+    //CCCallFunc *restartBall = CCCallFunc::create(this, callfunc_selector(Jugar::resetGame));
     CCFiniteTimeAction* accion = CCSequence::create(scaleIn, delay, scaleOut, NULL);
     label->runAction(accion);
 }

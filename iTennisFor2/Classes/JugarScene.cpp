@@ -158,7 +158,7 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
 			j.runAction(accion);
 		}
 	}
-	printf("Jugador #%i golpea con Spin: %f y Power: %f\n", id, golpe->spin, golpe->power);
+	//printf("Jugador #%i golpea con Spin: %f y Power: %f\n", id, golpe->spin, golpe->power);
 }
 
 void Jugar::ResultadoJugada(ScoreMensage *mensage)
@@ -170,19 +170,19 @@ void Jugar::ResultadoJugada(ScoreMensage *mensage)
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
                 point->showPoint(1);
                 scoreLabelPlayer1->setString("15");
-                resetGame();
+                this->resetGame();
                 break;
             case 2:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
                 point->showPoint(1);
                 scoreLabelPlayer1->setString("30");
-                resetGame();
+                this->resetGame();
                 break;
             case 3:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
                 point->showPoint(1);
                 scoreLabelPlayer1->setString("40");
-                resetGame();
+                this->resetGame();
                 break;
             case 4:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
@@ -199,19 +199,19 @@ void Jugar::ResultadoJugada(ScoreMensage *mensage)
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
                 point->showPoint(2);
                 scoreLabelPlayer2->setString("15");
-                resetGame();
+                this->resetGame();
                 break;
             case 2:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
                 point->showPoint(2);
                 scoreLabelPlayer2->setString("30");
-                resetGame();
+                this->resetGame();
                 break;
             case 3:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
                 point->showPoint(2);
                 scoreLabelPlayer2->setString("40");
-                resetGame();
+                this->resetGame();
                 break;
             case 4:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");

@@ -27,18 +27,18 @@ void Win::showRestartMenu(int player)
     CCLabelTTF *label = CCLabelTTF::create(message, "YELLOW.TTF", 40.0);
     label->setColor(ccc3(64, 64, 64));
     label->setScale(0.1);
-    label->setPosition(ccp(winSize.width/2, winSize.height * 0.7));
+    label->setPosition(ccp(winSize.width/2, winSize.height * 0.6));
     this->addChild(label, 0);
     
     CCMenuItemFont *restartItem = CCMenuItemFont::create("Volver a jugar", this, menu_selector(Win::restartGame));
-    restartItem->setColor(ccc3(128, 128, 128));
+    restartItem->setColor(ccc3(92, 92, 92));
     restartItem->setScale(0.1);
-    restartItem->setPosition(ccp(winSize.width/2, winSize.height * 0.5));
+    restartItem->setPosition(ccp(winSize.width/2, winSize.height * 0.4));
     
     CCMenuItemFont *finishItem = CCMenuItemFont::create("Finalizar", this, menu_selector(Win::finishGame));
-    finishItem->setColor(ccc3(128, 128, 128));
+    finishItem->setColor(ccc3(92, 92, 92));
     finishItem->setScale(0.1);
-    finishItem->setPosition(ccp(winSize.width/2, winSize.height * 0.3));
+    finishItem->setPosition(ccp(winSize.width/2, winSize.height * 0.2));
     
     CCMenu *menu = CCMenu::create(restartItem, finishItem, NULL);
     menu->setPosition(CCPointZero);

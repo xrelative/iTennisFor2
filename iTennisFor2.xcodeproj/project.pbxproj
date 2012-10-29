@@ -21,8 +21,6 @@
 		F9F08FCA163B0C3C00F7E818 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F08FC9163B0C3C00F7E818 /* UIKit.framework */; };
 		F9F08FCC163B0C3C00F7E818 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F08FCB163B0C3C00F7E818 /* Foundation.framework */; };
 		F9F08FCE163B0C3C00F7E818 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F08FCD163B0C3C00F7E818 /* CoreGraphics.framework */; };
-		F9F08FD2163B0C3C00F7E818 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F08FD1163B0C3C00F7E818 /* CloseNormal.png */; };
-		F9F08FD4163B0C3C00F7E818 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F08FD3163B0C3C00F7E818 /* CloseSelected.png */; };
 		F9F08FEB163B0C3C00F7E818 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9F08FEA163B0C3C00F7E818 /* AppController.mm */; };
 		F9F08FEE163B0C3C00F7E818 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9F08FED163B0C3C00F7E818 /* RootViewController.mm */; };
 		F9F08FF0163B0C3C00F7E818 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F08FEF163B0C3C00F7E818 /* main.m */; };
@@ -216,9 +214,7 @@
 		F9F092AC163B0DF100F7E818 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F09288163B0DF100F7E818 /* iTunesArtwork.png */; };
 		F9F092AD163B0DF100F7E818 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F09289163B0DF100F7E818 /* iTunesArtwork@2x.png */; };
 		F9F092AE163B0DF100F7E818 /* applause4.wav in Resources */ = {isa = PBXBuildFile; fileRef = F9F0928B163B0DF100F7E818 /* applause4.wav */; };
-		F9F092AF163B0DF100F7E818 /* background-music-aac.wav in Resources */ = {isa = PBXBuildFile; fileRef = F9F0928C163B0DF100F7E818 /* background-music-aac.wav */; };
 		F9F092B0163B0DF100F7E818 /* bitelip_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F9F0928D163B0DF100F7E818 /* bitelip_2.mp3 */; };
-		F9F092B1163B0DF100F7E818 /* pew-pew-lei.wav in Resources */ = {isa = PBXBuildFile; fileRef = F9F0928E163B0DF100F7E818 /* pew-pew-lei.wav */; };
 		F9F092B2163B0DF100F7E818 /* sfxboo.wav in Resources */ = {isa = PBXBuildFile; fileRef = F9F0928F163B0DF100F7E818 /* sfxboo.wav */; };
 		F9F092B3163B0DF100F7E818 /* tennisserve.wav in Resources */ = {isa = PBXBuildFile; fileRef = F9F09290163B0DF100F7E818 /* tennisserve.wav */; };
 		F9F092B4163B0DF100F7E818 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F09292163B0DF100F7E818 /* Default-568h@2x.png */; };
@@ -255,8 +251,6 @@
 		F9F08FC9163B0C3C00F7E818 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F9F08FCB163B0C3C00F7E818 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F9F08FCD163B0C3C00F7E818 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		F9F08FD1163B0C3C00F7E818 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseNormal.png; path = Resources/CloseNormal.png; sourceTree = "<group>"; };
-		F9F08FD3163B0C3C00F7E818 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseSelected.png; path = Resources/CloseSelected.png; sourceTree = "<group>"; };
 		F9F08FE7163B0C3C00F7E818 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		F9F08FE9163B0C3C00F7E818 /* AppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = "<group>"; };
 		F9F08FEA163B0C3C00F7E818 /* AppController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = AppController.mm; path = ios/AppController.mm; sourceTree = "<group>"; };
@@ -688,9 +682,7 @@
 		F9F09288163B0DF100F7E818 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		F9F09289163B0DF100F7E818 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		F9F0928B163B0DF100F7E818 /* applause4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = applause4.wav; sourceTree = "<group>"; };
-		F9F0928C163B0DF100F7E818 /* background-music-aac.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "background-music-aac.wav"; sourceTree = "<group>"; };
 		F9F0928D163B0DF100F7E818 /* bitelip_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bitelip_2.mp3; sourceTree = "<group>"; };
-		F9F0928E163B0DF100F7E818 /* pew-pew-lei.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "pew-pew-lei.wav"; sourceTree = "<group>"; };
 		F9F0928F163B0DF100F7E818 /* sfxboo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfxboo.wav; sourceTree = "<group>"; };
 		F9F09290163B0DF100F7E818 /* tennisserve.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tennisserve.wav; sourceTree = "<group>"; };
 		F9F09292163B0DF100F7E818 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -809,8 +801,6 @@
 				F9F0927F163B0DF100F7E818 /* icons */,
 				F9F0928A163B0DF100F7E818 /* sound */,
 				F9F09291163B0DF100F7E818 /* splash */,
-				F9F08FD1163B0C3C00F7E818 /* CloseNormal.png */,
-				F9F08FD3163B0C3C00F7E818 /* CloseSelected.png */,
 				F9F08FE7163B0C3C00F7E818 /* Info.plist */,
 			);
 			name = Resources;
@@ -1686,8 +1676,6 @@
 		F9F0928A163B0DF100F7E818 /* sound */ = {
 			isa = PBXGroup;
 			children = (
-				F9F0928C163B0DF100F7E818 /* background-music-aac.wav */,
-				F9F0928E163B0DF100F7E818 /* pew-pew-lei.wav */,
 				F9F0928B163B0DF100F7E818 /* applause4.wav */,
 				F9F0928D163B0DF100F7E818 /* bitelip_2.mp3 */,
 				F9F0928F163B0DF100F7E818 /* sfxboo.wav */,
@@ -1762,8 +1750,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9F08FD2163B0C3C00F7E818 /* CloseNormal.png in Resources */,
-				F9F08FD4163B0C3C00F7E818 /* CloseSelected.png in Resources */,
 				F9F09078163B0C3D00F7E818 /* ChangeLog in Resources */,
 				F9F092A2163B0DF100F7E818 /* aftershockdebris.ttf in Resources */,
 				F9F092A3163B0DF100F7E818 /* YELLOW.TTF in Resources */,
@@ -1778,9 +1764,7 @@
 				F9F092AC163B0DF100F7E818 /* iTunesArtwork.png in Resources */,
 				F9F092AD163B0DF100F7E818 /* iTunesArtwork@2x.png in Resources */,
 				F9F092AE163B0DF100F7E818 /* applause4.wav in Resources */,
-				F9F092AF163B0DF100F7E818 /* background-music-aac.wav in Resources */,
 				F9F092B0163B0DF100F7E818 /* bitelip_2.mp3 in Resources */,
-				F9F092B1163B0DF100F7E818 /* pew-pew-lei.wav in Resources */,
 				F9F092B2163B0DF100F7E818 /* sfxboo.wav in Resources */,
 				F9F092B3163B0DF100F7E818 /* tennisserve.wav in Resources */,
 				F9F092B4163B0DF100F7E818 /* Default-568h@2x.png in Resources */,
