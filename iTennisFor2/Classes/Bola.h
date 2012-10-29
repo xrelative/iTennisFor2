@@ -18,7 +18,7 @@ public:
 };
 
 class Bola : public CCNode {
-	
+public: //<- para hacer código más chanta no más ;)
 	float gravedad;
 	float piso;
 	float coeficienteRestitucion;

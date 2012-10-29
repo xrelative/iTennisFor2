@@ -69,9 +69,9 @@ bool Jugar::init()
 		/* Creación y ubicación de jugadores */
 		int ancho     = winSize.width/5; // 20% del ancho
 		CCRect area   = CCRectMake(0, 0, ancho, winSize.height);
-		j1            = new Jugador(area, this, callfuncO_selector(Jugar::golpearJ1), "stay1.png", "jump1.png");
+		j1            = new Jugador(area, this, callfuncO_selector(Jugar::golpearJ1), "stay1.png", "jump1.png", "stay1.png", "hit1.png", "charge1.png");
 		area.origin.x = winSize.width - ancho;
-		j2            = new Jugador(area, this, callfuncO_selector(Jugar::golpearJ2), "stay2.png", "jump2.png");
+		j2            = new Jugador(area, this, callfuncO_selector(Jugar::golpearJ2), "stay2.png", "jump2.png", "stay2.png", "hit2.png", "charge2.png");
 		
 		this->addChild(j1, 1);
 		this->addChild(j2, 1);
@@ -135,35 +135,94 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
 	CCRect  area    = j.getHitArea();
 	CCPoint posBola = b.getPosicion();
 	
-	if (pelotaEsGolpeable && area.containsPoint(posBola)) {
-		float velx = golpe->power * 60; // = la fuerza de este jugador
-		b.velocidad.x = velx * direccion;
-		float vely = 500; //algun valor para que caiga dentro de la cancha
-		b.velocidad.y = vely;
-		b.spin = golpe->spin * direccion; // El spin depende de donde se le pega
-
-		SimpleAudioEngine::sharedEngine()->playEffect("tennisserve.wav");
-
-		int piso = 70;
+	CCSize size = CCDirector::sharedDirector()->getWinSize();
+	float posicionBolaPorcentual = posBola.x/size.width;
+//	float distanciaRestantePorcentual = direccion * (0.50f - posicionBolaPorcentual);
+//	pelotaEsGolpeable &= distanciaRestantePorcentual > 0.05;
+//	
+	pelotaEsGolpeable &= j.isHitting == false;
+	
+	if (pelotaEsGolpeable) {// && area.containsPoint(posBola)) {
+		j.isHitting = true;
+//		int piso = 70;
 		int alturaRaqueta = 30;
-		if (posBola.y > piso + alturaRaqueta + 5) { // piso + altura raqueta + margen salto minimo
+		if (1) {// (posBola.y > piso + alturaRaqueta + 5) { // piso + altura raqueta + margen salto minimo
+			float velocidadBola = fabs(b.velocidad.x);
+			float distanciaRestante = (dirbola == 1 ? 0.9*size.width - posBola.x : posBola.x - 0.1*size.width);
+			float tiempoRestante = fmax(distanciaRestante, 0) / velocidadBola;
+			float aceleracionBola = b.gravedad;
+			float velyBola = b.velocidad.y;
+			
+			// y(t) = (1/2)*a*t^2 + v*t + y_0;
+			float posyChanta = aceleracionBola*tiempoRestante*tiempoRestante/2 + velyBola*tiempoRestante + posBola.y;
+			float posyMenosChanta = posyChanta > 0 ? posyChanta : -posyChanta*b.coeficienteRestitucion;
+			
+			float estimacionAlturaPelota = (b.velocidad.x == 0 ? b.piso : posyMenosChanta) + alturaRaqueta;
+			
+			JugadorGolpeaEvent* jg = new JugadorGolpeaEvent(golpe, j, id, b);
+			
 			CCPoint p = j.getPosition();
+			CCCallFunc  *hitAnim1      =  CCCallFunc::create(&j, callfunc_selector(Jugador::hitFrame1));
+			CCCallFunc  *hitAnim2      =  CCCallFunc::create(&j, callfunc_selector(Jugador::hitFrame2));
+			CCCallFunc  *hitAnim3      =  CCCallFunc::create(&j, callfunc_selector(Jugador::hitFrame3));
+			CCDelayTime *delay         = CCDelayTime::create(0.100);
+			CCCallFuncO *empujar       = CCCallFuncO::create(&j, callfuncO_selector(Jugar::empujarPelota), jg);
+			
 			CCCallFunc *animacionSalto = CCCallFunc::create(&j, callfunc_selector(Jugador::Jump));
-			CCActionInterval* subir    =   CCMoveTo::create(0.200f, ccp(p.x, posBola.y + alturaRaqueta));
+			
+			CCActionInterval* subir    =   CCMoveTo::create(0.200f, ccp(p.x, estimacionAlturaPelota + alturaRaqueta));
 			CCActionInterval* bajar    =   CCMoveTo::create(0.300f, ccp(p.x, p.y));
 			CCFiniteTimeAction* saltar =  CCEaseOut::create(subir, 2.0);
 			CCFiniteTimeAction* caer   =   CCEaseIn::create(bajar, 2.0);
 			CCCallFunc *animacionPiso  = CCCallFunc::create(&j, callfunc_selector(Jugador::Fall));
-			CCFiniteTimeAction* accion = CCSequence::create(animacionSalto, saltar, caer, animacionPiso, NULL);
+			CCFiniteTimeAction* accion = CCSequence::create(animacionSalto,
+			                                                saltar,
+			                                                hitAnim1, delay,
+			                                                hitAnim2, delay,
+//			                                                hitAnim3, delay,
+									empujar,
+			                                                hitAnim3, delay,
+			                                                caer,
+			                                                animacionPiso,
+			                                                NULL);
+			
 			j.runAction(accion);
 		}
 	}
 	//printf("Jugador #%i golpea con Spin: %f y Power: %f\n", id, golpe->spin, golpe->power);
 }
 
-void Jugar::ResultadoJugada(ScoreMensage *mensage)
-{
-    if(mensage->ScoreResult == 1) {
+void Jugar::empujarPelota(JugadorGolpeaEvent* jg) {
+	
+	Bola       & b     = jg->bola;
+	Jugador    & j     = jg->jugador;
+	GolpeEvent * golpe = jg->golpe;
+	int          id    = jg->id;
+	
+	int direccion = id == 1 ?   1 :  -1;
+	int dirbola = b.velocidad.x == 0 ? 0 : b.velocidad.x > 0 ? 1 :  -1;
+	bool pelotaEsGolpeable = (direccion == 0) || (direccion != dirbola);
+	
+	CCRect  area    = j.getHitArea();
+	CCPoint posBola = b.getPosicion();
+	
+	if (pelotaEsGolpeable && area.containsPoint(posBola)) {
+		float velx = golpe->power * 60; // = la fuerza de este jugador
+		b.velocidad.x = velx * direccion;
+		float vely = 500; //algun valor para que caiga dentro de la cancha
+		b.velocidad.y = vely;
+		b.spin = golpe->spin * direccion; // El spin depende de donde se le pega
+		
+		SimpleAudioEngine::sharedEngine()->playEffect("tennisserve.wav");
+	}
+}
+
+void Jugar::ResultadoJugada(ScoreMensage *mensage){
+    
+    printf("Punto para%d\n",mensage->ScoreResult);
+    
+    
+    if(mensage->ScoreResult==1){
         scorePlayer1++;
         switch (scorePlayer1) {
             case 1:

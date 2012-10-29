@@ -21,11 +21,19 @@ class Jugador : public CCNode {
 public:
 	string staySpriteName;
 	string jumpSpriteName;
+	string hitSprite1, hitSprite2, hitSprite3;
 	CCSprite* sprite;
-	Jugador (CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector, string staySpriteName, string jumpSpriteName);
+	Jugador (CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector, string staySpriteName, string jumpSpriteName, string hitSprite1, string hitSprite2, string hitSprite3);
 	const CCRect getHitArea ();
     void Jump(CargaEvent *event);
     void Fall();
+	
+	//aquí empieza el chanterío… que triste u.u
+	void hitFrame1 ();
+	void hitFrame2 ();
+	void hitFrame3 ();
+//	void hitFrame4 ();
+	bool isHitting;
 private:
 //	void update (float dt);
 };

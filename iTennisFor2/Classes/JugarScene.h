@@ -16,6 +16,23 @@
 #include "WinScene.h"
 #include "PointScene.h"
 
+class JugadorGolpeaEvent : public CCObject {
+public:
+	GolpeEvent * golpe;
+	Jugador    & jugador;
+	int          id;
+	Bola       & bola;
+	JugadorGolpeaEvent (GolpeEvent * golpe,
+	                    Jugador    & jugador,
+	                    int          id,
+	                    Bola       & bola)
+	: golpe(golpe),
+	  jugador(jugador),
+	  id(id),
+	  bola(bola)
+	{}
+};
+
 class Jugar : public cocos2d::CCLayer
 {
 public:
@@ -28,19 +45,25 @@ public:
     Win *win;
     Point *point;
 	float piso;
+	
+	// preprocessor macro for "static create()" constructor ( node() deprecated )
+	CREATE_FUNC(Jugar);
+	
+	void golpearJ1 (GolpeEvent* golpe);
+	void golpearJ2 (GolpeEvent* golpe);
+	void golpear (int id, GolpeEvent* golpe);
+	void empujarPelota (JugadorGolpeaEvent* jg);
+    
+    void ResultadoJugada(ScoreMensage *mensage);
+    
+    
     int scorePlayer1;
     int scorePlayer2;
 	int set;
     CCLabelTTF *scoreLabelPlayer1;
     CCLabelTTF *scoreLabelPlayer2;
     
-    void golpearJ1(GolpeEvent* golpe);
-	void golpearJ2(GolpeEvent* golpe);
-	void golpear(int id, GolpeEvent* golpe);
-    void ResultadoJugada(ScoreMensage* mensage);
     void resetGame();
-    
-    CREATE_FUNC(Jugar);
 };
 
 #endif /* defined(__cocos2dxtest1__JugarScene__) */
