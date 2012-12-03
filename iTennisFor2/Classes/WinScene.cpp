@@ -17,7 +17,7 @@ void Win::showRestartMenu(int player, int players)
 	this->players = players;
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
-    const char *message;
+    const char *message = "";
     if (player == 1) {
         message = "Jugador 1 ha ganado!";
     }

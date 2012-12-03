@@ -57,22 +57,43 @@ bool AboutUs::init()
     pMenu->setPosition(CCPointZero);
     this->addChild(pMenu, 2);
     
-    CCLabelTTF *titulo = CCLabelTTF::create("Desarrollado por", "aftershockdebris.ttf", 30.0);
-    titulo->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2 + 30.0));
-    CCLabelTTF *integrante1 = CCLabelTTF::create("Cristian Arenas U.", "YELLOW.TTF", 24.0);
-    integrante1->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2));
-    CCLabelTTF *integrante2 = CCLabelTTF::create("Ignacio Gómez E.", "YELLOW.TTF", 24.0);
-    integrante2->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2 - 24.0));
-    CCLabelTTF *integrante3 = CCLabelTTF::create("Lukas Pérez I.", "YELLOW.TTF", 24.0);
-    integrante3->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2 - 48.0));
-    CCLabelTTF *integrante4 = CCLabelTTF::create("Diego Villouta F.", "YELLOW.TTF", 24.0);
-    integrante4->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2 - 72.0));
+    CCLabelTTF *titulo1 = CCLabelTTF::create("Desarrollado por", "aftershockdebris.ttf", 25.0);
+    titulo1->setPosition(ccp(winSize.width/2, winSize.height * 0.85));
+    CCLabelTTF *integrante1 = CCLabelTTF::create("Cristian Arenas U.", "YELLOW.TTF", 20.0);
+    integrante1->setPosition(ccp(winSize.width/2, winSize.height * 0.75));
+    CCLabelTTF *integrante2 = CCLabelTTF::create("Ignacio Gómez E.", "YELLOW.TTF", 20.0);
+    integrante2->setPosition(ccp(winSize.width/2, winSize.height * 0.70));
+    CCLabelTTF *integrante3 = CCLabelTTF::create("Lukas Pérez I.", "YELLOW.TTF", 20.0);
+    integrante3->setPosition(ccp(winSize.width/2, winSize.height * 0.65));
+    CCLabelTTF *integrante4 = CCLabelTTF::create("Diego Villouta F.", "YELLOW.TTF", 20.0);
+    integrante4->setPosition(ccp(winSize.width/2, winSize.height * 0.60));
     
-    this->addChild(titulo, 3);
+    CCLabelTTF *titulo2 = CCLabelTTF::create("Desarrollado para el ramo", "aftershockdebris.ttf", 25.0);
+    titulo2->setPosition(ccp(winSize.width/2, winSize.height * 0.50));
+    CCLabelTTF *ramo = CCLabelTTF::create("Taller de creación de videojuegos", "YELLOW.TTF", 20.0);
+    ramo->setPosition(ccp(winSize.width/2, winSize.height * 0.40));
+    
+    CCLabelTTF *titulo3 = CCLabelTTF::create("Profesores", "aftershockdebris.ttf", 25.0);
+    titulo3->setPosition(ccp(winSize.width/2, winSize.height * 0.30));
+    CCLabelTTF *profesor1 = CCLabelTTF::create("Daniel Winkler Rosa", "YELLOW.TTF", 20.0);
+    profesor1->setPosition(ccp(winSize.width/2, winSize.height * 0.20));
+    CCLabelTTF *profesor2 = CCLabelTTF::create("Pablo Mera Pastor", "YELLOW.TTF", 20.0);
+    profesor2->setPosition(ccp(winSize.width/2, winSize.height * 0.15));
+    
+    CCLabelTTF *universidad = CCLabelTTF::create("Universidad Técnica Federico Santa María", "YELLOW.TTF", 20.0);
+    universidad->setPosition(ccp(winSize.width/2, winSize.height * 0.05));
+    
+    this->addChild(titulo1, 3);
     this->addChild(integrante1, 3);
     this->addChild(integrante2, 3);
     this->addChild(integrante3, 3);
     this->addChild(integrante4, 3);
+    this->addChild(titulo2, 3);
+    this->addChild(ramo, 3);
+    this->addChild(titulo3, 3);
+    this->addChild(profesor1, 3);
+    this->addChild(profesor2, 3);
+    this->addChild(universidad, 3);
     
     return true;
 }
