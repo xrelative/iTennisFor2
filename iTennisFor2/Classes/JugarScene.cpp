@@ -67,8 +67,8 @@ bool Jugar::init()
         
         CCLabelTTF *labelPlayer1 = CCLabelTTF::create("Jugador 1", "aftershockdebris.ttf", 20);
         CCLabelTTF *labelPlayer2 = CCLabelTTF::create("Jugador 2", "aftershockdebris.ttf", 20);
-        scoreLabelPlayer1 = CCLabelTTF::create("0", "Arial", 20);
-        scoreLabelPlayer2 = CCLabelTTF::create("0", "Arial", 20);
+        scoreLabelPlayer1 = CCLabelTTF::create("0", "aftershockdebris.ttf", 20);
+        scoreLabelPlayer2 = CCLabelTTF::create("0", "aftershockdebris.ttf", 20);
         labelPlayer1->setColor(ccc3(0, 0, 0));
         labelPlayer2->setColor(ccc3(0, 0, 0));
         scoreLabelPlayer1->setColor(ccc3(0, 0, 0));

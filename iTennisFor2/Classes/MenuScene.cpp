@@ -47,8 +47,8 @@ bool Menu::init()
     background->setPosition(ccp(winSize.width/2, winSize.height/2));
     batchNodeBackground->addChild(background, 0);
     
-    CCLabelTTF *menu1 = CCLabelTTF::create("1 jugador", "YELLOW.TTF", 30.0);
-    CCLabelTTF *menu2 = CCLabelTTF::create("2 jugadores", "YELLOW.TTF", 30.0);
+    CCLabelTTF *menu1 = CCLabelTTF::create("1 Jugador", "YELLOW.TTF", 30.0);
+    CCLabelTTF *menu2 = CCLabelTTF::create("2 Jugadores", "YELLOW.TTF", 30.0);
     CCLabelTTF *menu3 = CCLabelTTF::create("Audio", "YELLOW.TTF", 30.0);
     CCLabelTTF *menu4 = CCLabelTTF::create("Acerca de", "YELLOW.TTF", 30.0);
     
@@ -58,7 +58,7 @@ bool Menu::init()
     CCMenuItem *item4 = CCMenuItemLabel::create(menu4, this, menu_selector(Menu::menuAboutUs));
     
     CCMenu* pMenu = CCMenu::create(item1, item2, item3, item4, NULL);
-    pMenu->alignItemsVerticallyWithPadding(20);
+    pMenu->alignItemsVerticallyWithPadding(20.0);
     this->addChild(pMenu, 1);
     
     SimpleAudioEngine::sharedEngine()->playBackgroundMusic("bitelip_2.mp3", true);

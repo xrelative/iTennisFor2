@@ -17,16 +17,16 @@ void Point::showPoint(int player)
     
     const char *message;
     if (player == 1) {
-        message = "Punto para el Jugador 1!";
+        message = "Punto para el Jugador 1";
     }
     else if (player == 2) {
-        message = "Punto para el Jugador 2!";
+        message = "Punto para el Jugador 2";
     }
     
     CCLabelTTF *label = CCLabelTTF::create(message, "YELLOW.TTF", 30.0);
     label->setColor(ccc3(64, 64, 64));
     label->setScale(0.0);
-    label->setPosition(ccp(winSize.width/2, winSize.height/2));
+    label->setPosition(ccp(winSize.width/2, winSize.height*0.55));
     this->addChild(label, 0);
     
     CCDelayTime *delay = CCDelayTime::create(0.5);
