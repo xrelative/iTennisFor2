@@ -147,17 +147,21 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
 //		int piso = 70;
 		int alturaRaqueta = 30;
 		if (1) {// (posBola.y > piso + alturaRaqueta + 5) { // piso + altura raqueta + margen salto minimo
-			float velocidadBola = fabs(b.velocidad.x);
-			float distanciaRestante = (dirbola == 1 ? 0.9*size.width - posBola.x : posBola.x - 0.1*size.width);
-			float tiempoRestante = fmax(distanciaRestante, 0) / velocidadBola;
-			float aceleracionBola = b.gravedad;
-			float velyBola = b.velocidad.y;
+//			float velocidadBola = fabs(b.velocidad.x);
+//			float distanciaRestante = (dirbola == 1 ? 0.9*size.width - posBola.x : posBola.x - 0.1*size.width);
+//			float tiempoRestante = fmax(distanciaRestante, 0) / velocidadBola;
+//			float aceleracionBola = b.gravedad;
+//			float velyBola = b.velocidad.y;
+//			
+//			// y(t) = (1/2)*a*t^2 + v*t + y_0;
+//			float posyChanta = aceleracionBola*tiempoRestante*tiempoRestante/2 + velyBola*tiempoRestante + posBola.y;
+//			float posyMenosChanta = posyChanta > 0 ? posyChanta : -posyChanta*b.coeficienteRestitucion;
+			float tDeGolpe = (b.t + 0.4);
+			//int rebotesQueFaltan = tDeGolpe / b.t1;
+			float t = fmodf(tDeGolpe, b.t1); // tiempo desde el ultimo rebote
+			float estimacionAlturaPelota = b.yo+t*(b.vy+t*b.a*0.5);
 			
-			// y(t) = (1/2)*a*t^2 + v*t + y_0;
-			float posyChanta = aceleracionBola*tiempoRestante*tiempoRestante/2 + velyBola*tiempoRestante + posBola.y;
-			float posyMenosChanta = posyChanta > 0 ? posyChanta : -posyChanta*b.coeficienteRestitucion;
-			
-			float estimacionAlturaPelota = (b.velocidad.x == 0 ? b.piso : posyMenosChanta) + alturaRaqueta;
+//			float estimacionAlturaPelota = (b.vx == 0 ? b.flr : posyMenosChanta) + alturaRaqueta;
 			
 			JugadorGolpeaEvent* jg = new JugadorGolpeaEvent(golpe, j, id, b);
 			
@@ -165,13 +169,13 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
 			CCCallFunc  *hitAnim1      =  CCCallFunc::create(&j, callfunc_selector(Jugador::hitFrame1));
 			CCCallFunc  *hitAnim2      =  CCCallFunc::create(&j, callfunc_selector(Jugador::hitFrame2));
 			CCCallFunc  *hitAnim3      =  CCCallFunc::create(&j, callfunc_selector(Jugador::hitFrame3));
-			CCDelayTime *delay         = CCDelayTime::create(0.100);
+			CCDelayTime *delay         = CCDelayTime::create(0.070f);
 			CCCallFuncO *empujar       = CCCallFuncO::create(&j, callfuncO_selector(Jugar::empujarPelota), jg);
 			
 			CCCallFunc *animacionSalto = CCCallFunc::create(&j, callfunc_selector(Jugador::Jump));
 			
-			CCActionInterval* subir    =   CCMoveTo::create(0.200f, ccp(p.x, estimacionAlturaPelota + alturaRaqueta));
-			CCActionInterval* bajar    =   CCMoveTo::create(0.300f, ccp(p.x, p.y));
+			CCActionInterval* subir    =   CCMoveTo::create(0.160f, ccp(p.x, estimacionAlturaPelota + alturaRaqueta));
+			CCActionInterval* bajar    =   CCMoveTo::create(0.200f, ccp(p.x, p.y));
 			CCFiniteTimeAction* saltar =  CCEaseOut::create(subir, 2.0);
 			CCFiniteTimeAction* caer   =   CCEaseIn::create(bajar, 2.0);
 			CCCallFunc *animacionPiso  = CCCallFunc::create(&j, callfunc_selector(Jugador::Fall));
@@ -200,18 +204,32 @@ void Jugar::empujarPelota(JugadorGolpeaEvent* jg) {
 	int          id    = jg->id;
 	
 	int direccion = id == 1 ?   1 :  -1;
-	int dirbola = b.velocidad.x == 0 ? 0 : b.velocidad.x > 0 ? 1 :  -1;
+	int dirbola = b.vx == 0 ? 0 : b.vx > 0 ? 1 :  -1;
 	bool pelotaEsGolpeable = (direccion == 0) || (direccion != dirbola);
 	
 	CCRect  area    = j.getHitArea();
 	CCPoint posBola = b.getPosicion();
 	
 	if (pelotaEsGolpeable && area.containsPoint(posBola)) {
-		float velx = golpe->power * 60; // = la fuerza de este jugador
-		b.velocidad.x = velx * direccion;
-		float vely = 500; //algun valor para que caiga dentro de la cancha
-		b.velocidad.y = vely;
-		b.spin = golpe->spin * direccion; // El spin depende de donde se le pega
+		b.t1 *= 0.95;
+		
+		CCSize size = CCDirector::sharedDirector()->getWinSize();
+		float distancia = size.width*(0.05 +(golpe->power-5.0)/3.0 * 0.3);
+//		fminf(size.width*0.4, fmaxf(golpe->power*10, size.width* 0.03));
+		b.trg = size.width/2 + direccion * distancia;
+		b.dy  = posBola.y - b.flr;
+		b.xo = posBola.x;
+		b.yo = posBola.y;
+		b.golpear();
+		
+//		b.velocidad.x = velx * direccion;
+//		float vely = 500; //algun valor para que caiga dentro de la cancha
+//		b.velocidad.y = vely;
+		float bd = (b.trg - b.xo)*direccion;
+		float spin = size.width * 0.3 * golpe->spin; // El spin
+		spin = fmaxf(size.width * 0.80, spin+bd*2)-bd*2;
+		spin = fmaxf(size.width * 0.05, spin+bd)-bd;
+		b.spin = spin * direccion; // El spin depende de donde se le pega
 		
 		SimpleAudioEngine::sharedEngine()->playEffect("tennisserve.wav");
 	}

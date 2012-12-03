@@ -18,6 +18,22 @@ public:
 };
 
 class Bola : public CCNode {
+	//todo de nuevo por la rctm:
+public:
+	float xo ;
+	float yo ;
+	float vx ;
+	float vy ;
+	float a  ;
+	float dt ;
+	float t  ;
+	float t1 ;
+	float dy ;
+	float flr;
+	float trg;
+	void golpear (float inicio = 0);
+	
+	//todo de nuevo, fin
 public: //<- para hacer código más chanta no más ;)
 	float gravedad;
 	float piso;
@@ -34,8 +50,8 @@ public:
 
 private:
 	void update (float dt);
-	void checkStatus ();
-	void colisionPiso ();
+	void checkStatus (float bx, float by);
+	void colisionPiso (float bx, float by);
     
     int LastFloorColision;
     
