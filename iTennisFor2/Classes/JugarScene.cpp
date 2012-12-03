@@ -214,6 +214,7 @@ void Jugar::empujarPelota(JugadorGolpeaEvent* jg) {
 		b.t1 *= 0.95;
 		
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
+		b.a = -3*size.height/(b.t1 * b.t1);
 		float distancia = size.width*(0.05 +(golpe->power-5.0)/3.0 * 0.3);
 //		fminf(size.width*0.4, fmaxf(golpe->power*10, size.width* 0.03));
 		b.trg = size.width/2 + direccion * distancia;

@@ -17,7 +17,7 @@ coeficienteRestitucion(0.70f) // Sacado de canchas de verdad
 {
 	schedule(schedule_selector(Bola::update));
 	
-	CCSize size = CCDirector::sharedDirector()->getWinSize();
+	size = CCDirector::sharedDirector()->getWinSize();
 	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("sprites.plist");
 	CCSpriteBatchNode *batchNode = CCSpriteBatchNode::create("sprites.pvr.ccz");
 	this->addChild(batchNode);
@@ -44,7 +44,8 @@ coeficienteRestitucion(0.70f) // Sacado de canchas de verdad
 	//todo de nuevo por la rctm:
 	t1  = 1.4;
 	
-	a   = -size.height*3;
+//	a   = -size.height*3;
+	a = -3*size.height/(t1 * t1);
 	
 	flr = piso;
 	
@@ -75,6 +76,8 @@ void Bola::update (float dt) {
 	checkStatus(bx, by);
 	
 	if (t >= t1) {
+		LastFloorColision = (bx > size.width/2) ? 2 : 1;
+		
 		float dx = trg - xo;
 		
 		xo = trg;
@@ -95,11 +98,12 @@ void Bola::update (float dt) {
 }
 
 void Bola::resetBall(int p){
+	LastFloorColision = 0;
 	t1  = 1.4;
+	a = -3*size.height/(t1 * t1);
 	
 	spin = 0;
 	funcionando = true;
-	CCSize size = CCDirector::sharedDirector()->getWinSize();
 	CCPoint pos;
 	if (p==1) {
 		xo = size.width*0.1;
@@ -131,7 +135,6 @@ void Bola::checkStatus (float bx, float by) {
 		}
 	}
 	
-	CCSize size = CCDirector::sharedDirector()->getWinSize();
 	if (bx > size.width){
 		funcionando = false;
 		//resetGame(); enviarEvento fuera de la pantalla por la der

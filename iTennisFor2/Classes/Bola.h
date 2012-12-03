@@ -20,6 +20,7 @@ public:
 class Bola : public CCNode {
 	//todo de nuevo por la rctm:
 public:
+	CCSize size;
 	float xo ;
 	float yo ;
 	float vx ;
