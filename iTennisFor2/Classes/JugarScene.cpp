@@ -228,7 +228,7 @@ void Jugar::empujarPelota(JugadorGolpeaEvent* jg) {
 //		b.velocidad.y = vely;
 		float bd = (b.trg - b.xo)*direccion;
 		float spin = size.width * 0.3 * golpe->spin; // El spin
-		spin = fmaxf(size.width * 0.80, spin+bd*2)-bd*2;
+		spin = fmaxf(size.width * 0.90, spin+bd*2)-bd*2;
 		spin = fmaxf(size.width * 0.05, spin+bd)-bd;
 		b.spin = spin * direccion; // El spin depende de donde se le pega
 		
