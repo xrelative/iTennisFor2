@@ -50,7 +50,7 @@ coeficienteRestitucion(0.70f) // Sacado de canchas de verdad
 	flr = piso;
 	
 	//inicio
-	xo = size.width  * 0.1;
+	xo = size.width  * 0.2;
 	yo = flr;
 	
 	trg = xo;
@@ -106,9 +106,9 @@ void Bola::resetBall(int p){
 	funcionando = true;
 	CCPoint pos;
 	if (p==1) {
-		xo = size.width*0.1;
+		xo = size.width*0.2;
 	} else {
-		xo = size.width*0.9;
+		xo = size.width*0.8;
 	}
 	
 	yo = flr;

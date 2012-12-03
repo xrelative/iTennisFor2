@@ -22,8 +22,7 @@ public:
 	string staySpriteName;
 	string jumpSpriteName;
 	string hitSprite1, hitSprite2, hitSprite3;
-	CCSprite* sprite;
-	Jugador (CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector, string staySpriteName, string jumpSpriteName, string hitSprite1, string hitSprite2, string hitSprite3);
+	CCSprite* sprite;	Jugador (CCRect area, CCRect clickArea, CCObject* pSelectorTarget, SEL_CallFuncO selector, string staySpriteName, string jumpSpriteName, string hitSprite1, string hitSprite2, string hitSprite3);
 	const CCRect getHitArea ();
     void Jump(CargaEvent *event);
     void Fall();
@@ -34,6 +33,7 @@ public:
 	void hitFrame3 ();
 //	void hitFrame4 ();
 	bool isHitting;
+	CCRect area;
 private:
 //	void update (float dt);
 };

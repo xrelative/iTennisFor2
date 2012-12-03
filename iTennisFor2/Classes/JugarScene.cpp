@@ -67,11 +67,17 @@ bool Jugar::init()
 		piso = 40;
 		
 		/* Creación y ubicación de jugadores */
+		int anchoClick;
+		CCRect clickArea;
 		int ancho     = winSize.width/5; // 20% del ancho
-		CCRect area   = CCRectMake(0, 0, ancho, winSize.height);
-		j1            = new Jugador(area, this, callfuncO_selector(Jugar::golpearJ1), "stay1.png", "jump1.png", "hit11.png", "hit13.png", "hit14.png");
-		area.origin.x = winSize.width - ancho;
-		j2            = new Jugador(area, this, callfuncO_selector(Jugar::golpearJ2), "stay2.png", "jump2.png", "hit21.png", "hit23.png", "hit24.png");
+		int inicio    = winSize.width/10;// 10% del ancho
+		anchoClick    = winSize.width/3;
+		CCRect area   = CCRectMake(inicio, 0, ancho, winSize.height);
+		clickArea     = CCRectMake(0, 0, anchoClick, winSize.height);
+		j1            = new Jugador(area, clickArea, this, callfuncO_selector(Jugar::golpearJ1), "stay1.png", "jump1.png", "hit11.png", "hit13.png", "hit14.png");
+		area.origin.x = winSize.width - ancho - inicio;
+		clickArea.origin.x = winSize.width - anchoClick;
+		j2            = new Jugador(area, clickArea, this, callfuncO_selector(Jugar::golpearJ2), "stay2.png", "jump2.png", "hit21.png", "hit23.png", "hit24.png");
 		
 		this->addChild(j1, 1);
 		this->addChild(j2, 1);
@@ -145,53 +151,50 @@ void Jugar::golpear (int id, GolpeEvent* golpe)
 	if (pelotaEsGolpeable) {// && area.containsPoint(posBola)) {
 		j.isHitting = true;
 //		int piso = 70;
-		int alturaRaqueta = 30;
-		if (1) {// (posBola.y > piso + alturaRaqueta + 5) { // piso + altura raqueta + margen salto minimo
-//			float velocidadBola = fabs(b.velocidad.x);
-//			float distanciaRestante = (dirbola == 1 ? 0.9*size.width - posBola.x : posBola.x - 0.1*size.width);
-//			float tiempoRestante = fmax(distanciaRestante, 0) / velocidadBola;
-//			float aceleracionBola = b.gravedad;
-//			float velyBola = b.velocidad.y;
-//			
-//			// y(t) = (1/2)*a*t^2 + v*t + y_0;
-//			float posyChanta = aceleracionBola*tiempoRestante*tiempoRestante/2 + velyBola*tiempoRestante + posBola.y;
-//			float posyMenosChanta = posyChanta > 0 ? posyChanta : -posyChanta*b.coeficienteRestitucion;
-			float tDeGolpe = (b.t + 0.4);
-			//int rebotesQueFaltan = tDeGolpe / b.t1;
-			float t = fmodf(tDeGolpe, b.t1); // tiempo desde el ultimo rebote
-			float estimacionAlturaPelota = b.yo+t*(b.vy+t*b.a*0.5);
-			
-//			float estimacionAlturaPelota = (b.vx == 0 ? b.flr : posyMenosChanta) + alturaRaqueta;
-			
-			JugadorGolpeaEvent* jg = new JugadorGolpeaEvent(golpe, j, id, b);
-			
-			CCPoint p = j.getPosition();
-			CCCallFunc  *hitAnim1      =  CCCallFunc::create(&j, callfunc_selector(Jugador::hitFrame1));
-			CCCallFunc  *hitAnim2      =  CCCallFunc::create(&j, callfunc_selector(Jugador::hitFrame2));
-			CCCallFunc  *hitAnim3      =  CCCallFunc::create(&j, callfunc_selector(Jugador::hitFrame3));
-			CCDelayTime *delay         = CCDelayTime::create(0.070f);
-			CCCallFuncO *empujar       = CCCallFuncO::create(&j, callfuncO_selector(Jugar::empujarPelota), jg);
-			
-			CCCallFunc *animacionSalto = CCCallFunc::create(&j, callfunc_selector(Jugador::Jump));
-			
-			CCActionInterval* subir    =   CCMoveTo::create(0.160f, ccp(p.x, estimacionAlturaPelota + alturaRaqueta));
-			CCActionInterval* bajar    =   CCMoveTo::create(0.200f, ccp(p.x, p.y));
-			CCFiniteTimeAction* saltar =  CCEaseOut::create(subir, 2.0);
-			CCFiniteTimeAction* caer   =   CCEaseIn::create(bajar, 2.0);
-			CCCallFunc *animacionPiso  = CCCallFunc::create(&j, callfunc_selector(Jugador::Fall));
-			CCFiniteTimeAction* accion = CCSequence::create(animacionSalto,
-			                                                saltar,
-			                                                hitAnim1, delay,
-			                                                hitAnim2, delay,
-//			                                                hitAnim3, delay,
-									empujar,
-			                                                hitAnim3, delay,
-			                                                caer,
-			                                                animacionPiso,
-			                                                NULL);
-			
-			j.runAction(accion);
+		int alturaRaqueta = 40;
+		
+		float tDeGolpe = (b.t + 0.4);
+		float t = fmodf(tDeGolpe, b.t1); // tiempo desde el ultimo rebote
+		float estimacionAlturaPelota = b.yo+t*(b.vy+t*b.a*0.5);
+					
+		JugadorGolpeaEvent* jg = new JugadorGolpeaEvent(golpe, j, id, b);
+		
+		CCPoint p = j.getPosition();
+		CCCallFunc  *hitAnim1      =  CCCallFunc::create(&j, callfunc_selector(Jugador::hitFrame1));
+		CCCallFunc  *hitAnim2      =  CCCallFunc::create(&j, callfunc_selector(Jugador::hitFrame2));
+		CCCallFunc  *hitAnim3      =  CCCallFunc::create(&j, callfunc_selector(Jugador::hitFrame3));
+		CCDelayTime *delay         = CCDelayTime::create(0.070f);
+		CCCallFuncO *empujar       = CCCallFuncO::create(&j, callfuncO_selector(Jugar::empujarPelota), jg);
+		
+		CCCallFunc *animacionSalto = CCCallFunc::create(&j, callfunc_selector(Jugador::Jump));
+		
+		CCActionInterval* subir    =   CCMoveTo::create(0.160f, ccp(p.x, estimacionAlturaPelota + alturaRaqueta));
+		CCActionInterval* bajar    =   CCMoveTo::create(0.200f, ccp(p.x, p.y));
+		CCFiniteTimeAction* saltar =  CCEaseOut::create(subir, 2.0);
+		CCFiniteTimeAction* caer   =   CCEaseIn::create(bajar, 2.0);
+		CCCallFunc *animacionPiso  = CCCallFunc::create(&j, callfunc_selector(Jugador::Fall));
+		
+		CCFiniteTimeAction* accion;
+		if (estimacionAlturaPelota > piso + alturaRaqueta + 5) { // piso + altura raqueta + margen salto minimo
+			accion = CCSequence::create(animacionSalto,
+			                            saltar,
+			                            hitAnim1, delay,
+			                            hitAnim2, delay,
+			                            empujar,
+			                            hitAnim3, delay,
+			                            caer,
+			                            animacionPiso,
+			                            NULL);
+		} else {
+			accion = CCSequence::create(delay,
+						    hitAnim1, delay,
+			                            hitAnim2, delay,
+			                            empujar,
+			                            hitAnim3, delay,
+			                            animacionPiso,
+			                            NULL);
 		}
+		j.runAction(accion);
 	}
 	//printf("Jugador #%i golpea con Spin: %f y Power: %f\n", id, golpe->spin, golpe->power);
 }

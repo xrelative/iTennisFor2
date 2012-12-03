@@ -7,12 +7,13 @@
 //
 
 #include "Jugador.h"
-Jugador::Jugador (CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector, string staySpriteName, string jumpSpriteName, string hitSprite1, string hitSprite2, string hitSprite3)
-: multitouch(100.0, 0.01, 0.005, 4.5, 8.0, area, pSelectorTarget, selector, this, NULL),
+Jugador::Jugador (CCRect area, CCRect clickArea, CCObject* pSelectorTarget, SEL_CallFuncO selector, string staySpriteName, string jumpSpriteName, string hitSprite1, string hitSprite2, string hitSprite3)
+: multitouch(100.0, 0.01, 0.005, 4.5, 8.0, clickArea, pSelectorTarget, selector, this, NULL),
   staySpriteName(staySpriteName),
   jumpSpriteName(jumpSpriteName),
   hitSprite1(hitSprite1), hitSprite2(hitSprite2), hitSprite3(hitSprite3),
-  isHitting(false)
+  isHitting(false),
+  area(area)
 {
 	//	this->schedule(schedule_selector(Jugador::update));
 	
@@ -33,7 +34,7 @@ Jugador::Jugador (CCRect area, CCObject* pSelectorTarget, SEL_CallFuncO selector
 
 CCRect const Jugador::getHitArea ()
 {
-	return multitouch.area;
+	return area;
 }
 
 void Jugador::Jump(CargaEvent *event)
