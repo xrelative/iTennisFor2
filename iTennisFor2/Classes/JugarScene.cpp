@@ -12,7 +12,7 @@
 using namespace cocos2d;
 using namespace CocosDenshion;
 
-CCScene* Jugar::scene()
+CCScene* Jugar::scene(int players)
 {
 	// 'scene' is an autorelease object
 	CCScene *scene = CCScene::create();

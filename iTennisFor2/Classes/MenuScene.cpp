@@ -47,15 +47,15 @@ bool Menu::init()
     background->setPosition(ccp(winSize.width/2, winSize.height/2));
     batchNodeBackground->addChild(background, 0);
     
-    CCLabelTTF *menu1 = CCLabelTTF::create("Jugar", "YELLOW.TTF", 30.0);
-    CCLabelTTF *menu2 = CCLabelTTF::create("Audio", "YELLOW.TTF", 30.0);
-    CCLabelTTF *menu3 = CCLabelTTF::create("Acerca de", "YELLOW.TTF", 30.0);
-    CCLabelTTF *menu4 = CCLabelTTF::create("Salir", "YELLOW.TTF", 30.0);
+    CCLabelTTF *menu1 = CCLabelTTF::create("1 jugador", "YELLOW.TTF", 30.0);
+    CCLabelTTF *menu2 = CCLabelTTF::create("2 jugadores", "YELLOW.TTF", 30.0);
+    CCLabelTTF *menu3 = CCLabelTTF::create("Audio", "YELLOW.TTF", 30.0);
+    CCLabelTTF *menu4 = CCLabelTTF::create("Acerca de", "YELLOW.TTF", 30.0);
     
-    CCMenuItem *item1 = CCMenuItemLabel::create(menu1, this, menu_selector(Menu::menuJugar));
-    CCMenuItem *item2 = CCMenuItemLabel::create(menu2, this, menu_selector(Menu::menuConfig));
-    CCMenuItem *item3 = CCMenuItemLabel::create(menu3, this, menu_selector(Menu::menuAboutUs));
-    CCMenuItem *item4 = CCMenuItemLabel::create(menu4, this, menu_selector(Menu::menuCloseCallback));
+    CCMenuItem *item1 = CCMenuItemLabel::create(menu1, this, menu_selector(Menu::menuJugar1));
+    CCMenuItem *item2 = CCMenuItemLabel::create(menu2, this, menu_selector(Menu::menuJugar2));
+    CCMenuItem *item3 = CCMenuItemLabel::create(menu3, this, menu_selector(Menu::menuConfig));
+    CCMenuItem *item4 = CCMenuItemLabel::create(menu4, this, menu_selector(Menu::menuAboutUs));
     
     CCMenu* pMenu = CCMenu::create(item1, item2, item3, item4, NULL);
     pMenu->alignItemsVerticallyWithPadding(20);
@@ -66,11 +66,18 @@ bool Menu::init()
     return true;
 }
 
-void Menu::menuJugar(CCObject *pSender)
+void Menu::menuJugar1(CCObject *pSender)
 {
     SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
     SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
-    CCDirector::sharedDirector()->replaceScene(CCTransitionFadeBL::create(0.5, Jugar::scene()));
+    CCDirector::sharedDirector()->replaceScene(CCTransitionFadeBL::create(0.5, Jugar::scene(1)));
+}
+
+void Menu::menuJugar2(CCObject *pSender)
+{
+    SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
+    SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
+    CCDirector::sharedDirector()->replaceScene(CCTransitionFadeBL::create(0.5, Jugar::scene(2)));
 }
 
 void Menu::menuConfig(CCObject *pSender)
@@ -83,14 +90,4 @@ void Menu::menuAboutUs(CCObject *pSender)
 {
     SimpleAudioEngine::sharedEngine()->playEffect("tennisserve.wav");
     CCDirector::sharedDirector()->pushScene(CCTransitionCrossFade::create(0.5, AboutUs::scene()));
-}
-
-void Menu::menuCloseCallback(CCObject* pSender)
-{
-    SimpleAudioEngine::sharedEngine()->playEffect("tennisserve.wav");
-    CCDirector::sharedDirector()->end();
-    
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
 }

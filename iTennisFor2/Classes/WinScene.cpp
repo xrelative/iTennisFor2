@@ -51,7 +51,7 @@ void Win::showRestartMenu(int player)
 
 void Win::restartGame()
 {
-    CCDirector::sharedDirector()->replaceScene(CCTransitionCrossFade::create(0.5, Jugar::scene()));
+    CCDirector::sharedDirector()->replaceScene(CCTransitionCrossFade::create(0.5, Jugar::scene(2)));
 }
 
 void Win::finishGame()

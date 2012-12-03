@@ -37,7 +37,7 @@ class Jugar : public cocos2d::CCLayer
 {
 public:
 	virtual bool init();
-	static cocos2d::CCScene* scene();
+	static cocos2d::CCScene* scene(int players);
     
 	Jugador *j1;
 	Jugador *j2;

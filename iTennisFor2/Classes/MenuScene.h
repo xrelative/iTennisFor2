@@ -17,8 +17,8 @@ public:
     virtual bool init();
     static cocos2d::CCScene* scene();
     
-    void menuCloseCallback(CCObject* pSender);
-    void menuJugar(CCObject* pSender);
+    void menuJugar1(CCObject* pSender);
+    void menuJugar2(CCObject* pSender);
     void menuConfig(CCObject* pSender);
     void menuAboutUs(CCObject* pSender);
     void ActivateSound(CCObject* pSender);
