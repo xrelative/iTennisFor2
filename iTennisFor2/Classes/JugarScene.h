@@ -37,6 +37,7 @@ class Jugar : public cocos2d::CCLayer
 {
 public:
 	virtual bool init();
+	int players;
 	static cocos2d::CCScene* scene(int players);
     
 	Jugador *j1;
@@ -45,9 +46,10 @@ public:
     Win *win;
     Point *point;
 	float piso;
-	
+	void update (float dt);
 	// preprocessor macro for "static create()" constructor ( node() deprecated )
-	CREATE_FUNC(Jugar);
+//	CREATE_FUNC(Jugar);
+	static Jugar* create(int players);
 	
 	void golpearJ1 (GolpeEvent* golpe);
 	void golpearJ2 (GolpeEvent* golpe);

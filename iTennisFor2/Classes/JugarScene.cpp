@@ -11,14 +11,32 @@
 
 using namespace cocos2d;
 using namespace CocosDenshion;
-
+Jugar* Jugar::create(int players)
+{
+	Jugar *pRet = new Jugar();
+	if (pRet) {
+		pRet->players = players;
+	}
+	if (pRet && pRet->init())
+	{
+		pRet->autorelease();
+		return pRet;
+	}
+	else
+	{
+		delete pRet;
+		pRet = NULL;
+		return NULL;
+	}
+}
 CCScene* Jugar::scene(int players)
 {
 	// 'scene' is an autorelease object
 	CCScene *scene = CCScene::create();
 	
 	// 'layer' is an autorelease object
-	Jugar *layer = Jugar::create();
+	Jugar *layer = Jugar::create(players);
+	layer->scheduleUpdate();
 	
 	// add layer as a child to scene
 	scene->addChild(layer);
@@ -77,6 +95,10 @@ bool Jugar::init()
 		j1            = new Jugador(area, clickArea, this, callfuncO_selector(Jugar::golpearJ1), "stay1.png", "jump1.png", "hit11.png", "hit13.png", "hit14.png");
 		area.origin.x = winSize.width - ancho - inicio;
 		clickArea.origin.x = winSize.width - anchoClick;
+		if (players == 1) {
+			area.origin.x -= inicio; // le pegamos antes
+			clickArea = CCRectMake(winSize.width*2, winSize.height*2, 0, 0); // afuera de la pantalla!
+		}
 		j2            = new Jugador(area, clickArea, this, callfuncO_selector(Jugar::golpearJ2), "stay2.png", "jump2.png", "hit21.png", "hit23.png", "hit24.png");
 		
 		this->addChild(j1, 1);
@@ -109,14 +131,38 @@ bool Jugar::init()
 	return bRet;
 }
 
+void Jugar::update(float dt)
+{
+	static float countdown = 0;
+	if (players > 1) {
+		return;
+	}
+	Bola    &b    = *bola;
+	Jugador &j    = *j2;
+	CCRect  area    = j.getHitArea();
+	CCPoint posBola = b.getPosicion();
+	
+	static GolpeEvent golpeImaginario;
+	golpeImaginario.power = 7;
+	golpeImaginario.spin  = -2;
+	
+	if (countdown > 0) {
+		countdown -= dt;
+		return;
+	}
+	if (area.containsPoint(posBola)) {
+		golpearJ2(&golpeImaginario);
+		countdown = 2.0f;
+	}
+}
+
 void Jugar::resetGame()
 {
-    bola->resetBall(1);
-//	if(scorePlayer1 < scorePlayer2)
-//        bola->resetBall(1);
-//    
-//    else
-//        bola->resetBall(2);
+//    bola->resetBall(1);
+	if(scorePlayer1 < scorePlayer2)
+		bola->resetBall(1);
+	else
+		bola->resetBall(2);
 }
 
 #include <stdio.h>
