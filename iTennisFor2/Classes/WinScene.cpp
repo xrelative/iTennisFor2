@@ -12,8 +12,9 @@
 
 USING_NS_CC;
 
-void Win::showRestartMenu(int player)
-{    
+void Win::showRestartMenu(int player, int players)
+{
+	this->players = players;
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
     const char *message;
@@ -52,7 +53,7 @@ void Win::showRestartMenu(int player)
 
 void Win::restartGame()
 {
-    CCDirector::sharedDirector()->replaceScene(CCTransitionCrossFade::create(0.5, Jugar::scene(2)));
+    CCDirector::sharedDirector()->replaceScene(CCTransitionCrossFade::create(0.5, Jugar::scene(players)));
 }
 
 void Win::finishGame()

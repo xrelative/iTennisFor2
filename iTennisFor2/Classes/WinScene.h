@@ -14,7 +14,8 @@
 class Win : public cocos2d::CCLayer
 {
 public:
-    void showRestartMenu(int player);
+	int players;
+    void showRestartMenu(int player, int players);
     void restartGame();
     void finishGame();
     

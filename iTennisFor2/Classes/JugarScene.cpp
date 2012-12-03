@@ -315,7 +315,7 @@ void Jugar::ResultadoJugada(ScoreMensage *mensage)
                 break;
             case 4:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
-                win->showRestartMenu(1);
+                win->showRestartMenu(1, players);
                 break;
             default:
                 break;
@@ -344,7 +344,7 @@ void Jugar::ResultadoJugada(ScoreMensage *mensage)
                 break;
             case 4:
                 SimpleAudioEngine::sharedEngine()->playEffect("applause4.wav");
-                win->showRestartMenu(2);
+                win->showRestartMenu(2, players);
                 break;
             default:
                 break;
